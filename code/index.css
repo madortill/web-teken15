@@ -163,6 +163,7 @@ input:focus{
     left: 35vw;
 }
 
+/* תעודת זהות של תרופות */
 .medicineId {
     pointer-events: none;
     padding: 1vh 4vw;
@@ -175,4 +176,10 @@ input:focus{
 
 .medicineId::-webkit-scrollbar {
     display: none;
+}
+
+.pic {
+    width: 42vw;
+    position: absolute;
+    left: 5vw;
 }
