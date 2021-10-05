@@ -678,6 +678,7 @@ const onClickSearch = () => {
     document.querySelector('.searchBoxHolder').classList.remove("hidden");
     document.querySelector('.searchBox').classList.remove("hidden");
     document.querySelector('.title').classList.add("hidden");
+    document.querySelector('.aboutButton').classList.add("hidden");
     document.querySelector('.searchScren').classList.add("darkScreen");
     document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/search-wave.svg");
     // add listener to input box
@@ -687,6 +688,7 @@ const onClickSearch = () => {
         document.querySelector('.searchBox').classList.add("hidden");
         document.querySelector('.searchScren').classList.remove("darkScreen");
         document.querySelector('.title').classList.remove("hidden");
+        document.querySelector('.aboutButton').classList.remove("hidden");
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
     });
     document.querySelector('.searchBox').addEventListener('input', onSearch);

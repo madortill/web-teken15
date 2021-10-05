@@ -101,6 +101,7 @@ html, body {
 
 input:focus{
     outline: none;
+    top: 11vh;
 }
 
 .dropDown{
@@ -135,8 +136,8 @@ input:focus{
 .aboutButton {
     width: 7vw;
     position: absolute;
-    top: 1vh;
-    left: 2vw;
+    top: 2vh;
+    left: 3vw;
 }
 
 .aboutPage {
@@ -156,8 +157,8 @@ input:focus{
 
 .logos {
     width: 25vw;
-    display: flex;
-    justify-content: space-around;
+    /* display: flex;
+    justify-content: space-around; */
     position: absolute;
     top: 55vh;
     left: 35vw;
