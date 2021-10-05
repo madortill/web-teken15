@@ -145,7 +145,7 @@ input:focus{
     width: 92vw;
     position: absolute;
     top: 20vh;
-    direction: rtl;
+    overflow: hidden;
 }
 
 .aboutHeadline {
@@ -165,7 +165,7 @@ input:focus{
 }
 
 .medicineId {
-    pointer-events: none;
+    /* pointer-events: none; */
     padding: 1vh 4vw;
     height: 75vh;
     width: 92vw;
