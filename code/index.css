@@ -83,15 +83,15 @@ html, body {
 }
 
 .searchBox {
-    width: 50vw;
-    height: 6vh;
+    width: 52vw;
     border-radius: 10vw;
     position: absolute;
     top: 9.7vh;
-    left: 19vw;
+    left: 20vw;
     border: none;
     background-color: #f4f4f4;
-    padding-left: 1em;
+    padding-bottom: 1em;
+    padding-top: 1em;
     direction: ltr;
     font-family: "segoeu";
     text-align: center;
