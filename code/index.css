@@ -97,6 +97,7 @@ html, body {
     text-align: center;
     z-index: 2;
     outline: none;
+    softwareKeyboardLayoutMode:"pan"
 }
 
 input:focus{
@@ -167,9 +168,13 @@ input:focus{
 .medicineId {
     pointer-events: none;
     padding: 1vh 4vw;
-    height: 75vh;
+    height: 65vh;
     width: 92vw;
     position: absolute;
-    top: 10vh;
+    top: 22vh;
     overflow-y: scroll;
+}
+
+.medicineId::-webkit-scrollbar {
+    display: none;
 }
