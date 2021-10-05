@@ -97,7 +97,6 @@ html, body {
     text-align: center;
     z-index: 2;
     outline: none;
-    softwareKeyboardLayoutMode:"pan"
 }
 
 input:focus{
@@ -157,7 +156,6 @@ input:focus{
 
 .logos {
     width: 25vw;
-    /* padding: 1vh 4vw; */
     display: flex;
     justify-content: space-around;
     position: absolute;
