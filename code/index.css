@@ -165,7 +165,7 @@ input:focus{
 }
 
 .medicineId {
-    /* pointer-events: none; */
+    pointer-events: none;
     padding: 1vh 4vw;
     height: 75vh;
     width: 92vw;

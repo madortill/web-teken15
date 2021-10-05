@@ -720,8 +720,11 @@ Description: Shows medicine id, hides privios div and adds listener to retern bu
 const creatMedID = (event) => {
     // Hide search dropdoen
     document.querySelector('.dropDown').classList.add("hidden");
+    document.querySelector('.medicineId').style.pointerEvents = "all";
+
     // let strCurrentMed =  event.currentTarget.classList
     let objCurrentMed =  objMedInfo[event.currentTarget.classList[0]]
+
     // Duplicate the template and append.
     let template = document.querySelector(`.medicineId > .${objCurrentMed.type}`);
     let clon = template.content.cloneNode(true);
