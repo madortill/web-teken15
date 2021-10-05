@@ -87,7 +87,7 @@ html, body {
     height: 6vh;
     border-radius: 10vw;
     position: absolute;
-    top: 9.5vh;
+    top: 9.7vh;
     left: 19vw;
     border: none;
     background-color: #f4f4f4;
@@ -96,6 +96,11 @@ html, body {
     font-family: "segoeu";
     text-align: center;
     z-index: 2;
+    outline: none;
+}
+
+input:focus{
+    outline: none;
 }
 
 .dropDown{
