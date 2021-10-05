@@ -159,7 +159,7 @@ input:focus{
     display: flex;
     justify-content: space-around;
     position: absolute;
-    top: 60vh;
+    top: 55vh;
     left: 35vw;
 }
 
