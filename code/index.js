@@ -686,6 +686,7 @@ const onClickSearch = () => {
     document.querySelector('.darkScreen').addEventListener("click", () => {
         document.querySelector('.searchBoxHolder').classList.add("hidden");
         document.querySelector('.searchBox').classList.add("hidden");
+        document.querySelector('.dropDown').classList.add("hidden");
         document.querySelector('.searchScren').classList.remove("darkScreen");
         document.querySelector('.title').classList.remove("hidden");
         document.querySelector('.aboutButton').classList.remove("hidden");
