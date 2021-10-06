@@ -168,37 +168,45 @@ input:focus{
 }
 
 /* כתורים של תרופות ששולחים ללומדות */
+.buttonContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    height: 20vh;
+    width: 86vw;
+    margin-top: 2em;
+    margin: auto;
+}
+
 .mainPageButton {
     background-color: white;
     border-radius: 0.8em;
     height: 15vh;
-    width: 86vw;
-    margin: auto;
-    margin-top: 2em;
-    text-align: center;
+    width: 70vw;
     font-weight: 500;
     font-size: 1.27em;
-    display: flex;
+    text-align: center;
 }
 
 .medHeadline {
     width: 60vw;
-    padding: 2em 0.6em;
+    /* padding: 2em 0.6em;
     padding-top: 1em;
     position: relative;
-    left: 4vw;
+    left: 4vw; */
 }
 
 .mainPagePic {
     height: 32vw;
-    position: relative;
+    align-self: flex-end;
+    /* position: relative;
     top: -1vh;
-    left: 5vw;
+    left: 5vw; */
 }
 
-.picLeft{
+/* .picLeft{
     left: -5vw;
-}
+} */
 
 .homePageButtons {
     overflow-y: scroll;
