@@ -256,14 +256,15 @@ input:focus{
 /* מדפים של תרופות */
 .downButton {
     width: 10vw;
-    position: relative;
-    left: -35vw;
+    position: absolute;
+    left: 2vw;
 }
 
 .shelfs {
     width: 100vw;
     background-color: white;
     height: 8vh;
+    margin-top: 1em;
 }
 
 .shelf {
@@ -275,11 +276,11 @@ input:focus{
     position: relative;
     top: 2vh;
     font-weight: 500;
-    font-size: 1.2em;
+    font-size: 1.1em;
     padding-right: 1em;
 }
 
-.shelf1dropDown {
+.shelfsdropDown {
     padding: 0 1em;
 }
 
