@@ -150,9 +150,12 @@ input:focus{
 }
 
 .aboutHeadline {
-    width: 30vw;
+    width: 20vw;
+    color: deepskyblue;
     display: block;
     margin: auto;
+    font-weight: 800;
+    font-size: 2em;
 }
 
 .logos {
