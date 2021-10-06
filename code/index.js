@@ -650,8 +650,10 @@ let objMedInfo = {
 --------------------------------------------------------------
 Description: */
 window.addEventListener("load", () => {
+    // place listeners on search button, about button and med buttons
     document.querySelector('.searchButton').addEventListener('click', onClickSearch);
     document.querySelector('.aboutButton').addEventListener('click', onClickAbout);
+    document.querySelector('.mainPageButton').addEventListener('click', creatMedShelfs);
 });
 
 /* onClickAbout
@@ -729,6 +731,7 @@ Description: Shows medicine id, hides privios div and adds listener to retern bu
 const creatMedID = (event) => {
     // Hide search dropdoen
     document.querySelector('.dropDown').classList.add("hidden");
+    document.querySelector('.homePageButtons').classList.add("hidden");
     document.querySelector('.medicineId').style.pointerEvents = "all";
 
     // let strCurrentMed =  event.currentTarget.classList
@@ -758,4 +761,11 @@ const creatMedID = (event) => {
 Description: change hyphen to space */
 const addSpace = (phrase) => {
     return phrase.replace(/-/g, ' ');
+}
+
+/* creatMedShelfs
+--------------------------------------------------------------
+Description: */
+const creatMedShelfs = () => {
+    document.querySelector('.homePageButtons').classList.add("hidden");
 }

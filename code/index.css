@@ -181,6 +181,10 @@ input:focus{
     display: flex;
 }
 
+.homePageButtons::-webkit-scrollbar {
+    display: none;
+}
+
 .medHeadline {
     width: 60vw;
     padding: 2em 0.6em;
@@ -216,7 +220,7 @@ input:focus{
     overflow-y: scroll;
 }
 
-.medicineId,.homePageButtons::-webkit-scrollbar {
+.medicineId::-webkit-scrollbar {
     display: none;
 }
 
