@@ -693,10 +693,16 @@ const onClickSearch = () => {
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
     });
     document.querySelector('.searchBox').addEventListener('input', onSearch);
+
+    // שהפאקינג מקלדת לא תזיז הכול
     document.querySelector('.searchBox').addEventListener('focus', () => {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
+        document.body.scrollTop = 0;
     });
 
+    // document.addEventListener('touchmove', (e) => {
+    //     e.preventDefault();
+    // });
 }
 
 /* onSearch
