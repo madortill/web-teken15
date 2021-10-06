@@ -693,6 +693,10 @@ const onClickSearch = () => {
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
     });
     document.querySelector('.searchBox').addEventListener('input', onSearch);
+    document.querySelector('.searchBox').addEventListener('focus', () => {
+        window.scrollTo(0,0);
+    });
+
 }
 
 /* onSearch
