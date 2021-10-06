@@ -181,6 +181,7 @@ input:focus{
 
 .pic {
     width: 42vw;
+    height: 20vh;
     position: absolute;
     left: 5vw;
 }
