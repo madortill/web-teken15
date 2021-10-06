@@ -188,3 +188,7 @@ input:focus{
     position: absolute;
     left: 5vw;
 }
+
+.idNextToPic {
+    width: 42vw;
+}
