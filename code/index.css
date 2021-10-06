@@ -234,3 +234,53 @@ input:focus{
 .idNextToPic {
     width: 42vw;
 }
+
+/* מדפים של תרופות */
+.downButton {
+    width: 10vw;
+    position: relative;
+    left: -35vw;
+}
+
+.shelfs {
+    width: 100vw;
+    background-color: white;
+    height: 8vh;
+}
+
+.shelf {
+    position: relative;
+    top: 3vh;
+}
+
+.shelfHedline {
+    position: relative;
+    top: 2vh;
+    font-weight: 500;
+    font-size: 1.2em;
+    padding-right: 1em;
+}
+
+.shelf1dropDown {
+    padding: 0 1em;
+}
+
+.shelfMedPic {
+    width: 12vw;
+    padding: 0.5em;
+}
+
+.shelfMedPicContainer {
+    width: 43vw;
+    background-color: white;
+    height: 12vh;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.shelfPicSection {
+    padding-top: 1em;
+    display: flex;
+    justify-content: space-around;
+}

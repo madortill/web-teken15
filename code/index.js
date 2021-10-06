@@ -643,8 +643,35 @@ let objMedInfo = {
     // },
 };
 
-// varubles
+let objMedsShelfs = {
+    "antiallergic" : {
+        numberOfShelfs : "3",
+        shelf1content : "check",
+        "shelf1" : {
+            bShelf1mechanism : "true",
+            shelf1mechanism : "check",
+            numOfMeds1 : "",
+        },
+        shelf2content : "check",
+        "shelf2" : {
+            bShelf2mechanism : "true",
+            shelf2mechanism : "check",
+            numOfMeds2 : "",
+        },
+        shelf3content : "check",
+        "shelf3" : {
+            bShelf3mechanism : "false",
+            shelf3mechanism : "check",
+            numOfMeds3 : "",
+        },
+    },
+   
+ 
 
+}
+
+let arrMedColors = ["teal", "purple", "yellow", "pink", "orange"];
+let obgCurrentShelfs = '';
 
 /* loading function
 --------------------------------------------------------------
@@ -772,7 +799,22 @@ const addSpace = (phrase) => {
 --------------------------------------------------------------
 Description: */
 const creatMedShelfs = (event) => {
+    let strCurrentMedType = event.currentTarget.classList[1]
     document.querySelector('.homePageButtons').classList.add("hidden");
-    console.log(event.currentTarget);
-
+    document.querySelector(`.${strCurrentMedType}Shelf`).classList.remove("hidden");
+    document.querySelector(`.${strCurrentMedType}Shelf > .shelf1`).addEventListener("click", () => {
+        document.querySelector(`.${strCurrentMedType}Shelf >  .shelf1dropDown`).classList.remove("hidden");
+    })
 }
+
+// /* showShelfContent
+// --------------------------------------------------------------
+// Description: change hyphen to space */
+// const showShelfContent = (event) => {
+//     let obgCurrentShelf = obgCurrentShelfs[event.currentTarget.classList[1]];
+//     div.innerHTML = obgCurrentShelfshelf1mechanism;
+//     div.classList.add("shelf", `shelf${i}`);
+//     document.querySelector('.medShelfs').append(div);
+//     document.querySelector(`.shelf${i}`).addEventListener("click", showShelfContent);
+    
+// }
