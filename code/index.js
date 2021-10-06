@@ -653,7 +653,10 @@ window.addEventListener("load", () => {
     // place listeners on search button, about button and med buttons
     document.querySelector('.searchButton').addEventListener('click', onClickSearch);
     document.querySelector('.aboutButton').addEventListener('click', onClickAbout);
-    document.querySelectorAll('.mainPageButton').addEventListener('click', creatMedShelfs);
+    let arrMedsButtons = document.querySelectorAll('.mainPageButton');
+    for (let i = 0; i < arrMedsButtons.length; i++) {
+        arrMedsButtons[i].addEventListener('click', creatMedShelfs);
+    }
 });
 
 /* onClickAbout
@@ -768,6 +771,8 @@ const addSpace = (phrase) => {
 /* creatMedShelfs
 --------------------------------------------------------------
 Description: */
-const creatMedShelfs = () => {
+const creatMedShelfs = (event) => {
     document.querySelector('.homePageButtons').classList.add("hidden");
+    console.log(event.currentTarget);
+
 }
