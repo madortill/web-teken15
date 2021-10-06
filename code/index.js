@@ -662,11 +662,13 @@ Description: Adds about page */
 const onClickAbout = () => {
     document.querySelector('.aboutPage').classList.remove("hidden");
     document.querySelector('.aboutButton').classList.add("hidden");
+    document.querySelector('.homePageButtons').classList.add("hidden");
     document.querySelector('.topButton').removeEventListener('click', onClickSearch);
     document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
     document.querySelector('.topButton').addEventListener('click', () => {
         document.querySelector('.aboutPage').classList.add("hidden");
         document.querySelector('.aboutButton').classList.remove("hidden");
+        document.querySelector('.homePageButtons').classList.remove("hidden");
         document.querySelector('.searchButton').addEventListener('click', onClickSearch);
         document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
     });
