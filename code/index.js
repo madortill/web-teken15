@@ -649,7 +649,7 @@ let objMedsShelfsColors = {//צבע, מספר מדפים, כותרת
     breathing : ["orange", 2, "נשימה"],
     chronicDiseases : ["teal", 4, "מחלות כרוניות"],
     digestion : ["yellow", 5, "עיכול"],
-    painkillers : ["purple", 2, "משככי כאבים"],
+    painkillers : ["purple", 4, "משככי כאבים"],
     otherMeds : ["light-green", 1, "תרופות אחרות"],
 }
 
@@ -782,15 +782,19 @@ const addSpace = (phrase) => {
 --------------------------------------------------------------
 Description: */
 const creatMedShelfs = (event) => {
+    //saves current med type
     strCurrentMedType = event.currentTarget.classList[1]
+    //changes screen
     document.querySelector('.homePageButtons').classList.add("hidden");
     document.querySelector(`.${strCurrentMedType}Shelf`).classList.remove("hidden");
+    document.querySelector('.aboutButton').classList.add("hidden");
+    // changes color and title
     document.querySelector(`.wave`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.topButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.searchBoxHolder`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.title`).innerHTML = objMedsShelfsColors[strCurrentMedType][2];
     document.querySelector(`.title`).style.fontSize = "2em";
-    document.querySelector('.aboutButton').classList.add("hidden");
+    // changes color and adds listener.
     for (let i = 1; i <= objMedsShelfsColors[strCurrentMedType][1]; i++) {
         document.querySelector(`.${strCurrentMedType}Shelf > .shelf${i}`).addEventListener("click", controlShelfsDropDown)
         document.querySelector(`.${strCurrentMedType}Shelf .shelf${i} .downButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
@@ -803,10 +807,11 @@ const creatMedShelfs = (event) => {
 Description: */
 const controlShelfsDropDown = (event) => {
     let strChosenShelf = event.currentTarget.classList[1];
+    // closes drop down
     if (document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf} .downButton`).getAttribute("src").includes("up")) {
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf} .downButton`).setAttribute("src", "../assets/images/grapics/med-shelfs/down-button.svg");
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown`).classList.add("hidden");
-    }else {
+    }else { // opens drop down
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown`).classList.remove("hidden");
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf} .downButton`).setAttribute("src", "../assets/images/grapics/med-shelfs/up-button.svg");
     }

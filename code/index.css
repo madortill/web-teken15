@@ -296,10 +296,14 @@ input:focus{
     border-radius: 1em;
     display: flex;
     align-items: center;
+    font-size: 0.8em;
+    margin-bottom: 1em;
 }
 
 .shelfPicSection {
     padding-top: 1em;
     display: flex;
     justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
 }
