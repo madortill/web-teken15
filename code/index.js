@@ -643,35 +643,16 @@ let objMedInfo = {
     // },
 };
 
-let objMedsShelfs = {
-    "antiallergic" : {
-        numberOfShelfs : "3",
-        shelf1content : "check",
-        "shelf1" : {
-            bShelf1mechanism : "true",
-            shelf1mechanism : "check",
-            numOfMeds1 : "",
-        },
-        shelf2content : "check",
-        "shelf2" : {
-            bShelf2mechanism : "true",
-            shelf2mechanism : "check",
-            numOfMeds2 : "",
-        },
-        shelf3content : "check",
-        "shelf3" : {
-            bShelf3mechanism : "false",
-            shelf3mechanism : "check",
-            numOfMeds3 : "",
-        },
-    },
-   
- 
-
+let objMedsShelfsColors = {
+    antiallergic : ["pink", "נוגדי אלרגיה"],
+    antibiotics : ["darkGreen", "אנטיביוטיקה"], 
+    breathing : ["orange", "נשימה"],
+    chronicDiseases : ["teal", "מחלות כרוניות"],
+    digestion : ["yellow", "עיכול"],
+    painkillers : ["purple", "משככי כאבים"],
+    otherMeds : ["light-green", "תרופות אחרות"],
 }
 
-let arrMedColors = ["teal", "purple", "yellow", "pink", "orange"];
-let obgCurrentShelfs = '';
 
 /* loading function
 --------------------------------------------------------------
@@ -802,19 +783,16 @@ const creatMedShelfs = (event) => {
     let strCurrentMedType = event.currentTarget.classList[1]
     document.querySelector('.homePageButtons').classList.add("hidden");
     document.querySelector(`.${strCurrentMedType}Shelf`).classList.remove("hidden");
+    document.querySelector(`.wave`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
+    document.querySelector(`.topButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
+    document.querySelector(`.searchBoxHolder`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
+    document.querySelector(`.title`).innerHTML = objMedsShelfsColors[strCurrentMedType][1];
+    document.querySelector(`.title`).style.fontSize = "2em";
+    document.querySelector(`.${strCurrentMedType}Shelf .downButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
+    document.querySelector(`.${strCurrentMedType}Shelf .shelf`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
+    document.querySelector('.aboutButton').classList.add("hidden");
+
     document.querySelector(`.${strCurrentMedType}Shelf > .shelf1`).addEventListener("click", () => {
         document.querySelector(`.${strCurrentMedType}Shelf >  .shelf1dropDown`).classList.remove("hidden");
     })
 }
-
-// /* showShelfContent
-// --------------------------------------------------------------
-// Description: change hyphen to space */
-// const showShelfContent = (event) => {
-//     let obgCurrentShelf = obgCurrentShelfs[event.currentTarget.classList[1]];
-//     div.innerHTML = obgCurrentShelfshelf1mechanism;
-//     div.classList.add("shelf", `shelf${i}`);
-//     document.querySelector('.medShelfs').append(div);
-//     document.querySelector(`.shelf${i}`).addEventListener("click", showShelfContent);
-    
-// }

@@ -30,12 +30,13 @@ html, body {
     background-color: #f4f4f4;
 }
 
+
 /* צבעים */
 .blue {
     filter: hue-rotate(140deg);
 }
 
-.light-green {
+.lightGreen {
     filter: hue-rotate(30deg);
 }
 
@@ -46,6 +47,23 @@ html, body {
 .purple {
     filter: hue-rotate(205deg);
 }
+
+.yellow {
+    filter: hue-rotate(0deg);
+}
+
+.orange {
+    filter: hue-rotate(320deg);
+}
+
+.darkGreen {
+    filter: hue-rotate(80deg);
+}
+
+.pink {
+    filter: hue-rotate(280deg);
+}
+
 
 .hidden {
     display: none;
