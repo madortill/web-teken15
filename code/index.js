@@ -699,10 +699,6 @@ const onClickSearch = () => {
         window.scrollTo(0, 0);
         document.body.scrollTop = 0;
     });
-
-    // document.addEventListener('touchmove', (e) => {
-    //     e.preventDefault();
-    // });
 }
 
 /* onSearch
