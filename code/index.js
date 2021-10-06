@@ -653,7 +653,7 @@ window.addEventListener("load", () => {
     // place listeners on search button, about button and med buttons
     document.querySelector('.searchButton').addEventListener('click', onClickSearch);
     document.querySelector('.aboutButton').addEventListener('click', onClickAbout);
-    document.querySelector('.mainPageButton').addEventListener('click', creatMedShelfs);
+    document.querySelectorAll('.mainPageButton').addEventListener('click', creatMedShelfs);
 });
 
 /* onClickAbout
