@@ -307,3 +307,12 @@ input:focus{
     align-content: center;
     flex-wrap: wrap;
 }
+/* 
+.painkillersShelf {
+    height: 60vh;
+    overflow-y: scroll;
+}
+
+.painkillersShelf::-webkit-scrollbar {
+    display: none;
+} */

@@ -188,7 +188,7 @@ let objMedInfo = {
         mechanismOfAction : "עיכוב יצירת חומר תורשתי (DNA) בוירוסים ובכך עיכוב שכפול הוירוסים.",
     },
     // תרופות אנטי-פטרייתיות
-    "Clotrimazole": {
+    "Clotrimazole-VAG-CRM": {
         type : "withMechanism",
         pic : "antibiotics/agisten", 
         genericName : " Clotrimazole (VAG CRM)",
@@ -199,7 +199,7 @@ let objMedInfo = {
         patientGuidelines : "זיהומים חוזרים או ממושכים ידרשו בירור רפואי נוסף.<br>להימנע מקיום יחסי מין בזמן הטיפול.<br>התרופה עלולה להכתים בגדים ועל כן, רצוי להשתמש בפד סופג בתחתון.<br>יש להמשיך את הטיפול גם בזמן מחזור.<br>לסיים את הטיפול ולא להפסיק באמצע, גם אם מרגישים טוב יותר.",
         mechanismOfAction : "פגיעה בדופן תאי הפטריות ובכך הריגתם או עיכוב התרבותם.",
     },
-    "Clotrimazole": {
+    "Clotrimazole-CRM": {
         type : "withMechanism",
         pic : "antibiotics/clotrimaderm", 
         genericName : " Clotrimazole (CRM)",
@@ -645,7 +645,7 @@ let objMedInfo = {
 
 let objMedsShelfsColors = {//צבע, מספר מדפים, כותרת
     antiallergic : ["pink", 3, "נוגדי אלרגיה"], 
-    antibiotics : ["darkGreen", 3, "אנטיביוטיקה"], 
+    antibiotics : ["darkGreen", 4, "אנטיביוטיקה"], 
     breathing : ["orange", 2, "נשימה"],
     chronicDiseases : ["teal", 4, "מחלות כרוניות"],
     digestion : ["yellow", 5, "עיכול"],
