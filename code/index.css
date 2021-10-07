@@ -123,6 +123,7 @@ input:focus{
 }
 
 .dropDown{
+    pointer-events: none;
     width: 73vw;
     height: 63vh;
     position: absolute;

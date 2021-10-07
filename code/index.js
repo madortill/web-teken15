@@ -726,6 +726,7 @@ const onClickSearch = () => {
 --------------------------------------------------------------
 Description: cheack for search match and creat dropdown accordingly */
 const onSearch = () => {
+    document.querySelector('.dropDown').style.pointerEvents = "all";
     // Saves user input in a varuble and resets the dropdown html.
     let strUserInput = document.querySelector('input').value;
     document.querySelector('.dropDown').innerHTML = "";
@@ -755,7 +756,10 @@ const creatMedID = (event) => {
     
     // let strCurrentMed =  event.currentTarget.classList
     let objCurrentMed =  objMedInfo[event.currentTarget.classList[1]];
-    document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
+    if (strcurrentPage === "medShelf") {
+        document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
+    }
+   
 
     // Duplicate the template and append.
     let template = document.querySelector(`.medicineId > .${objCurrentMed.type}`);
@@ -820,6 +824,7 @@ const controlShelfsDropDown = (event) => {
     }else { // opens drop down
         let arrMedIdButtons = document.querySelectorAll(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown .shelfMedPicContainer`);
         for (let i = 0; i < arrMedIdButtons.length; i++) {
+            console.log(arrMedIdButtons[i]);
             arrMedIdButtons[i].addEventListener('click', creatMedID);
         }
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown`).classList.remove("hidden");
