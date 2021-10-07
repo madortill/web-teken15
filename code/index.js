@@ -752,6 +752,8 @@ const creatMedID = (event) => {
     // Hide search dropdoen
     document.querySelector('.dropDown').classList.add("hidden");
     document.querySelector('.homePageButtons').classList.add("hidden");
+    document.querySelector('.aboutButton').classList.add("hidden");
+    document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
     document.querySelector('.medicineId').style.pointerEvents = "all";
     
     // let strCurrentMed =  event.currentTarget.classList
