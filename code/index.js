@@ -653,7 +653,9 @@ let objMedsShelfsColors = {//צבע, מספר מדפים, כותרת
     otherMeds : ["light-green", 1, "תרופות אחרות"],
 }
 
+// varubal
 let strCurrentMedType;
+let strcurrentPage;
 
 
 /* loading function
@@ -706,8 +708,10 @@ const onClickSearch = () => {
         document.querySelector('.dropDown').classList.add("hidden");
         document.querySelector('.searchScren').classList.remove("darkScreen");
         document.querySelector('.title').classList.remove("hidden");
-        document.querySelector('.aboutButton').classList.remove("hidden");
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
+        if (strcurrentPage !== "medShelf") {
+            document.querySelector('.aboutButton').classList.remove("hidden");
+        }
     });
     document.querySelector('.searchBox').addEventListener('input', onSearch);
 
@@ -782,8 +786,9 @@ const addSpace = (phrase) => {
 --------------------------------------------------------------
 Description: */
 const creatMedShelfs = (event) => {
-    //saves current med type
+    //saves current med type and page
     strCurrentMedType = event.currentTarget.classList[1]
+    strcurrentPage = "medShelf"
     //changes screen
     document.querySelector('.homePageButtons').classList.add("hidden");
     document.querySelector(`.${strCurrentMedType}Shelf`).classList.remove("hidden");
