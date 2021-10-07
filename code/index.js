@@ -737,7 +737,7 @@ const onSearch = () => {
         if(key.includes(strUserInput) && strUserInput !== ""){
             let div = document.createElement("div");
             div.innerHTML = addSpace(key);
-            div.classList.add(key, "dropDownItem");
+            div.classList.add("dropDownItem", key);
             document.querySelector('.dropDown').append(div);
             document.querySelector(`.${key}`).addEventListener("click", creatMedID);
         }
@@ -752,9 +752,10 @@ const creatMedID = (event) => {
     document.querySelector('.dropDown').classList.add("hidden");
     document.querySelector('.homePageButtons').classList.add("hidden");
     document.querySelector('.medicineId').style.pointerEvents = "all";
-
+    
     // let strCurrentMed =  event.currentTarget.classList
-    let objCurrentMed =  objMedInfo[event.currentTarget.classList[0]]
+    let objCurrentMed =  objMedInfo[event.currentTarget.classList[1]];
+    document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
 
     // Duplicate the template and append.
     let template = document.querySelector(`.medicineId > .${objCurrentMed.type}`);
@@ -817,6 +818,10 @@ const controlShelfsDropDown = (event) => {
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf} .downButton`).setAttribute("src", "../assets/images/grapics/med-shelfs/down-button.svg");
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown`).classList.add("hidden");
     }else { // opens drop down
+        let arrMedIdButtons = document.querySelectorAll(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown .shelfMedPicContainer`);
+        for (let i = 0; i < arrMedIdButtons.length; i++) {
+            arrMedIdButtons[i].addEventListener('click', creatMedID);
+        }
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown`).classList.remove("hidden");
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf} .downButton`).setAttribute("src", "../assets/images/grapics/med-shelfs/up-button.svg");
     }
