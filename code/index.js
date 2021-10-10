@@ -650,7 +650,7 @@ let objMedsShelfsColors = {//צבע, מספר מדפים, כותרת
     chronicDiseases : ["teal", 4, "מחלות כרוניות"],
     digestion : ["yellow", 5, "עיכול"],
     painkillers : ["purple", 4, "משככי כאבים"],
-    otherMeds : ["light-green", 1, "תרופות אחרות"],
+    otherMeds : ["lightGreen", 1, "תרופות אחרות"],
 }
 
 // varubal
