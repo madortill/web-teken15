@@ -277,13 +277,13 @@ input:focus{
     position: relative;
     top: 2vh;
     font-weight: 500;
-    font-size: 1.1em;
+    font-size: 1.2em;
     padding-right: 1em;
 }
 
 .shelfsdropDown {
     padding: 0 1em;
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 .shelfMedPic {
@@ -300,6 +300,7 @@ input:focus{
     align-items: center;
     font-size: 0.8em;
     margin-bottom: 1em;
+    direction: ltr;
 }
 
 .shelfPicSection {
