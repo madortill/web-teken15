@@ -655,7 +655,8 @@ let objMedsShelfsColors = {//צבע, מספר מדפים, כותרת
 
 // varubal
 let strCurrentMedType;
-let strcurrentPage;
+let strcurrentPage = "homePage";
+let clon = "";
 
 
 /* loading function
@@ -669,7 +670,6 @@ window.addEventListener("load", () => {
     for (let i = 0; i < arrMedsButtons.length; i++) {
         arrMedsButtons[i].addEventListener('click', creatMedShelfs);
     }
- 
 });
 
 /* onClickAbout
@@ -694,10 +694,7 @@ const onClickAbout = () => {
 --------------------------------------------------------------
 Description: Adds search box and listener to input */
 const onClickSearch = () => {
-    if (strcurrentPage === "medId") {
-        console.log("אני בתנאי ששם מאזין על החץ");
-        document.querySelector('.topButton').addEventListener("click", creatMedShelfs)
-    } else {
+    if (strcurrentPage !== "medId") {
         // revel search box' change wave, add dark background
         document.querySelector('.searchBoxHolder').classList.remove("hidden");
         document.querySelector('.searchBox').classList.remove("hidden");
@@ -716,12 +713,12 @@ const onClickSearch = () => {
             document.querySelector('.title').classList.remove("hidden");
             document.querySelector('.medTypeSymbol').classList.remove("hidden");
             document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
-            if (strcurrentPage !== "medShelf") {
+            if (strcurrentPage === "medShelf") {
                 document.querySelector('.aboutButton').classList.remove("hidden");
             }
         });
         document.querySelector('.searchBox').addEventListener('input', onSearch);
-    }
+    } 
 }
 
 /* onSearch
@@ -751,32 +748,37 @@ const onSearch = () => {
 --------------------------------------------------------------
 Description: Shows medicine id, hides privios div and adds listener to retern button*/
 const creatMedID = (event) => {
-    strcurrentPage = "medId"
-    // Hide search dropdoen
-    document.querySelector('.dropDown').classList.add("hidden");
-    document.querySelector('.homePageButtons').classList.add("hidden");
-    document.querySelector('.aboutButton').classList.add("hidden");
-    document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
-    document.querySelector('.medicineId').style.pointerEvents = "all";
-    // hide search screen
-    document.querySelector('.searchBoxHolder').classList.add("hidden");
-    document.querySelector('.searchBox').classList.add("hidden");
-    document.querySelector('.dropDown').classList.add("hidden");
-    document.querySelector('.searchScren').classList.remove("darkScreen");
-    document.querySelector('.title').classList.remove("hidden");
-    document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
     
     let strCurrentMed =  event.currentTarget.classList[1]
     let objCurrentMed =  objMedInfo[strCurrentMed];
-    if (strcurrentPage !== "homepage") {
+    if (strcurrentPage === "medShelf") {
         document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
-    } 
+        document.querySelector(`.medicineId`).classList.remove("hidden");
+    } else {
+        // Hide search dropdoen
+        document.querySelector('.dropDown').classList.add("hidden");
+        document.querySelector('.homePageButtons').classList.add("hidden");
+        document.querySelector('.aboutButton').classList.add("hidden");
+        // hide search screen
+        document.querySelector('.searchBoxHolder').classList.add("hidden");
+        document.querySelector('.searchBox').classList.add("hidden");
+        document.querySelector('.dropDown').classList.add("hidden");
+        document.querySelector('.searchScren').classList.remove("darkScreen");
+        document.querySelector('.title').classList.remove("hidden");
+        document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
+    }
+
+    document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
+    document.querySelector('.medicineId').style.pointerEvents = "all";
 
     document.querySelector(`.title`).classList.add("titelMedId");
     document.querySelector(`.title`).innerHTML = strCurrentMed;
     // Duplicate the template and append.
-    let template = document.querySelector(`.medicineId > .${objCurrentMed.type}`);
-    let clon = template.content.cloneNode(true);
+    // if (clon !== "") {
+    //     document.querySelector('.medicineId').removeChild(clon);
+    // }
+    let template = document.querySelector(`.${objCurrentMed.type}`);
+    clon = template.content.cloneNode(true);
     document.querySelector('.medicineId').appendChild(clon);
     // Insert the info from the object.
     for (let key of Object.keys(objCurrentMed)){
@@ -790,7 +792,8 @@ const creatMedID = (event) => {
             document.querySelector(`.${key}`).innerHTML = `${objCurrentMed[key]}`;
         }
     }
-    
+    strcurrentPage = "medId"
+    document.querySelector('.topButton').addEventListener("click", creatMedShelfs)
 }
 
 /* addSpace
@@ -805,8 +808,17 @@ const addSpace = (phrase) => {
 Description: */
 const creatMedShelfs = (event) => {
     if (strcurrentPage === "medId") {
+        document.querySelector('.medicineId').innerHTML = "";
         document.querySelector('.medicineId').classList.add("hidden");
         document.querySelector(`.title`).classList.remove("titelMedId");
+        document.querySelector('.searchBoxHolder').classList.add("hidden");
+        document.querySelector('.searchBox').classList.add("hidden");
+        document.querySelector('.dropDown').classList.add("hidden");
+        document.querySelector('.searchScren').classList.remove("darkScreen");
+        document.querySelector('.title').classList.remove("hidden");
+        document.querySelector('.medTypeSymbol').classList.remove("hidden");
+        document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
+        document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
     } else {
         strCurrentMedType = event.currentTarget.classList[1]
         document.querySelector('.homePageButtons').classList.add("hidden");
@@ -840,6 +852,9 @@ const controlShelfsDropDown = (event) => {
     if (document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf} .downButton`).getAttribute("src").includes("up")) {
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf} .downButton`).setAttribute("src", "../assets/images/grapics/med-shelfs/down-button.svg");
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown`).classList.add("hidden");
+        for (let i = 0; i < arrMedIdButtons.length; i++) {
+            arrMedIdButtons[i].removeEventListener('click', creatMedID);
+        }
     }else { // opens drop down
         let arrMedIdButtons = document.querySelectorAll(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown .shelfMedPicContainer`);
         for (let i = 0; i < arrMedIdButtons.length; i++) {
