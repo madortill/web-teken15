@@ -94,7 +94,7 @@ html, body {
 }
 
 .titleMedShelfs {
-    font-size: 1.7em;
+    font-size: 1.6em;
     padding-right: 3.2em;
 }
 
@@ -329,8 +329,8 @@ input:focus{
 }
 
 .medTypeSymbol {
-    width: 18vw;
+    width: 17vw;
     position: fixed;
     top: 2.5vh;
-    left: 79vw;
+    left: 80vw;
 }
