@@ -755,14 +755,22 @@ const creatMedID = (event) => {
     document.querySelector('.aboutButton').classList.add("hidden");
     document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
     document.querySelector('.medicineId').style.pointerEvents = "all";
+    // hide search screen
+    document.querySelector('.searchBoxHolder').classList.add("hidden");
+    document.querySelector('.searchBox').classList.add("hidden");
+    document.querySelector('.dropDown').classList.add("hidden");
+    document.querySelector('.searchScren').classList.remove("darkScreen");
+    document.querySelector('.title').classList.remove("hidden");
+    document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
     
-    // let strCurrentMed =  event.currentTarget.classList
-    let objCurrentMed =  objMedInfo[event.currentTarget.classList[1]];
+    let strCurrentMed =  event.currentTarget.classList[1]
+    let objCurrentMed =  objMedInfo[strCurrentMed];
     if (strcurrentPage === "medShelf") {
         document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
-    }
-   
+    } 
 
+    document.querySelector(`.title`).style.fontSize = "1.5em";
+    document.querySelector(`.title`).innerHTML = strCurrentMed;
     // Duplicate the template and append.
     let template = document.querySelector(`.medicineId > .${objCurrentMed.type}`);
     let clon = template.content.cloneNode(true);

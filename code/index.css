@@ -90,6 +90,7 @@ html, body {
     position: absolute;
     top: 3vh;
     padding-right: 1em;
+    width: 53vw;
 }
 
 /* חיפוש */
@@ -288,13 +289,13 @@ input:focus{
 }
 
 .shelfMedPic {
-    width: 12vw;
-    height: 10vh;
+    height: 7vh;
     padding: 0.5em;
+    padding-right: 0.1em;
 }
 
 .shelfMedPicContainer {
-    width: 43vw;
+    width: 44vw;
     background-color: white;
     height: 12vh;
     border-radius: 1em;
@@ -314,7 +315,7 @@ input:focus{
 }
 
 .medShelf {
-    height: 75vh;
+    height: 67vh;
     overflow-y: scroll;
 }
 
