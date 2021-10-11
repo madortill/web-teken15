@@ -312,11 +312,11 @@ input:focus{
     flex-wrap: wrap;
 }
 
-.painkillersShelf {
-    height: 60vh;
+.medShelf {
+    height: 75vh;
     overflow-y: scroll;
 }
 
-.painkillersShelf::-webkit-scrollbar {
+.medShelf::-webkit-scrollbar {
     display: none;
 }
