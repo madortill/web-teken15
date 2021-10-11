@@ -694,35 +694,34 @@ const onClickAbout = () => {
 --------------------------------------------------------------
 Description: Adds search box and listener to input */
 const onClickSearch = () => {
-    // revel search box' change wave, add dark background
-    document.querySelector('.searchBoxHolder').classList.remove("hidden");
-    document.querySelector('.searchBox').classList.remove("hidden");
-    document.querySelector('.title').classList.add("hidden");
-    document.querySelector('.aboutButton').classList.add("hidden");
-    document.querySelector('.medTypeSymbol').classList.add("hidden");
-    document.querySelector('.searchScren').classList.add("darkScreen");
-    document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/search-wave.svg");
-    // add listener to input box
-
-    document.querySelector('.darkScreen').addEventListener("click", () => {
-        document.querySelector('.searchBoxHolder').classList.add("hidden");
-        document.querySelector('.searchBox').classList.add("hidden");
-        document.querySelector('.dropDown').classList.add("hidden");
-        document.querySelector('.searchScren').classList.remove("darkScreen");
-        document.querySelector('.title').classList.remove("hidden");
-        document.querySelector('.medTypeSymbol').classList.remove("hidden");
-        document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
-        if (strcurrentPage !== "medShelf") {
-            document.querySelector('.aboutButton').classList.remove("hidden");
-        }
-    });
-    document.querySelector('.searchBox').addEventListener('input', onSearch);
-
-    // שהפאקינג מקלדת לא תזיז הכול
-    document.querySelector('.searchBox').addEventListener('focus', () => {
-        window.scrollTo(0, 0);
-        document.body.scrollTop = 0;
-    });
+    if (strcurrentPage === "medId") {
+        console.log("אני בתנאי ששם מאזין על החץ");
+        document.querySelector('.topButton').addEventListener("click", creatMedShelfs)
+    } else {
+        // revel search box' change wave, add dark background
+        document.querySelector('.searchBoxHolder').classList.remove("hidden");
+        document.querySelector('.searchBox').classList.remove("hidden");
+        document.querySelector('.title').classList.add("hidden");
+        document.querySelector('.aboutButton').classList.add("hidden");
+        document.querySelector('.medTypeSymbol').classList.add("hidden");
+        document.querySelector('.searchScren').classList.add("darkScreen");
+        document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/search-wave.svg");
+        // add listener to input box
+    
+        document.querySelector('.darkScreen').addEventListener("click", () => {
+            document.querySelector('.searchBoxHolder').classList.add("hidden");
+            document.querySelector('.searchBox').classList.add("hidden");
+            document.querySelector('.dropDown').classList.add("hidden");
+            document.querySelector('.searchScren').classList.remove("darkScreen");
+            document.querySelector('.title').classList.remove("hidden");
+            document.querySelector('.medTypeSymbol').classList.remove("hidden");
+            document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
+            if (strcurrentPage !== "medShelf") {
+                document.querySelector('.aboutButton').classList.remove("hidden");
+            }
+        });
+        document.querySelector('.searchBox').addEventListener('input', onSearch);
+    }
 }
 
 /* onSearch
@@ -752,6 +751,7 @@ const onSearch = () => {
 --------------------------------------------------------------
 Description: Shows medicine id, hides privios div and adds listener to retern button*/
 const creatMedID = (event) => {
+    strcurrentPage = "medId"
     // Hide search dropdoen
     document.querySelector('.dropDown').classList.add("hidden");
     document.querySelector('.homePageButtons').classList.add("hidden");
@@ -768,11 +768,11 @@ const creatMedID = (event) => {
     
     let strCurrentMed =  event.currentTarget.classList[1]
     let objCurrentMed =  objMedInfo[strCurrentMed];
-    if (strcurrentPage === "medShelf") {
+    if (strcurrentPage !== "homepage") {
         document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
     } 
 
-    document.querySelector(`.title`).style.fontSize = "1.5em";
+    document.querySelector(`.title`).classList.add("titelMedId");
     document.querySelector(`.title`).innerHTML = strCurrentMed;
     // Duplicate the template and append.
     let template = document.querySelector(`.medicineId > .${objCurrentMed.type}`);
@@ -804,13 +804,18 @@ const addSpace = (phrase) => {
 --------------------------------------------------------------
 Description: */
 const creatMedShelfs = (event) => {
+    if (strcurrentPage === "medId") {
+        document.querySelector('.medicineId').classList.add("hidden");
+        document.querySelector(`.title`).classList.remove("titelMedId");
+    } else {
+        strCurrentMedType = event.currentTarget.classList[1]
+        document.querySelector('.homePageButtons').classList.add("hidden");
+        document.querySelector('.aboutButton').classList.add("hidden");
+    }
     //saves current med type and page
-    strCurrentMedType = event.currentTarget.classList[1]
     strcurrentPage = "medShelf"
     //changes screen
-    document.querySelector('.homePageButtons').classList.add("hidden");
     document.querySelector(`.${strCurrentMedType}Shelf`).classList.remove("hidden");
-    document.querySelector('.aboutButton').classList.add("hidden");
     // changes color and title
     document.querySelector(`.wave`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.topButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);

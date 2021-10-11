@@ -99,6 +99,12 @@ html, body {
     right: 18vw;
 }
 
+.titelMedId {
+    top: 1vh;
+    right: 1vw;
+    font-size: 1.5em;
+}
+
 /* חיפוש */
 .searchBoxHolder {
     width: 73vw;
@@ -252,8 +258,8 @@ input:focus{
 }
 
 .pic {
-    width: 42vw;
-    height: 20vh;
+    /* width: 42vw; */
+    height: 23vh;
     position: absolute;
     left: 5vw;
 }
