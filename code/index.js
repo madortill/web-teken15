@@ -669,6 +669,7 @@ window.addEventListener("load", () => {
     for (let i = 0; i < arrMedsButtons.length; i++) {
         arrMedsButtons[i].addEventListener('click', creatMedShelfs);
     }
+ 
 });
 
 /* onClickAbout
@@ -698,6 +699,7 @@ const onClickSearch = () => {
     document.querySelector('.searchBox').classList.remove("hidden");
     document.querySelector('.title').classList.add("hidden");
     document.querySelector('.aboutButton').classList.add("hidden");
+    document.querySelector('.medTypeSymbol').classList.add("hidden");
     document.querySelector('.searchScren').classList.add("darkScreen");
     document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/search-wave.svg");
     // add listener to input box
@@ -708,6 +710,7 @@ const onClickSearch = () => {
         document.querySelector('.dropDown').classList.add("hidden");
         document.querySelector('.searchScren').classList.remove("darkScreen");
         document.querySelector('.title').classList.remove("hidden");
+        document.querySelector('.medTypeSymbol').classList.remove("hidden");
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
         if (strcurrentPage !== "medShelf") {
             document.querySelector('.aboutButton').classList.remove("hidden");
@@ -813,7 +816,8 @@ const creatMedShelfs = (event) => {
     document.querySelector(`.topButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.searchBoxHolder`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.title`).innerHTML = objMedsShelfsColors[strCurrentMedType][2];
-    document.querySelector(`.title`).style.fontSize = "2em";
+    document.querySelector(`.title`).classList.add("titleMedShelfs");
+    document.querySelector(`.medTypeSymbol`).classList.remove("hidden");
     // changes color and adds listener.
     for (let i = 1; i <= objMedsShelfsColors[strCurrentMedType][1]; i++) {
         document.querySelector(`.${strCurrentMedType}Shelf > .shelf${i}`).addEventListener("click", controlShelfsDropDown)

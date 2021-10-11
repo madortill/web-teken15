@@ -93,6 +93,11 @@ html, body {
     width: 53vw;
 }
 
+.titleMedShelfs {
+    font-size: 1.7em;
+    padding-right: 3.2em;
+}
+
 /* חיפוש */
 .searchBoxHolder {
     width: 73vw;
@@ -321,4 +326,11 @@ input:focus{
 
 .medShelf::-webkit-scrollbar {
     display: none;
+}
+
+.medTypeSymbol {
+    width: 18vw;
+    position: fixed;
+    top: 2.5vh;
+    left: 79vw;
 }
