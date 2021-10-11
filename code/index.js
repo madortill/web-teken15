@@ -826,7 +826,6 @@ const controlShelfsDropDown = (event) => {
     }else { // opens drop down
         let arrMedIdButtons = document.querySelectorAll(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown .shelfMedPicContainer`);
         for (let i = 0; i < arrMedIdButtons.length; i++) {
-            console.log(arrMedIdButtons[i]);
             arrMedIdButtons[i].addEventListener('click', creatMedID);
         }
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown`).classList.remove("hidden");
