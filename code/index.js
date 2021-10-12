@@ -656,7 +656,7 @@ let objMedsShelfsColors = {//צבע, מספר מדפים, כותרת
 // varubal
 let strCurrentMedType;
 let strcurrentPage = "homePage";
-let clon = "";
+let bSearchScreen = false;
 
 
 /* loading function
@@ -742,6 +742,7 @@ const onSearch = () => {
             document.querySelector(`.${key}`).addEventListener("click", creatMedID);
         }
     }
+    bSearchScreen = true
 }
 
 /* creatMedID
@@ -751,21 +752,27 @@ const creatMedID = (event) => {
     
     let strCurrentMed =  event.currentTarget.classList[1]
     let objCurrentMed =  objMedInfo[strCurrentMed];
+    document.querySelector(`.medicineId`).classList.remove("hidden");
+    // משנה מסך בהתאם למסך ממנו באנו
     if (strcurrentPage === "medShelf") {
+        // מעלים מדפי תרופות
         document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
-        document.querySelector(`.medicineId`).classList.remove("hidden");
-    } else {
-        // Hide search dropdoen
-        document.querySelector('.dropDown').classList.add("hidden");
-        document.querySelector('.homePageButtons').classList.add("hidden");
-        document.querySelector('.aboutButton').classList.add("hidden");
-        // hide search screen
+        document.querySelector(`.shelfsButtons`).classList.add("hidden");
+    }
+    if (bSearchScreen) {
+        if (strcurrentPage === "homePage") {
+            // מעלים את המסך בית
+            document.querySelector('.homePageButtons').classList.add("hidden");
+            document.querySelector('.aboutButton').classList.add("hidden");
+        }
+        // מעלים מסך חיפוש
         document.querySelector('.searchBoxHolder').classList.add("hidden");
         document.querySelector('.searchBox').classList.add("hidden");
         document.querySelector('.dropDown').classList.add("hidden");
         document.querySelector('.searchScren').classList.remove("darkScreen");
         document.querySelector('.title').classList.remove("hidden");
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
+        document.querySelector('.dropDown').style.pointerEvents = "none";
     }
 
     document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
@@ -773,12 +780,8 @@ const creatMedID = (event) => {
 
     document.querySelector(`.title`).classList.add("titelMedId");
     document.querySelector(`.title`).innerHTML = strCurrentMed;
-    // Duplicate the template and append.
-    // if (clon !== "") {
-    //     document.querySelector('.medicineId').removeChild(clon);
-    // }
     let template = document.querySelector(`.${objCurrentMed.type}`);
-    clon = template.content.cloneNode(true);
+    let clon = template.content.cloneNode(true);
     document.querySelector('.medicineId').appendChild(clon);
     // Insert the info from the object.
     for (let key of Object.keys(objCurrentMed)){
@@ -792,8 +795,14 @@ const creatMedID = (event) => {
             document.querySelector(`.${key}`).innerHTML = `${objCurrentMed[key]}`;
         }
     }
-    strcurrentPage = "medId"
-    document.querySelector('.topButton').addEventListener("click", creatMedShelfs)
+
+    if (strcurrentPage === "medShelf") {
+        strcurrentPage = "medId"
+        document.querySelector('.topButton').addEventListener("click", creatMedShelfs);
+    } else {
+        strcurrentPage = "medId"
+        document.querySelector('.topButton').addEventListener("click", sendToHomePage);
+    }
 }
 
 /* addSpace
@@ -819,28 +828,35 @@ const creatMedShelfs = (event) => {
         document.querySelector('.medTypeSymbol').classList.remove("hidden");
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
         document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
+        document.querySelector('.topButton').removeEventListener("click", creatMedShelfs);
     } else {
         strCurrentMedType = event.currentTarget.classList[1]
         document.querySelector('.homePageButtons').classList.add("hidden");
         document.querySelector('.aboutButton').classList.add("hidden");
     }
+   
     //saves current med type and page
     strcurrentPage = "medShelf"
     //changes screen
+    console.log(strCurrentMedType);
     document.querySelector(`.${strCurrentMedType}Shelf`).classList.remove("hidden");
     // changes color and title
     document.querySelector(`.wave`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.topButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.searchBoxHolder`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
+    document.querySelector(`.shelfsButtons .homeButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.title`).innerHTML = objMedsShelfsColors[strCurrentMedType][2];
     document.querySelector(`.title`).classList.add("titleMedShelfs");
     document.querySelector(`.medTypeSymbol`).classList.remove("hidden");
+    document.querySelector(`.shelfsButtons`).classList.remove("hidden");
+    document.querySelector(`.shelfsButtons`).addEventListener("click", sendToHomePage);
     // changes color and adds listener.
     for (let i = 1; i <= objMedsShelfsColors[strCurrentMedType][1]; i++) {
         document.querySelector(`.${strCurrentMedType}Shelf > .shelf${i}`).addEventListener("click", controlShelfsDropDown)
         document.querySelector(`.${strCurrentMedType}Shelf .shelf${i} .downButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
         document.querySelector(`.${strCurrentMedType}Shelf .shelf${i} .shelf`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     }
+    bSearchScreen = false;
 }
 
 /* controlShelfsDropDown
@@ -852,9 +868,9 @@ const controlShelfsDropDown = (event) => {
     if (document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf} .downButton`).getAttribute("src").includes("up")) {
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf} .downButton`).setAttribute("src", "../assets/images/grapics/med-shelfs/down-button.svg");
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown`).classList.add("hidden");
-        for (let i = 0; i < arrMedIdButtons.length; i++) {
-            arrMedIdButtons[i].removeEventListener('click', creatMedID);
-        }
+        // for (let i = 0; i < arrMedIdButtons.length; i++) {
+        //     arrMedIdButtons[i].removeEventListener('click', creatMedID);
+        // }
     }else { // opens drop down
         let arrMedIdButtons = document.querySelectorAll(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown .shelfMedPicContainer`);
         for (let i = 0; i < arrMedIdButtons.length; i++) {
@@ -863,4 +879,30 @@ const controlShelfsDropDown = (event) => {
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown`).classList.remove("hidden");
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf} .downButton`).setAttribute("src", "../assets/images/grapics/med-shelfs/up-button.svg");
     }
+}
+
+/* sendToHomePage
+--------------------------------------------------------------
+Description: */
+const sendToHomePage = () => {
+    if (strcurrentPage === "medId") {
+        document.querySelector('.medicineId').style.pointerEvents = "none";
+        document.querySelector('.medicineId').classList.add("hidden");
+        document.querySelector(`.title`).classList.remove("titelMedId");
+        document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
+        document.querySelector('.topButton').removeEventListener("click", sendToHomePage);
+    } else {
+        document.querySelector(`.shelfsButtons`).classList.add("hidden");
+        document.querySelector(`.medTypeSymbol`).classList.add("hidden");
+        document.querySelector(`.title`).classList.remove("titleMedShelfs");
+        document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
+        document.querySelector(`.wave`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+        document.querySelector(`.topButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+        document.querySelector(`.searchBoxHolder`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+        document.querySelector(`.shelfsButtons .homeButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+    }
+    document.querySelector(`.title`).innerHTML = "תקן 15";
+    document.querySelector('.homePageButtons').classList.remove("hidden");
+    document.querySelector('.aboutButton').classList.remove("hidden");
+    strcurrentPage = "homePage"
 }

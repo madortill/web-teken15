@@ -65,11 +65,6 @@ html, body {
     filter: hue-rotate(280deg);
 }
 
-
-.hidden {
-    display: none;
-}
-
 .sub-titles {
     font-weight: bold;
     padding-top: 1em;
@@ -340,4 +335,28 @@ input:focus{
     position: fixed;
     top: 2.5vh;
     left: 80vw;
+}
+
+.shelfsButtons {
+    width: 60vw;
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 3vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.buttons {
+    width: 25vw;
+}
+
+.homeButton {
+    width: 10vw;
+    position: absolute;
+    right: -15vw;
+}
+
+.hidden {
+    display: none;
 }
