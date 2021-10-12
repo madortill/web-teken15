@@ -350,7 +350,7 @@ input:focus{
     display: flex;
     justify-content: space-evenly;
     position: absolute;
-    bottom: 3vh;
+    bottom: 1.6vh;
     left: 50%;
     transform: translateX(-50%);
 }
