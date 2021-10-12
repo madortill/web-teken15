@@ -838,7 +838,6 @@ const creatMedShelfs = (event) => {
     //saves current med type and page
     strcurrentPage = "medShelf"
     //changes screen
-    console.log(strCurrentMedType);
     document.querySelector(`.${strCurrentMedType}Shelf`).classList.remove("hidden");
     // changes color and title
     document.querySelector(`.wave`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
@@ -849,7 +848,7 @@ const creatMedShelfs = (event) => {
     document.querySelector(`.title`).classList.add("titleMedShelfs");
     document.querySelector(`.medTypeSymbol`).classList.remove("hidden");
     document.querySelector(`.shelfsButtons`).classList.remove("hidden");
-    document.querySelector(`.shelfsButtons`).addEventListener("click", sendToHomePage);
+    document.querySelector(`.homeButton`).addEventListener("click", sendToHomePage);
     // changes color and adds listener.
     for (let i = 1; i <= objMedsShelfsColors[strCurrentMedType][1]; i++) {
         document.querySelector(`.${strCurrentMedType}Shelf > .shelf${i}`).addEventListener("click", controlShelfsDropDown)
