@@ -676,44 +676,47 @@ window.addEventListener("load", () => {
 --------------------------------------------------------------
 Description: Adds about page */
 const onClickAbout = () => {
+    // מראה דף אודות ומעלים כפתור אודות ודף בית 
     document.querySelector('.aboutPage').classList.remove("hidden");
     document.querySelector('.aboutButton').classList.add("hidden");
     document.querySelector('.homePageButtons').classList.add("hidden");
-    document.querySelector('.topButton').removeEventListener('click', onClickSearch);
+    // משנה את התמונה שלו
     document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
-    document.querySelector('.topButton').addEventListener('click', () => {
-        document.querySelector('.aboutPage').classList.add("hidden");
-        document.querySelector('.aboutButton').classList.remove("hidden");
-        document.querySelector('.homePageButtons').classList.remove("hidden");
-        document.querySelector('.searchButton').addEventListener('click', onClickSearch);
-        document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
-    });
+    strcurrentPage = "aboutPage"
 }
 
 /* onClickSearch
 --------------------------------------------------------------
 Description: Adds search box and listener to input */
 const onClickSearch = () => {
-    if (strcurrentPage !== "medId") {
-        // revel search box' change wave, add dark background
+    if (strcurrentPage === "aboutPage") {
+        sendToHomePage();
+    }else if (strcurrentPage !== "medId") {
+        // מראה את תיבת החיפוש
         document.querySelector('.searchBoxHolder').classList.remove("hidden");
         document.querySelector('.searchBox').classList.remove("hidden");
+        // מעלים כותרת וכפתורים ומשנה גל
         document.querySelector('.title').classList.add("hidden");
         document.querySelector('.aboutButton').classList.add("hidden");
         document.querySelector('.medTypeSymbol').classList.add("hidden");
-        document.querySelector('.searchScren').classList.add("darkScreen");
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/search-wave.svg");
-        // add listener to input box
+        // הופך את המסך לשחור
+        document.querySelector('.searchScren').classList.add("darkScreen");
     
         document.querySelector('.darkScreen').addEventListener("click", () => {
+            // מעלים מסך חיפוש
             document.querySelector('.searchBoxHolder').classList.add("hidden");
             document.querySelector('.searchBox').classList.add("hidden");
             document.querySelector('.dropDown').classList.add("hidden");
             document.querySelector('.searchScren').classList.remove("darkScreen");
+            // מחזיר כותרת ומשנה בחזרה גל
             document.querySelector('.title').classList.remove("hidden");
-            document.querySelector('.medTypeSymbol').classList.remove("hidden");
             document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
             if (strcurrentPage === "medShelf") {
+                // מחזיר מדפי תרופות
+                document.querySelector('.medTypeSymbol').classList.remove("hidden");
+            } else {
+                // מחזיר מסך בית
                 document.querySelector('.aboutButton').classList.remove("hidden");
             }
         });
@@ -749,8 +752,10 @@ const onSearch = () => {
 --------------------------------------------------------------
 Description: Shows medicine id, hides privios div and adds listener to retern button*/
 const creatMedID = (event) => {
+    // שומר את התרופה נוכחית ואת האובייקט שלה
     let strCurrentMed =  event.currentTarget.classList[1]
     let objCurrentMed =  objMedInfo[strCurrentMed];
+    // מראה את הדיב של התעודת זהות
     document.querySelector(`.medicineId`).classList.remove("hidden");
     // משנה מסך בהתאם למסך ממנו באנו
     if (strcurrentPage === "medShelf") {
@@ -774,16 +779,19 @@ const creatMedID = (event) => {
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
         document.querySelector('.dropDown').style.pointerEvents = "none";
     }
-
+    // משנה כפתור עליון
     document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
+    // מחזיר מאזיני לחיצה ומוחק תעודות זהות קודמות
     document.querySelector('.medicineId').style.pointerEvents = "all";
     document.querySelector('.medicineId').innerHTML = "";
+    // משנה כותרת
     document.querySelector(`.title`).classList.add("titelMedId");
     document.querySelector(`.title`).innerHTML = strCurrentMed;
+    // משכפל טמפלט ומכניס את התעודת זהות
     let template = document.querySelector(`.${objCurrentMed.type}`);
     let clon = template.content.cloneNode(true);
     document.querySelector('.medicineId').appendChild(clon);
-    // Insert the info from the object.
+    // מכניס מידע מהאובייקט לתעודת זהות
     for (let key of Object.keys(objCurrentMed)){
         // Check which key and change html accordingly
         if (key === "pic"){
@@ -795,14 +803,14 @@ const creatMedID = (event) => {
             document.querySelector(`.${key}`).innerHTML = `${objCurrentMed[key]}`;
         }
     }
-
+    // שם מאזין לחץ חזור לפי הדף שהיה קודם
     if (strcurrentPage === "medShelf") {
-        strcurrentPage = "medId"
         document.querySelector('.topButton').addEventListener("click", creatMedShelfs);
     } else {
-        strcurrentPage = "medId"
         document.querySelector('.topButton').addEventListener("click", sendToHomePage);
     }
+    // שומר את העמוד הנוכחי
+    strcurrentPage = "medId"
 }
 
 /* addSpace
@@ -817,39 +825,36 @@ const addSpace = (phrase) => {
 Description: */
 const creatMedShelfs = (event) => {
     if (strcurrentPage === "medId") {
-        // document.querySelector('.medicineId').innerHTML = "";
+        //  מעלים תעודת זהות, משנה מאפיינים לכותרת ומראה סמל
         document.querySelector('.medicineId').classList.add("hidden");
         document.querySelector(`.title`).classList.remove("titelMedId");
-        document.querySelector('.searchBoxHolder').classList.add("hidden");
-        document.querySelector('.searchBox').classList.add("hidden");
-        document.querySelector('.dropDown').classList.add("hidden");
-        document.querySelector('.searchScren').classList.remove("darkScreen");
-        document.querySelector('.title').classList.remove("hidden");
+        // משנה את הכפתור העליון ושם לו מאזין  
         document.querySelector('.medTypeSymbol').classList.remove("hidden");
-        document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
         document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
         document.querySelector('.topButton').removeEventListener("click", creatMedShelfs);
     } else {
+        // שומר את סוג התרופות ומעלים מסך בית
         strCurrentMedType = event.currentTarget.classList[1]
         document.querySelector('.homePageButtons').classList.add("hidden");
         document.querySelector('.aboutButton').classList.add("hidden");
     }
    
-    //saves current med type and page
+    // שומר את העמוד הנוכחי
     strcurrentPage = "medShelf"
-    //changes screen
-    document.querySelector(`.${strCurrentMedType}Shelf`).classList.remove("hidden");
-    // changes color and title
+    // משנה צבע לפי הסוג
     document.querySelector(`.wave`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.topButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.searchBoxHolder`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.shelfsButtons .homeButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
+    // משנה כותרת
     document.querySelector(`.title`).innerHTML = objMedsShelfsColors[strCurrentMedType][2];
     document.querySelector(`.title`).classList.add("titleMedShelfs");
+    // מראה מדפים, סמל בכותרת וכפתורים למטה
+    document.querySelector(`.${strCurrentMedType}Shelf`).classList.remove("hidden");
     document.querySelector(`.medTypeSymbol`).classList.remove("hidden");
     document.querySelector(`.shelfsButtons`).classList.remove("hidden");
     document.querySelector(`.homeButton`).addEventListener("click", sendToHomePage);
-    // changes color and adds listener.
+    // משנה צבע מדפים ושם מאזין לפתיחה שלהם
     for (let i = 1; i <= objMedsShelfsColors[strCurrentMedType][1]; i++) {
         document.querySelector(`.${strCurrentMedType}Shelf > .shelf${i}`).addEventListener("click", controlShelfsDropDown)
         document.querySelector(`.${strCurrentMedType}Shelf .shelf${i} .downButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
@@ -862,15 +867,13 @@ const creatMedShelfs = (event) => {
 --------------------------------------------------------------
 Description: */
 const controlShelfsDropDown = (event) => {
+    // שומר מדף שנלחץ
     let strChosenShelf = event.currentTarget.classList[1];
-    // closes drop down
+    // סוגר מדף
     if (document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf} .downButton`).getAttribute("src").includes("up")) {
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf} .downButton`).setAttribute("src", "../assets/images/grapics/med-shelfs/down-button.svg");
         document.querySelector(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown`).classList.add("hidden");
-        // for (let i = 0; i < arrMedIdButtons.length; i++) {
-        //     arrMedIdButtons[i].removeEventListener('click', creatMedID);
-        // }
-    }else { // opens drop down
+    }else { // פותח מדף
         let arrMedIdButtons = document.querySelectorAll(`.${strCurrentMedType}Shelf >  .${strChosenShelf}dropDown .shelfMedPicContainer`);
         for (let i = 0; i < arrMedIdButtons.length; i++) {
             arrMedIdButtons[i].addEventListener('click', creatMedID);
@@ -885,23 +888,34 @@ const controlShelfsDropDown = (event) => {
 Description: */
 const sendToHomePage = () => {
     if (strcurrentPage === "medId") {
+        // לא מאפשר מאזיני לחיצה, מעלים תעודת זהות ומאפיינים של הכותרת
         document.querySelector('.medicineId').style.pointerEvents = "none";
         document.querySelector('.medicineId').classList.add("hidden");
         document.querySelector(`.title`).classList.remove("titelMedId");
+        // משנה כפתור חץ לחיפוש ומוריד ממנו מאזין
         document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
         document.querySelector('.topButton').removeEventListener("click", sendToHomePage);
-    } else {
-        document.querySelector(`.shelfsButtons`).classList.add("hidden");
-        document.querySelector(`.medTypeSymbol`).classList.add("hidden");
-        document.querySelector(`.title`).classList.remove("titleMedShelfs");
+    } else if (strcurrentPage === "medShelf") {
+        // מעלים מדפים, סמלים בכותרת וכפתורים למטה
         document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
+        document.querySelector(`.medTypeSymbol`).classList.add("hidden");
+        document.querySelector(`.shelfsButtons`).classList.add("hidden");
+        // משנה מאפיינים של כותרת
+        document.querySelector(`.title`).classList.remove("titleMedShelfs");
+        // משנה חזרה צבעים לכחול
         document.querySelector(`.wave`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
         document.querySelector(`.topButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
         document.querySelector(`.searchBoxHolder`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
         document.querySelector(`.shelfsButtons .homeButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+    } else {
+        // מעלים דף אודות, ומשנה כפתור עליו לחיפוש 
+        document.querySelector('.aboutPage').classList.add("hidden");
+        document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
     }
+    // משנה כותרת, מראה דף בית וכפתור אודות 
     document.querySelector(`.title`).innerHTML = "תקן 15";
     document.querySelector('.homePageButtons').classList.remove("hidden");
     document.querySelector('.aboutButton').classList.remove("hidden");
+    // שומר דף נוכחי
     strcurrentPage = "homePage"
 }
