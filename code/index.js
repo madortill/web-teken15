@@ -680,7 +680,7 @@ const onClickAbout = () => {
     document.querySelector('.aboutPage').classList.remove("hidden");
     document.querySelector('.aboutButton').classList.add("hidden");
     document.querySelector('.homePageButtons').classList.add("hidden");
-    // משנה את התמונה שלו
+    // משנה את התמונה של הכפתור העליון
     document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
     strcurrentPage = "aboutPage"
 }
