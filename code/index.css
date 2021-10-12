@@ -99,7 +99,7 @@ html, body {
 }
 
 .titleMedShelfs {
-    font-size: 0.7em;
+    font-size: 0.64em;
     right: 16vw;
 }
 
@@ -187,7 +187,7 @@ input:focus{
 
 .aboutHeadline {
     width: 20vw;
-    color: deepskyblue;
+    color: #79BEE0;
     display: block;
     margin: auto;
     font-weight: 800;
@@ -332,6 +332,7 @@ input:focus{
 .medShelf {
     height: 67vh;
     overflow-y: scroll;
+    margin-top: 0.5em;
 }
 
 .medShelf::-webkit-scrollbar {
