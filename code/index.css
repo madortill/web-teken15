@@ -78,26 +78,34 @@ html, body {
     left: 9vw;
 }
 
-.title {
+.titleConeiner {
     color: #f4f4f4;
     font-weight: 800;
     font-size: 2.5em;
     position: absolute;
-    top: 3vh;
+    top: 0vh;
     right: 1vw;
     width: 53vw;
     text-align: center;
+    height: 15vh;
+}
+
+.title {
+    width: 53vw;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1vw;
 }
 
 .titleMedShelfs {
-    font-size: 1.6em;
-    right: 18vw;
+    font-size: 0.7em;
+    right: 16vw;
 }
 
 .titelMedId {
-    top: 1vh;
     right: 1vw;
-    font-size: 1.5em;
+    font-size: 0.6em;
 }
 
 /* חיפוש */

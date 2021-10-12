@@ -749,7 +749,6 @@ const onSearch = () => {
 --------------------------------------------------------------
 Description: Shows medicine id, hides privios div and adds listener to retern button*/
 const creatMedID = (event) => {
-    
     let strCurrentMed =  event.currentTarget.classList[1]
     let objCurrentMed =  objMedInfo[strCurrentMed];
     document.querySelector(`.medicineId`).classList.remove("hidden");
@@ -758,13 +757,14 @@ const creatMedID = (event) => {
         // מעלים מדפי תרופות
         document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
         document.querySelector(`.shelfsButtons`).classList.add("hidden");
+        document.querySelector(`.wave`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+        document.querySelector(`.topButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+    } else {
+          // מעלים את המסך בית
+          document.querySelector('.homePageButtons').classList.add("hidden");
+          document.querySelector('.aboutButton').classList.add("hidden");
     }
     if (bSearchScreen) {
-        if (strcurrentPage === "homePage") {
-            // מעלים את המסך בית
-            document.querySelector('.homePageButtons').classList.add("hidden");
-            document.querySelector('.aboutButton').classList.add("hidden");
-        }
         // מעלים מסך חיפוש
         document.querySelector('.searchBoxHolder').classList.add("hidden");
         document.querySelector('.searchBox').classList.add("hidden");
@@ -777,7 +777,7 @@ const creatMedID = (event) => {
 
     document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
     document.querySelector('.medicineId').style.pointerEvents = "all";
-
+    document.querySelector('.medicineId').innerHTML = "";
     document.querySelector(`.title`).classList.add("titelMedId");
     document.querySelector(`.title`).innerHTML = strCurrentMed;
     let template = document.querySelector(`.${objCurrentMed.type}`);
@@ -817,7 +817,7 @@ const addSpace = (phrase) => {
 Description: */
 const creatMedShelfs = (event) => {
     if (strcurrentPage === "medId") {
-        document.querySelector('.medicineId').innerHTML = "";
+        // document.querySelector('.medicineId').innerHTML = "";
         document.querySelector('.medicineId').classList.add("hidden");
         document.querySelector(`.title`).classList.remove("titelMedId");
         document.querySelector('.searchBoxHolder').classList.add("hidden");
