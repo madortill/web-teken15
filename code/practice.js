@@ -264,9 +264,7 @@ const onClickPractice  = () => {
     document.querySelector('.topButton').classList.add("topButtonPractice");
     // מראה דמות ושאלה
     document.querySelector('.practicePage').classList.remove("hidden");
-
     QUESTIONS = shuffle(DATA[strCurrentMedType]["questionsPractice"]);
-    console.log(QUESTIONS);
     document.querySelector('.question').innerHTML = QUESTIONS[1]["question"];
     // משנה צבע של הריבועי תשובות
     for (let i = 1; i <= 4; i++) {
@@ -280,8 +278,9 @@ const onClickPractice  = () => {
 --------------------------------------------------------------
 Description: */
 const onClickAnswer = (event) => {
+    document.querySelector(`.practiceQuestionSqure${event.currentTarget.classList[1].slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-marked.svg");
+    
     if (QUESTIONS[1][`correctAns`] == event.currentTarget.classList[1]) {
-        console.log("התשובה נכונה");
         document.querySelector(`.${event.currentTarget.classList[1]} div`).classList.add("correctAnswer");
     } else {
         document.querySelector(`.${event.currentTarget.classList[1]} div`).classList.add("wrongAnswer");
