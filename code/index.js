@@ -855,6 +855,7 @@ const creatMedShelfs = (event) => {
     document.querySelector(`.medTypeSymbol`).classList.remove("hidden");
     document.querySelector(`.shelfsButtons`).classList.remove("hidden");
     document.querySelector(`.homeButton`).addEventListener("click", sendToHomePage);
+    document.querySelector(`.practiceButton`).addEventListener("click", onClickPractice);
     // משנה צבע מדפים ושם מאזין לפתיחה שלהם
     for (let i = 1; i <= objMedsShelfsColors[strCurrentMedType][1]; i++) {
         document.querySelector(`.${strCurrentMedType}Shelf > .shelf${i}`).addEventListener("click", controlShelfsDropDown)
