@@ -781,7 +781,7 @@ const creatMedID = (event) => {
     }
     // משנה כפתור עליון
     document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
-    // מחזיר מאזיני לחיצה ומוחק תעודות זהות קודמות
+    // מחזיר מאזיני לחיצה, מאתחל גלילה ומוחק תעודות זהות קודמות
     document.querySelector('.medicineId').style.pointerEvents = "all";
     document.querySelector('.medicineId').innerHTML = "";
     document.querySelector('.medicineId').scrollTop = 0;
