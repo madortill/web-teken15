@@ -4,6 +4,10 @@
     left: 5vw;
 }
 
+.titleContainerPractice{
+    height: 10vh;
+}
+
 .practiceCharacter {
     width: 42vw;
     position: absolute;
@@ -42,4 +46,14 @@
 
 .ans div {
     padding: 0.5em;
+    margin-right: 0.5em;
+    border-radius: 0.4em;
+}
+
+.correctAnswer {
+    background-color: rgba(98, 212, 159, 0.671);
+}
+
+.wrongAnswer {
+    background-color: rgba(212, 98, 98, 0.671);
 }
