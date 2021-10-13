@@ -784,6 +784,7 @@ const creatMedID = (event) => {
     // מחזיר מאזיני לחיצה ומוחק תעודות זהות קודמות
     document.querySelector('.medicineId').style.pointerEvents = "all";
     document.querySelector('.medicineId').innerHTML = "";
+    document.querySelector('.medicineId').scrollTop = 0;
     // משנה כותרת
     document.querySelector(`.title`).classList.add("titelMedId");
     document.querySelector(`.title`).innerHTML = strCurrentMed;

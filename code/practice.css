@@ -1,0 +1,22 @@
+.topButtonPractice {
+    width: 15vw;
+    top: 10vh;
+    left: 5vw;
+}
+
+.practiceCharacter {
+    width: 42vw;
+    position: absolute;
+    top: 15vh;
+}
+
+.practiceQuestionBobble {
+    position: absolute;
+    top: 34vh;
+}
+
+.question {
+    position: absolute;
+    top: 38vh;
+    padding: 1em;
+}
