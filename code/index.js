@@ -670,7 +670,8 @@ window.addEventListener("load", () => {
     let arrMedsButtons = document.querySelectorAll('.mainPageButton');
     for (let i = 0; i < arrMedsButtons.length; i++) {
         arrMedsButtons[i].addEventListener('click', creatMedShelfs);
-    }
+    };
+    document.querySelector(".loader").classList.add("fade");
 });
 
 /* onClickAbout
