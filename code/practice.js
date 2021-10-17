@@ -304,6 +304,11 @@ Description: */
 const onClickPracticeCheck = () => {
     // בלחיצה על המשך
     if (document.querySelector(`.practiceBottomButton`).getAttribute("src") === "../assets/images/grapics/practice/practice_continue_button.svg") {
+        // משנה צבע של כפתור בדיקה
+        document.querySelector(`.practiceBottomButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+        for (let i = 1; i <= 4; i++) {
+            document.querySelector(`.ans${i} img`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+        }
         // מוריד סימונים מהשאלות
         if (QUESTIONS[currentQuestion][`correctAns`] !== strClickedPracticeQuestion) {
             document.querySelector(`.${strClickedPracticeQuestion} div`).classList.remove("wrongAnswer");
