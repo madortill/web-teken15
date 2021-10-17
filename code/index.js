@@ -657,6 +657,7 @@ let objMedsShelfsColors = {//צבע, מספר מדפים, כותרת
 let strCurrentMedType;
 let strcurrentPage = "homePage";
 let bSearchScreen = false;
+let QUESTIONS = [];
 
 
 /* loading function
@@ -833,11 +834,20 @@ const creatMedShelfs = (event) => {
         document.querySelector('.medTypeSymbol').classList.remove("hidden");
         document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
         document.querySelector('.topButton').removeEventListener("click", creatMedShelfs);
-    } else {
+    } else if (strcurrentPage === "homePage") {
         // שומר את סוג התרופות ומעלים מסך בית
         strCurrentMedType = event.currentTarget.classList[1]
         document.querySelector('.homePageButtons').classList.add("hidden");
         document.querySelector('.aboutButton').classList.add("hidden");
+    } else if (strcurrentPage === "practicePage") {
+        // משנה מאפיינים של כותרת
+        document.querySelector(`.titleConeiner`).classList.remove("titleContainerPractice");
+        // משנה גל וכפתור עליון
+        document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
+        document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
+        document.querySelector('.topButton').classList.remove("topButtonPractice");
+        // מראה דמות ושאלה
+        document.querySelector('.practicePage').classList.add("hidden");
     }
    
     // שומר את העמוד הנוכחי
@@ -855,6 +865,8 @@ const creatMedShelfs = (event) => {
     document.querySelector(`.medTypeSymbol`).classList.remove("hidden");
     document.querySelector(`.shelfsButtons`).classList.remove("hidden");
     document.querySelector(`.homeButton`).addEventListener("click", sendToHomePage);
+    // שומר שאלות ושולח לתרגול
+    QUESTIONS = shuffle(DATA[strCurrentMedType]["questionsPractice"]);
     document.querySelector(`.practiceButton`).addEventListener("click", onClickPractice);
     // משנה צבע מדפים ושם מאזין לפתיחה שלהם
     for (let i = 1; i <= objMedsShelfsColors[strCurrentMedType][1]; i++) {

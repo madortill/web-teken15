@@ -65,6 +65,10 @@ html, body {
     filter: hue-rotate(280deg);
 }
 
+.gray {
+    filter: grayscale(100);
+}
+
 .sub-titles {
     font-weight: bold;
     padding-top: 1em;

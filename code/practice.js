@@ -242,35 +242,41 @@ const DATA = {
 };
 
 // varubals
-let QUESTIONS = [];
+let currentQuestion = 0;
+let strClickedPracticeQuestion;
 
 /* onClickPractice
 --------------------------------------------------------------
 Description: */
 const onClickPractice  = () => {
-    strcurrentPage = "practicePage";
-    console.log(strCurrentMedType);
-    // מעלים מדפים, סמלים בכותרת וכפתורים למטה
-    document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
-    document.querySelector(`.medTypeSymbol`).classList.add("hidden");
-    document.querySelector(`.shelfsButtons`).classList.add("hidden");
-    // משנה מאפיינים של כותרת
-    document.querySelector(`.title`).classList.remove("titleMedShelfs");
-    document.querySelector(`.titleConeiner`).classList.add("titleContainerPractice");
-    document.querySelector(`.title`).innerHTML = "תרגול";
-    // משנה גל וכפתור עליון
-    document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/practice/practice-wave.svg");
-    document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
-    document.querySelector('.topButton').classList.add("topButtonPractice");
-    // מראה דמות ושאלה
-    document.querySelector('.practicePage').classList.remove("hidden");
-    QUESTIONS = shuffle(DATA[strCurrentMedType]["questionsPractice"]);
-    document.querySelector('.question').innerHTML = QUESTIONS[1]["question"];
-    // משנה צבע של הריבועי תשובות
-    for (let i = 1; i <= 4; i++) {
-        document.querySelector(`.ans${i} img`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
-        document.querySelector(`.ans${i} div`).innerHTML = QUESTIONS[1][`ans${i}`];
-        document.querySelector(`.ans${i}`).addEventListener("click", onClickAnswer);
+    if (currentQuestion === DATA[strCurrentMedType]["questionsPractice"].length) {
+        currentQuestion = 0;
+        creatMedShelfs();
+    } else {
+        strcurrentPage = "practicePage";
+        // מעלים מדפים, סמלים בכותרת וכפתורים למטה
+        document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
+        document.querySelector(`.medTypeSymbol`).classList.add("hidden");
+        document.querySelector(`.shelfsButtons`).classList.add("hidden");
+        // משנה מאפיינים של כותרת
+        document.querySelector(`.title`).classList.remove("titleMedShelfs");
+        document.querySelector(`.titleConeiner`).classList.add("titleContainerPractice");
+        document.querySelector(`.title`).innerHTML = "תרגול";
+        // משנה גל וכפתור עליון
+        document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/practice/practice-wave.svg");
+        document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
+        document.querySelector('.topButton').classList.add("topButtonPractice");
+        // מראה דמות ושאלה
+        document.querySelector('.practicePage').classList.remove("hidden");
+        document.querySelector('.question').innerHTML = QUESTIONS[currentQuestion]["question"];
+        // הופך כפתור בדיקה לאפור
+        document.querySelector(`.practiceBottomButton`).classList.add("gray");
+        // משנה צבע של הריבועי תשובות, מכניס תשובות ושם עליהם מאזין
+        for (let i = 1; i <= 4; i++) {
+            document.querySelector(`.ans${i} img`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
+            document.querySelector(`.ans${i} div`).innerHTML = QUESTIONS[currentQuestion][`ans${i}`];
+            document.querySelector(`.ans${i}`).addEventListener("click", onClickAnswer);
+        }
     }
 }
 
@@ -278,12 +284,51 @@ const onClickPractice  = () => {
 --------------------------------------------------------------
 Description: */
 const onClickAnswer = (event) => {
-    document.querySelector(`.practiceQuestionSqure${event.currentTarget.classList[1].slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-marked.svg");
-    
-    if (QUESTIONS[1][`correctAns`] == event.currentTarget.classList[1]) {
-        document.querySelector(`.${event.currentTarget.classList[1]} div`).classList.add("correctAnswer");
-    } else {
-        document.querySelector(`.${event.currentTarget.classList[1]} div`).classList.add("wrongAnswer");
+    // שומר תשובה שנלחצה
+    strClickedPracticeQuestion = event.currentTarget.classList[1];
+    // מוריד סימונים קודמים
+    for (let i = 1; i <= 4; i++) {
+        document.querySelector(`.ans${i} img`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-unmarked.svg");
+    }
+    // משנה תמונה של תשובה למסומנת
+    document.querySelector(`.practiceQuestionSqure${strClickedPracticeQuestion.slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-marked.svg");
+    // משנה צבע של כפתור בדיקה ושם עליו מאזין
+    document.querySelector(`.practiceBottomButton`).classList.remove("gray");
+    document.querySelector(`.practiceBottomButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
+    document.querySelector(`.practiceBottomButton`).addEventListener("click", onClickPracticeCheck);
+}
+
+/* onClickPracticeCheck
+--------------------------------------------------------------
+Description: */
+const onClickPracticeCheck = () => {
+    // בלחיצה על המשך
+    if (document.querySelector(`.practiceBottomButton`).getAttribute("src") === "../assets/images/grapics/practice/practice_continue_button.svg") {
+        // מוריד סימונים מהשאלות
+        if (QUESTIONS[currentQuestion][`correctAns`] !== strClickedPracticeQuestion) {
+            document.querySelector(`.${strClickedPracticeQuestion} div`).classList.remove("wrongAnswer");
+        }
+        document.querySelector(`.${QUESTIONS[currentQuestion][`correctAns`]} div`).classList.remove("correctAnswer");
+        document.querySelector(`.practiceQuestionSqure${strClickedPracticeQuestion.slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-unmarked.svg");
+        // משנה חזרה כפתור בדיקה
+        document.querySelector(`.practiceBottomButton`).setAttribute("src", "../assets/images/grapics/practice/check_button.svg");
+        // משנה שאלה נוכחית ושולח לפונקציה שיוצרת שאלה
+        currentQuestion++;
+        onClickPractice();
+    } else { //בלחיצה על בדיקה
+        // מוריד מאזינים מהתשובות
+        // משנה צבע של הריבועי תשובות, מכניס תשובות ושם עליהם מאזין
+        for (let i = 1; i <= 4; i++) {
+            document.querySelector(`.ans${i}`).removeEventListener("click", onClickAnswer);
+        }
+        // בודק אם נלחצה תשובה לא נכונה ואם כן מסמן שהיא לא נכונה
+        if (QUESTIONS[currentQuestion][`correctAns`] !== strClickedPracticeQuestion) {
+            document.querySelector(`.${strClickedPracticeQuestion} div`).classList.add("wrongAnswer");
+        }
+        // מסמן תשובה נכונה בירוק
+        document.querySelector(`.${QUESTIONS[currentQuestion][`correctAns`]} div`).classList.add("correctAnswer");
+        // משנה כפתור בדיקה להמשך 
+        document.querySelector(`.practiceBottomButton`).setAttribute("src", "../assets/images/grapics/practice/practice_continue_button.svg");
     }
 }
 

@@ -57,3 +57,10 @@
 .wrongAnswer {
     background-color: rgba(212, 98, 98, 0.671);
 }
+
+.practiceBottomButton {
+    width: 25vw;
+    position: absolute;
+    top: 90vh;
+    left: 70vw;
+}
