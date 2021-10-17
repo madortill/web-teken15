@@ -692,7 +692,18 @@ Description: Adds search box and listener to input */
 const onClickSearch = () => {
     if (strcurrentPage === "aboutPage") {
         sendToHomePage();
-    }else if (strcurrentPage !== "medId") {
+    } else if (strcurrentPage === "practicePage") {
+            // מוריד סימונים מהשאלות
+            if (QUESTIONS[currentQuestion][`correctAns`] !== strClickedPracticeQuestion) {
+                document.querySelector(`.${strClickedPracticeQuestion} div`).classList.remove("wrongAnswer");
+            }
+            document.querySelector(`.${QUESTIONS[currentQuestion][`correctAns`]} div`).classList.remove("correctAnswer");
+            document.querySelector(`.practiceQuestionSqure${strClickedPracticeQuestion.slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-unmarked.svg");
+            // משנה חזרה כפתור בדיקה
+            document.querySelector(`.practiceBottomButton`).setAttribute("src", "../assets/images/grapics/practice/check_button.svg");
+        currentQuestion = 0;
+        creatMedShelfs();
+    } else if (strcurrentPage !== "medId") {
         // מראה את תיבת החיפוש
         document.querySelector('.searchBoxHolder').classList.remove("hidden");
         document.querySelector('.searchBox').classList.remove("hidden");
