@@ -659,11 +659,27 @@ let strcurrentPage = "homePage";
 let bSearchScreen = false;
 let QUESTIONS = [];
 
+class Screen {
+    constructor(questions) {
+        this.questions = questions;
+        this.answered = [];
+    }
+}
 
+var screens = [
+    new Screen([1,2]),
+    new Screen([3]),
+    new Screen([5,6]),
+    new Screen([11,12,13,14]),
+    new Screen([9,10]),
+    new Screen([8])
+];
+var screen; 
 /* loading function
 --------------------------------------------------------------
 Description: */
 window.addEventListener("load", () => {
+    screen = screens[0];
     document.querySelector(".loader").classList.add("fade");
     // place listeners on search button, about button and med buttons
     document.querySelector('.searchButton').addEventListener('click', onClickSearch);
