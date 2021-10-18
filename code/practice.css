@@ -30,10 +30,10 @@
     width: 8vw;
 }
 
-.answersCobtainer {
+.answersContainer {
     display: flex;
     flex-direction: column;
-    height: 32vh;
+    height: 28vh;
     justify-content: space-between;
     position: absolute;
     top: 54vh;
@@ -62,7 +62,7 @@
 .practiceBottomButton {
     width: 25vw;
     position: absolute;
-    top: 90vh;
+    top: 86vh;
     left: 70vw;
 }
 
@@ -100,9 +100,9 @@
 .examNameInput {
     border: none;
     width: 99vw;
-    height: 4vh;
+    height: 6vh;
     position: absolute;
-    top: 72vh;
+    top: 70.5vh;
     background-color: #79bee0bb;
     font-weight: 500;
     font-size: 1em;
@@ -125,4 +125,65 @@
     position: absolute;
     justify-content: space-evenly;
     top: 83vh;
+}
+
+.binaryMarks {
+    height: 4vh;
+}
+
+.binary .ans {
+    width: 32vw;
+    padding: 0.5em;
+    justify-content: space-evenly;
+    font-weight: 500;
+    font-size: 1.4em;
+    background-color: white;
+    border-radius: 0.5em;
+}
+
+.binary {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100vw;
+    position: absolute;
+    top: 45vh;
+}
+
+.examQuestionContainer .question{
+    top: 25vh;
+}  
+
+.answerTracker {
+    background-color: silver;
+    width: 90vw;
+    height: 13vh;
+    position: absolute;
+    top: 62vh;
+    left: 2.8vw;
+    border-radius: 1.4em;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5em;
+    justify-content: center;
+}
+
+.answerPill {
+    background-color: #f4f4f4;
+    width: 9vw;
+    height: 4.4vh;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0.2em;
+    padding-top: 0.6vh;
+}
+
+.examSubmit{
+    position: absolute;
+    top: 80vh;
+    width: 28vw;
+    left: 5vh;
+}
+
+.hidden {
+    display: none;
 }

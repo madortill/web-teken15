@@ -701,13 +701,15 @@ const onClickSearch = () => {
             }
             // מוריד סימונים מהשאלות
             if (QUESTIONS[currentQuestion][`correctAns`] !== strClickedPracticeQuestion) {
-                document.querySelector(`.${strClickedPracticeQuestion} div`).classList.remove("wrongAnswer");
+                document.querySelector(`.practicePage .${strClickedPracticeQuestion} div`).classList.remove("wrongAnswer");
             }
             document.querySelector(`.${QUESTIONS[currentQuestion][`correctAns`]} div`).classList.remove("correctAnswer");
             document.querySelector(`.practiceQuestionSqure${strClickedPracticeQuestion.slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-unmarked.svg");
             // משנה חזרה כפתור בדיקה
             document.querySelector(`.practiceBottomButton`).setAttribute("src", "../assets/images/grapics/practice/check_button.svg");
         currentQuestion = 0;
+        creatMedShelfs();
+    }else if (strcurrentPage === "examPage") {
         creatMedShelfs();
     } else if (strcurrentPage !== "medId") {
         // מראה את תיבת החיפוש
@@ -863,8 +865,14 @@ const creatMedShelfs = (event) => {
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
         document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
         document.querySelector('.topButton').classList.remove("topButtonPractice");
-        // מראה דמות ושאלה
+        // מעלים דמות ושאלה
         document.querySelector('.practicePage').classList.add("hidden");
+    } else if (strcurrentPage === "examPage") {
+        // כפתור עליון
+        document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
+        // מראה דף לפני מבחן
+        document.querySelector(`.examPage`).classList.add("hidden");
+        document.querySelector(`.beforeExamPage`).classList.add("hidden");
     }
    
     // שומר את העמוד הנוכחי

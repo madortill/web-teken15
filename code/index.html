@@ -710,7 +710,7 @@
                     <img class="practiceCharacter" src="../assets/images/grapics/practice/character.svg">
                     <img class="practiceQuestionBobble" src="../assets/images/grapics/practice/speach-bobble.svg">
                     <div class="question">שאלה על תרופה שיש בה די הרבה מלל אבל לא המון כי השאלות לא כזה ארוכות</div>
-                    <div class="answersCobtainer">
+                    <div class="answersContainer">
                         <div class="ans ans1">
                             <img class="practiceQuestionSqure practiceQuestionSqure1" src="../assets/images/grapics/practice/answer-squre-unmarked.svg">
                             <div>תשובה כלשהיא נראה לי</div>
@@ -734,7 +734,7 @@
             <!-- exam -->
             <div class="examPage hidden">
                 <div class="beforeExamPage hidden">
-                    <div class="beforeExamInstractions">אתם תעברו עכשיו מבחן על החומר שלמדתם בלומדה, המבחן עם ציון אז וודאו שאתם מרגישים מוכנים. המבחן מכיל 20 שאלות אמריקאיות</div>
+                    <div class="beforeExamInstractions">אתם תעברו עכשיו מבחן על החומר שלמדתם בלומדה, המבחן עם ציון אז וודאו שאתם מרגישים מוכנים. המבחן מכיל 15 שאלות אמריקאיות</div>
                     <img class="examCharacter" src="../assets/images/grapics/practice/character.svg">
                     <div class="beforeExamBobble">הוראות לכתיבת שם - לא בדיוק זוכרת</div>
                     <input class="examNameInput"  android:windowSoftInputMode="stateVisible" placeholder="הקלידו כאן שם מלא" name="name" lang="he" type="text" />
@@ -743,9 +743,9 @@
                         <img class="backToShelfs beforeTestButtons" src="../assets/images/grapics/test/back-to-lomda-button.svg">
                     </div>   
                 </div>
-                <div class="prcticeQuestionContainer hidden">
+                <div class="examQuestionContainer hidden">
                     <div class="question">שאלה על תרופה שיש בה די הרבה מלל אבל לא המון כי השאלות לא כזה ארוכות</div>
-                    <div class="answersCobtainer">
+                    <div class="multiple answersContainer answersContainers hidden">
                         <div class="ans ans1">
                             <img class="practiceQuestionSqure practiceQuestionSqure1" src="../assets/images/grapics/practice/answer-squre-unmarked.svg">
                             <div>תשובה כלשהיא נראה לי</div>
@@ -763,7 +763,34 @@
                             <div>תשובה כלשהיא נראה לי</div>
                         </div>
                     </div>
-                    <img class="practiceBottomButton" src="../assets/images/grapics/practice/check_button.svg" alt="check">
+                    <div class="binary answersContainers">
+                        <div class="ans true">
+                            <img class="binaryMarks" src="../assets/images/grapics/test/check-mark.svg">
+                            נכון   
+                        </div>
+                        <div class="ans true">
+                            <img class="binaryMarks" src="../assets/images/grapics/test/x-mark.svg">
+                            לא נכון
+                        </div>
+                    </div>
+                    <div class="answerTracker">
+                        <div class="answerPill answerPill1">1</div>
+                        <div class="answerPill answerPill2">2</div>
+                        <div class="answerPill answerPill3">3</div>
+                        <div class="answerPill answerPill4">4</div>
+                        <div class="answerPill answerPill5">5</div>
+                        <div class="answerPill answerPill6">6</div>
+                        <div class="answerPill answerPill7">7</div>
+                        <div class="answerPill answerPill8">8</div>
+                        <div class="answerPill answerPill9">9</div>
+                        <div class="answerPill answerPill10">10</div>
+                        <div class="answerPill answerPill11">11</div>
+                        <div class="answerPill answerPill12">12</div>
+                        <div class="answerPill answerPill13">13</div>
+                        <div class="answerPill answerPill14">14</div>
+                        <div class="answerPill answerPill15">15</div>
+                    </div>
+                    <img class="examSubmit" src="../assets/images/grapics/test/submit-button.svg" alt="check">
                 </div>
             </div>
         </div>

@@ -351,7 +351,7 @@ const onClickExam = () => {
     // משנה מאפיינים של כותרת
     document.querySelector(`.title`).classList.remove("titleMedShelfs");
     document.querySelector(`.title`).innerHTML = "מבחן";
-    // וכפתור עליון
+    // כפתור עליון
     document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
     // משנה חזרה צבעים לכחול
     document.querySelector(`.wave`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
@@ -360,10 +360,14 @@ const onClickExam = () => {
     document.querySelector(`.shelfsButtons .homeButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
     // מראה דף לפני מבחן
     document.querySelector(`.examPage`).classList.remove("hidden");
-    document.querySelector(`.beforeExamPage`).classList.remove("hidden");
-    document.querySelector(`.examNameInput`).addEventListener("click", () => {
-        strUserName = document.querySelector('.examNameInput').value; 
-    });
+    document.querySelector(`.beforeExamPage`).classList.remove("hidden");  
+    // הופך כפתור התחלה לאפור 
+    document.querySelector(`.stratTest`).classList.add("gray");
+    // 
+    strUserName = document.querySelector('.examNameInput').value;
+    if (strUserName.length > 1) {
+        document.querySelector(`.stratTest`).classList.remove("gray");
+    }
     // שומר שאלות למבחן
     for(key of Object.keys(DATA)) {
         // שומר את השאלות מהנושא הנוכחי במערך ומכניס למערך של השאלות למבחן

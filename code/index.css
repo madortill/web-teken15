@@ -61,8 +61,6 @@ html, body {
     }
 }
 
-
-
 /* צבעים */
 .blue {
     filter: hue-rotate(140deg);
@@ -399,8 +397,4 @@ html, body {
     width: 10vw;
     position: absolute;
     right: -15vw;
-}
-
-.hidden {
-    display: none;
 }
