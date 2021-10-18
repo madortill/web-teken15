@@ -709,7 +709,7 @@ const onClickSearch = () => {
             document.querySelector(`.practiceBottomButton`).setAttribute("src", "../assets/images/grapics/practice/check_button.svg");
         currentQuestion = 0;
         creatMedShelfs();
-    }else if (strcurrentPage === "examPage") {
+    }else if (strcurrentPage === "examPrePage") {
         creatMedShelfs();
     } else if (strcurrentPage !== "medId") {
         // מראה את תיבת החיפוש
@@ -867,7 +867,7 @@ const creatMedShelfs = (event) => {
         document.querySelector('.topButton').classList.remove("topButtonPractice");
         // מעלים דמות ושאלה
         document.querySelector('.practicePage').classList.add("hidden");
-    } else if (strcurrentPage === "examPage") {
+    } else if (strcurrentPage === "examPrePage") {
         // כפתור עליון
         document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
         // מראה דף לפני מבחן
