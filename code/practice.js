@@ -244,6 +244,8 @@ const DATA = {
 // varubals
 let currentQuestion = 0;
 let strClickedPracticeQuestion;
+let arrExamQuestions = [];
+let strUserName;
 
 /* onClickPractice
 --------------------------------------------------------------
@@ -334,6 +336,46 @@ const onClickPracticeCheck = () => {
         document.querySelector(`.${QUESTIONS[currentQuestion][`correctAns`]} div`).classList.add("correctAnswer");
         // משנה כפתור בדיקה להמשך 
         document.querySelector(`.practiceBottomButton`).setAttribute("src", "../assets/images/grapics/practice/practice_continue_button.svg");
+    }
+}
+
+/* onClickExam
+--------------------------------------------------------------
+Description: */
+const onClickExam = () => {
+    strcurrentPage = "examPage";
+    // מעלים מדפים, סמלים בכותרת וכפתורים למטה
+    document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
+    document.querySelector(`.medTypeSymbol`).classList.add("hidden");
+    document.querySelector(`.shelfsButtons`).classList.add("hidden");
+    // משנה מאפיינים של כותרת
+    document.querySelector(`.title`).classList.remove("titleMedShelfs");
+    document.querySelector(`.title`).innerHTML = "מבחן";
+    // וכפתור עליון
+    document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
+    // משנה חזרה צבעים לכחול
+    document.querySelector(`.wave`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+    document.querySelector(`.topButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+    document.querySelector(`.searchBoxHolder`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+    document.querySelector(`.shelfsButtons .homeButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+    // מראה דף לפני מבחן
+    document.querySelector(`.examPage`).classList.remove("hidden");
+    document.querySelector(`.beforeExamPage`).classList.remove("hidden");
+    document.querySelector(`.examNameInput`).addEventListener("click", () => {
+        strUserName = document.querySelector('.examNameInput').value; 
+    });
+    // שומר שאלות למבחן
+    for(key of Object.keys(DATA)) {
+        // שומר את השאלות מהנושא הנוכחי במערך ומכניס למערך של השאלות למבחן
+        let arrPracticeQuestion = shuffle(DATA[key]["questionsPractice"]);
+        for (let i = 0; i < DATA[key].amountOfQuestions; i++) {
+            arrExamQuestions.push(arrPracticeQuestion[i]);
+        }
+        // שומר את השאלות למבחן מהנושא הנוכחי במערך ומכניס למערך של השאלות למבחן
+        let arrSubjExamQuestion = shuffle(DATA[key]["questionsExam"]);
+        for (let j = 0; j < DATA[key]["questionsExam"].length; j++) {
+            arrExamQuestions.push(arrSubjExamQuestion[j]);
+        }
     }
 }
 

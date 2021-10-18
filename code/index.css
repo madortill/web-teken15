@@ -46,11 +46,12 @@ html, body {
 }
 
 .loader > img {
-    width: 100vw;
+    width: 50vw;
 }
 
 .loader.fade {
-    animation: fadeOut 1s 2s forwards;
+    animation: fadeOut 1s forwards;
+    /* animation: fadeOut 1s 2s forwards; */
 }
 
 @keyframes fadeOut {
@@ -168,7 +169,7 @@ html, body {
     outline: none;
 }
 
-input:focus{
+.searchBox:focus{
     outline: none;
     top: 11vh;
 }

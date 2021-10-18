@@ -664,6 +664,7 @@ let QUESTIONS = [];
 --------------------------------------------------------------
 Description: */
 window.addEventListener("load", () => {
+    document.querySelector(".loader").classList.add("fade");
     // place listeners on search button, about button and med buttons
     document.querySelector('.searchButton').addEventListener('click', onClickSearch);
     document.querySelector('.aboutButton').addEventListener('click', onClickAbout);
@@ -671,7 +672,6 @@ window.addEventListener("load", () => {
     for (let i = 0; i < arrMedsButtons.length; i++) {
         arrMedsButtons[i].addEventListener('click', creatMedShelfs);
     };
-    document.querySelector(".loader").classList.add("fade");
 });
 
 /* onClickAbout
@@ -748,7 +748,7 @@ Description: cheack for search match and creat dropdown accordingly */
 const onSearch = () => {
     document.querySelector('.dropDown').style.pointerEvents = "all";
     // Saves user input in a varuble and resets the dropdown html.
-    let strUserInput = document.querySelector('input').value;
+    let strUserInput = document.querySelector('searchBox').value;
     document.querySelector('.dropDown').innerHTML = "";
     document.querySelector('.dropDown').style.zIndex = "2";
     document.querySelector('.dropDown').classList.remove("hidden");
@@ -885,6 +885,7 @@ const creatMedShelfs = (event) => {
     // שומר שאלות ושולח לתרגול
     QUESTIONS = shuffle(DATA[strCurrentMedType]["questionsPractice"]);
     document.querySelector(`.practiceButton`).addEventListener("click", onClickPractice);
+    document.querySelector(`.testButton`).addEventListener("click", onClickExam);
     // משנה צבע מדפים ושם מאזין לפתיחה שלהם
     for (let i = 1; i <= objMedsShelfsColors[strCurrentMedType][1]; i++) {
         document.querySelector(`.${strCurrentMedType}Shelf > .shelf${i}`).addEventListener("click", controlShelfsDropDown)

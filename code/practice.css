@@ -1,3 +1,4 @@
+/* תרגול */
 .topButtonPractice {
     width: 15vw;
     top: 10vh;
@@ -63,4 +64,65 @@
     position: absolute;
     top: 90vh;
     left: 70vw;
+}
+
+/* מבחן */
+.beforeExamInstractions {
+    width: 95.7vw;
+    height: 12vh;
+    position: absolute;
+    top: 20vh;
+    background-color: #79bee0bb;
+    padding: 0.5em;
+    font-weight: 500;
+}
+
+.examCharacter {
+    width: 37vw;
+    position: absolute;
+    top: 35vh;
+}
+
+.beforeExamBobble {
+    position: absolute;
+    top: 40vh;
+    left: 1vw;
+    width: 55vw;
+    height: 23vh;
+    background-image: url(../assets/images/grapics/test/before-test-speech-bubble.svg);
+    background-repeat: no-repeat;
+    background-size: 100%, 100%;
+    padding: 0.5em;
+    padding-right: 2.5em;
+    text-align: center;
+}
+
+.examNameInput {
+    border: none;
+    width: 99vw;
+    height: 4vh;
+    position: absolute;
+    top: 72vh;
+    background-color: #79bee0bb;
+    font-weight: 500;
+    font-size: 1em;
+    font-family: 'segoeu';
+    text-align: center;
+    color: black;
+}
+
+.examNameInput:focus{
+    outline: none;
+}
+
+.beforeTestButtons {
+    height: 6vh;
+}
+
+.beforeTestButtonsContainer {
+    display: flex;
+    width: 100vw;
+    position: absolute;
+    justify-content: space-evenly;
+    top: 83vh;
 }
