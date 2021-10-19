@@ -697,17 +697,19 @@ const onClickSearch = () => {
     if (strcurrentPage === "aboutPage") {
         sendToHomePage();
     } else if (strcurrentPage === "practicePage") {
-            // משנה צבע של כפתור בדיקה
-            document.querySelector(`.practiceBottomButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
-            for (let i = 1; i <= 4; i++) {
-                document.querySelector(`.ans${i} img`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
-            }
+        if(strClickedPracticeQuestion !== undefined) {
             // מוריד סימונים מהשאלות
             if (QUESTIONS[currentQuestion][`correctAns`] !== strClickedPracticeQuestion) {
                 document.querySelector(`.practicePage .${strClickedPracticeQuestion} div`).classList.remove("wrongAnswer");
             }
             document.querySelector(`.${QUESTIONS[currentQuestion][`correctAns`]} div`).classList.remove("correctAnswer");
             document.querySelector(`.practiceQuestionSqure${strClickedPracticeQuestion.slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-unmarked.svg");
+        }
+            // משנה צבע של כפתור בדיקה ושל ריבועי התשובות
+            document.querySelector(`.practiceBottomButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+            for (let i = 1; i <= 4; i++) {
+                document.querySelector(`.ans${i} img`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+            }
             // משנה חזרה כפתור בדיקה
             document.querySelector(`.practiceBottomButton`).setAttribute("src", "../assets/images/grapics/practice/check_button.svg");
         currentQuestion = 0;

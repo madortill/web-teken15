@@ -35,7 +35,7 @@ const DATA = {
             },
             {
                 type: `binary`,
-                sentence: ``,
+                sentence: `שאלה שבא לי לנסות אותה`,
                 trueOrFalse: false
             },
         ],

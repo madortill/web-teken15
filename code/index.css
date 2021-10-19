@@ -43,6 +43,9 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #f4f4f481;
+    font-size: 2em;
+    font-weight: 800;
 }
 
 .loader > img {
@@ -50,7 +53,7 @@ html, body {
 }
 
 .loader.fade {
-    animation: fadeOut 1s forwards;
+    animation: fadeOut 1s 6s forwards;
     /* animation: fadeOut 1s 2s forwards; */
 }
 
@@ -211,7 +214,7 @@ html, body {
 
 .aboutPage {
     padding: 1vh 4vw;
-    height: 80vh;
+    height: 67vh;
     width: 92vw;
     position: absolute;
     top: 20vh;
