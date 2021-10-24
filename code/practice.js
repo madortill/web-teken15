@@ -246,6 +246,7 @@ let currentQuestion = 0;
 let currentTestQuestion = 0;
 let strClickedPracticeQuestion;
 let arrExamQuestions = [];
+let arrExamChosenAnswer = [];
 let strUserName;
 
 /* onClickPractice
@@ -317,6 +318,10 @@ const onClickAnswer = (event) => {
             // משנה תמונה של תשובה למסומנת
             document.querySelector(`.examQuestionSqure${strClickedPracticeQuestion.slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-marked.svg");
         }
+        arrExamChosenAnswer.push(strClickedPracticeQuestion);
+        strcurrentPage = "examQuestion";
+        document.querySelector(`.testArrowRight`).addEventListener("click", startExam);
+        document.querySelector(`.testArrowLeft`).addEventListener("click", startExam);
     }
 }
 
@@ -410,7 +415,7 @@ const onClickExam = () => {
 /* startExam
 --------------------------------------------------------------
 Description: */
-const startExam = () => {
+const startExam = (event) => {
     if (strcurrentPage === "examPrePage") {
         // מעלים דף של לפני מבחן
         document.querySelector(`.beforeExamPage`).classList.add("hidden"); 
@@ -419,8 +424,35 @@ const startExam = () => {
         // משנה גל, מעלים כפתור עליון
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/test/test-wave.svg");
         document.querySelector('.topButton').classList.add("hidden");
+    } else if (strcurrentPage === "examQuestion"){
+        if (event.currentTarget.classList[1] === "testArrowRight") {
+            currentTestQuestion++;
+        } else if (event.currentTarget.classList[1] === "testArrowLeft") {
+            currentTestQuestion--;
+        }
+        if (arrExamQuestions[currentTestQuestion].type === "binary") {
+            // מוריד סימנים קודמים
+            if (arrExamChosenAnswer[currentTestQuestion]) {
+                document.querySelector(`.false`).style.backgroundColor = "white";
+            } else {
+                document.querySelector(`.true`).style.backgroundColor = "white";
+            }
+            document.querySelector(`.${arrExamChosenAnswer[currentTestQuestion]}`).style.backgroundColor = "#79bee0bb";
+        } else {
+            // מוריד סימונים קודמים
+            for (let i = 1; i <= 4; i++) {
+                document.querySelector(`.examQuestionContainer .ans${i} img`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-unmarked.svg");
+            }
+            // משנה תמונה של תשובה למסומנת
+            document.querySelector(`.examQuestionSqure${arrExamChosenAnswer[currentTestQuestion].slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-marked.svg");
+        }
+    }
+    if (currentTestQuestion > 1 && currentTestQuestion < 15) {
+        document.querySelector(`.testArrowRight`).classList.remove("hidden"); 
+        document.querySelector(`.question${currentTestQuestion}`).classList.add("hidden");
     }
     strcurrentPage = "examPage";
+
     // מראה את סימוני השאלה הנוכחית
     document.querySelector('.testCurrentQuestionDisplay').innerHTML = `שאלה מספר ${currentTestQuestion + 1}`;
     document.querySelector(`.answerPill${currentTestQuestion + 1}`).style.backgroundColor = "#79BEE0";

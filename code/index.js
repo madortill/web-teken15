@@ -666,7 +666,6 @@ let QUESTIONS = [];
 --------------------------------------------------------------
 Description: */
 window.addEventListener("load", () => {
-    window.open('Result.html','null',winFeature); 
     document.querySelector(".loader").classList.add("fade");
     // place listeners on search button, about button and med buttons
     document.querySelector('.searchButton').addEventListener('click', onClickSearch);

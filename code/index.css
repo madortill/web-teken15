@@ -43,7 +43,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #f4f4f481;
+    color: #f4f4f45d;
     font-size: 2em;
     font-weight: 800;
 }
@@ -53,7 +53,7 @@ html, body {
 }
 
 .loader.fade {
-    animation: fadeOut 1s 6s forwards;
+    animation: fadeOut 1s forwards;
     /* animation: fadeOut 1s 2s forwards; */
 }
 
