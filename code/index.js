@@ -754,7 +754,7 @@ Description: cheack for search match and creat dropdown accordingly */
 const onSearch = () => {
     document.querySelector('.dropDown').style.pointerEvents = "all";
     // Saves user input in a varuble and resets the dropdown html.
-    let strUserInput = document.querySelector('searchBox').value;
+    let strUserInput = document.querySelector('.searchBox').value;
     document.querySelector('.dropDown').innerHTML = "";
     document.querySelector('.dropDown').style.zIndex = "2";
     document.querySelector('.dropDown').classList.remove("hidden");
