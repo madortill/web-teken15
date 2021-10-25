@@ -143,20 +143,33 @@ const DATA = {
         "questionsExam": [
             {
                 type: `multiple`,
-                question: ``,
-                ans1: ``,
-                ans2: ``,
-                ans3: ``,
-                ans4: ``,
-                correctAns: `ans1`
+                question: `מה החומר הפעיל בתרופה Atrofen?`,
+                ans1: `Etodolac`,
+                ans2: `Ibuprofen`,
+                ans3: `Paracetamol`,
+                ans4: `Diclofenac`,
+                correctAns: `ans2`
             },
             {
-                type: `binary`,
-                sentence: `שאלה שבא לי לנסות אותה`,
-                trueOrFalse: false
+                type: `multiple`,
+                question: `חולה שסובל מכאבי בטן, הקאות ושלשולים קיבל מרשם לPapavernine. מה מטרת התרופה?`,
+                ans1: `נגד הקאות`,
+                ans2: `מניעת כאב ראש `,
+                ans3: `שיכוך כאבים שמקורם בדרכי השתן באמצעות כיווץ שרירים`,
+                ans4: `שיכוך כאבים שמקורם בדרכי העיכול באמצעות הרפיית שרירים`,
+                correctAns: `ans4`
+            },
+            {
+                type: `multiple`,
+                question: `מהן תרופת הבחירה במצב של כאב ראש?`,
+                ans1: `Acamol Focus`,
+                ans2: `Laxadin`,
+                ans3: `Pramin`,
+                ans4: `Etopan`,
+                correctAns: `ans1`
             },
         ],
-        "amountOfQuestions": 3,
+        "amountOfQuestions": 1,
     },
     // אנטיביוטיקה
     "antibiotics": {
@@ -302,20 +315,33 @@ const DATA = {
         "questionsExam": [
             {
                 type: `multiple`,
-                question: ``,
-                ans1: ``,
-                ans2: ``,
-                ans3: ``,
-                ans4: ``,
-                correctAns: `ans1`
+                question: `מה היא ההשפעה של התרופה Sedural?`,
+                ans1: `אנטי פטרייטי בדרכי השתן `,
+                ans2: `אנטיביוטיקה נגד דלקת בדרכי השתן`,
+                ans3: `אלחוש איזור דרכי השתן`,
+                ans4: `מרפה את שרירי איזור דרכי השתן `,
+                correctAns: `ans3`
             },
             {
-                type: `binary`,
-                sentence: ``,
-                trueOrFalse: false
+                type: `multiple`,
+                question: `מה הוא מנגנון הפעולה של Ahiston?`,
+                ans1: `דילול ליחה`,
+                ans2: `אנטי היסטמין `,
+                ans3: `אנטוביוטיקה `,
+                ans4: `אנטי פטרייתי`,
+                correctAns: `ans2`
+            },
+            {
+                type: `multiple`,
+                question: `מהו דגש למתן ?Ibuprofen`,
+                ans1: `אין ליטול לפני פעילות הדורשת ערנות`,
+                ans2: `יש ליטול לפני השינה`,
+                ans3: `יש לקחת על קיבה מלאה`,
+                ans4: `יש להרבות בשתיה לאחר נטילה `,
+                correctAns: `ans3`
             },
         ],
-        "amountOfQuestions": 3,
+        "amountOfQuestions": 1,
     },
     // מחלות כרוניות
     "chronicDiseases": {
@@ -596,20 +622,33 @@ const DATA = {
         "questionsExam": [
             {
                 type: `multiple`,
-                question: ``,
-                ans1: ``,
-                ans2: ``,
-                ans3: ``,
-                ans4: ``,
+                question: `מה תגיד לחייל לפני ניפוק התרופה Allergyx?`,
+                ans1: `אין ליטול לפני פעילות הדורשת ערנות כמו נהיגה`,
+                ans2: `יש ליטול לפני השינה `,
+                ans3: `יש לקחת על קיבה מלאה `,
+                ans4: `יש להרבות בשתיה לאחר נטילה`,
                 correctAns: `ans1`
             },
             {
-                type: `binary`,
-                sentence: ``,
-                trueOrFalse: false
+                type: `multiple`,
+                question: `מתי מטרת התרופה Lyteers?`,
+                ans1: `מניעת שלשולים`,
+                ans2: `משחה לטיפול בזיהומי עור`,
+                ans3: `אלחוש בדרכי השתן`,
+                ans4: `טיפות לסיכוך, במקרה של יובש בעיניים`,
+                correctAns: `ans4`
+            },
+            {
+                type: `multiple`,
+                question: `כיצד יש לתת את התרופה Abitren?`,
+                ans1: `נר`,
+                ans2: `אינהלציה`,
+                ans3: `זריקה IM בישבן `,
+                ans4: `לעיסה`,
+                correctAns: `ans3`
             },
         ],
-        "amountOfQuestions": 3
+        "amountOfQuestions": 1
     },
     // עיכול
     "digestion": {
@@ -890,20 +929,33 @@ const DATA = {
         "questionsExam": [
             {
                 type: `multiple`,
-                question: ``,
-                ans1: ``,
-                ans2: ``,
-                ans3: ``,
-                ans4: ``,
-                correctAns: `ans1`
+                question: `מה נכון לגבי Papaverine?`,
+                ans1: `יש לקחת על בטן מלאה`,
+                ans2: `עלולה לגרום לירידת לחץ דם וסחרחורות`,
+                ans3: `יש ליטול לפני השינה כיוון שעלולה לגרום לישנוניות`,
+                ans4: `יש ליטול את התרופה בבוקר`,
+                correctAns: `ans2`
             },
             {
-                type: `binary`,
-                sentence: ``,
-                trueOrFalse: false
+                type: `multiple`,
+                question: `כיצד יש לתת את התרופה Pink-Bismut?`,
+                ans1: `נר `,
+                ans2: `לעיסה `,
+                ans3: `אינהלציה `,
+                ans4: `זריקה ישיבה`,
+                correctAns: `ans2`
+            },
+            {
+                type: `multiple`,
+                question: `מה ההבדל בין Synthomycine 5% לבין Synthomycine 3%?`,
+                ans1: `5% נועד לדלקות עיניים, 3% נועד לזיהומים בעור`,
+                ans2: `5% מגיע בצורת משחה, 3% מגיע בצורת כדורים לבליעה`,
+                ans3: `5% מגיע בצורת משחה, 3% מגיע בצורך סירופ`,
+                ans4: `אין הבדלים`,
+                correctAns: `ans1`
             },
         ],
-        "amountOfQuestions": 3
+        "amountOfQuestions": 1
     },
     // משככי כאבים
     "painkillers": {
@@ -1184,20 +1236,33 @@ const DATA = {
         "questionsExam": [
             {
                 type: `multiple`,
-                question: ``,
-                ans1: ``,
-                ans2: ``,
-                ans3: ``,
-                ans4: ``,
+                question: `כיצד יש להדריך חייל עם מרשם לתרופה Tevacutan?`,
+                ans1: `יש ליטול את התרופה במרווחי זמן שווים `,
+                ans2: `אין למרוח את המשחה על פצע פתוח`,
+                ans3: `אין למרוח את המשחה באיזור עם עור רגיש, כמו בית שחי `,
+                ans4: `יש ליטול את התרופה עד אשר הפצע/נגע מחלים`,
                 correctAns: `ans1`
             },
             {
-                type: `binary`,
-                sentence: ``,
-                trueOrFalse: false
+                type: `multiple`,
+                question: `איפה יש למרוח משחת Rectozorin?`,
+                ans1: `שפתיים`,
+                ans2: `כפות ידיים`,
+                ans3: `על פצעונים `,
+                ans4: `פי הטבעת `,
+                correctAns: `ans4`
+            },
+            {
+                type: `multiple`,
+                question: `כיצד יש להדריך חייל עם מרשם לתרופה Ceforal? `,
+                ans1: `יש ליטול על קיבה ריקה `,
+                ans2: `אין ליטול לפני פעילות הדורשת ערנות `,
+                ans3: `אין ליטול במידה וידועה אלרגיה לסויה `,
+                ans4: `בשילוב עם גלולות למניעת הריון מומלץ להשתמש באמצעי מניעה נוסף`,
+                correctAns: `ans4`
             },
         ],
-        "amountOfQuestions": 3
+        "amountOfQuestions": 1
     },
     // נשימה
     "breathing": {
@@ -1415,20 +1480,33 @@ const DATA = {
         "questionsExam": [
             {
                 type: `multiple`,
-                question: ``,
-                ans1: ``,
-                ans2: ``,
-                ans3: ``,
-                ans4: ``,
+                question: `מתי יש לנפק את התרופה Laxadin?`,
+                ans1: `עצירות `,
+                ans2: `שלשולים`,
+                ans3: `כאבי בטן`,
+                ans4: `זיהום חיידקי בבטן `,
                 correctAns: `ans1`
             },
             {
-                type: `binary`,
-                sentence: ``,
-                trueOrFalse: false
+                type: `multiple`,
+                question: `מהי התוויה נפוצה למתן Rectozorin?`,
+                ans1: `צריבות בעת מתן צואה `,
+                ans2: `צואה דמית `,
+                ans3: `טחורים `,
+                ans4: `גירוד בפי הטבעת`,
+                correctAns: `ans3`
+            },
+            {
+                type: `multiple`,
+                question: `מטופל שקיבל מרשם ל- Pramin ככל הנראה סובל מ?`,
+                ans1: `שלשולים`,
+                ans2: `עצירות`,
+                ans3: `נזלת וליחה `,
+                ans4: `בחילות והקאות `,
+                correctAns: `ans4`
             },
         ],
-        "amountOfQuestions": 3
+        "amountOfQuestions": 1
     },
     // תרופות אחרות
     "otherMeds": {
@@ -1555,21 +1633,54 @@ const DATA = {
         // מבחן
         "questionsExam": [
             {
-                type: `multiple`,
-                question: ``,
-                ans1: ``,
-                ans2: ``,
-                ans3: ``,
-                ans4: ``,
-                correctAns: `ans1`
+                type: `binary`,
+                question: `אין לשלב את התרופה Muscol עם התרופה Acamol`,
+                trueOrFalse: true
             },
             {
                 type: `binary`,
-                sentence: ``,
+                question: `אין לשלב נטילת Etopan יחד אלכוהול`,
                 trueOrFalse: false
             },
+            {
+                type: `binary`,
+                question: `מומלץ ליטול את התרופה Laxadin לפני השינה`,
+                trueOrFalse: true
+            },
+            {
+                type: `binary`,
+                question: `יש לקחת Moxypen על בטן ריקה בלבד`,
+                trueOrFalse: false
+            },
+            {
+                type: `multiple`,
+                question: `מה המנגנונים האפשריים של תרופות להורדת לחץ דם?`,
+                ans1: `הגברת קצב לב`,
+                ans2: `הגברת ריכוז נתרן בדם`,
+                ans3: `הרחבת כלי דם`,
+                ans4: `כיווץ כלי דם`,
+                correctAns: `ans3`
+            },
+            {
+                type: `multiple`,
+                question: `חייל חולה אסטמה ככל הנראה משתמש בזמן התקף בתרופה:`,
+                ans1: `Prednisone`,
+                ans2: `Ventolin`,
+                ans3: `סינטומצין 5%`,
+                ans4: `Movex`,
+                correctAns: `ans2`
+            },
+            {
+                type: `multiple`,
+                question: `מה נדריך מטופל שמקבל משאף Budesonide?`,
+                ans1: `יש לקחת רק כשיש התקף אסתמה ולא באופן קבוע.`,
+                ans2: `התרופה נועדה לטיפול כרוני ממושך.`,
+                ans3: `להימנע ממג עם העיניים.`,
+                ans4: `לשטוף ידיים אחרי שימוש במשאף.`,
+                correctAns: `ans2`
+            },
         ],
-        "amountOfQuestions": 3
+        "amountOfQuestions": 1
     },
 };
 
@@ -1581,6 +1692,7 @@ let arrExamQuestions = [];
 let arrExamChosenAnswer = [];
 let strUserName;
 const AMOUNT_OF_QUESTION_PRACTICE = 10;
+const AMOUNT_OF_QUESTION_EXAM = 15;
 
 /* onClickPractice
 --------------------------------------------------------------
@@ -1635,9 +1747,11 @@ const onClickAnswer = (event) => {
         document.querySelector(`.practiceBottomButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
         document.querySelector(`.practiceBottomButton`).addEventListener("click", onClickPracticeCheck);
     } else {
+        // מסמן שענו כבר על השאלה
+        document.querySelector(`.answerPill${currentTestQuestion + 1}`).style.backgroundColor = "white";
         if (arrExamQuestions[currentTestQuestion].type === "binary") {
             // מוריד סימנים קודמים
-            if (strClickedPracticeQuestion) {
+            if (strClickedPracticeQuestion === "true") {
                 document.querySelector(`.false`).style.backgroundColor = "white";
             } else {
                 document.querySelector(`.true`).style.backgroundColor = "white";
@@ -1651,10 +1765,8 @@ const onClickAnswer = (event) => {
             // משנה תמונה של תשובה למסומנת
             document.querySelector(`.examQuestionSqure${strClickedPracticeQuestion.slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-marked.svg");
         }
-        arrExamChosenAnswer.push(strClickedPracticeQuestion);
+        arrExamChosenAnswer[currentTestQuestion] = strClickedPracticeQuestion;
         strcurrentPage = "examQuestion";
-        document.querySelector(`.testArrowRight`).addEventListener("click", startExam);
-        document.querySelector(`.testArrowLeft`).addEventListener("click", startExam);
     }
 }
 
@@ -1750,6 +1862,13 @@ const onClickExam = () => {
 --------------------------------------------------------------
 Description: */
 const startExam = (event) => {
+    if (arrExamChosenAnswer[currentTestQuestion] === undefined) {
+        // מסמן שלא ענו על השאלה
+        document.querySelector(`.answerPill${currentTestQuestion + 1}`).style.backgroundColor = "#f4f4f4b8";
+    } else {
+        // מסמן שענו כבר על השאלה
+        document.querySelector(`.answerPill${currentTestQuestion + 1}`).style.backgroundColor = "white";
+    }
     if (strcurrentPage === "examPrePage") {
         // מעלים דף של לפני מבחן
         document.querySelector(`.beforeExamPage`).classList.add("hidden"); 
@@ -1758,12 +1877,16 @@ const startExam = (event) => {
         // משנה גל, מעלים כפתור עליון
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/test/test-wave.svg");
         document.querySelector('.topButton').classList.add("hidden");
-    } else if (strcurrentPage === "examQuestion"){
+    } else {
         if (event.currentTarget.classList[1] === "testArrowRight") {
+            document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.add("hidden");
             currentTestQuestion--;
         } else if (event.currentTarget.classList[1] === "testArrowLeft") {
+            document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.add("hidden");
             currentTestQuestion++;
         }
+        // מראה את סימוני השאלה הנוכחית ואת הקונטיינר של השאלה הנוכחית
+        document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.remove("hidden");
         if (arrExamQuestions[currentTestQuestion].type === "binary") {
             // מוריד סימנים קודמים
             if (arrExamChosenAnswer[currentTestQuestion]) {
@@ -1784,10 +1907,17 @@ const startExam = (event) => {
                 // משנה תמונה של תשובה למסומנת
                 document.querySelector(`.examQuestionSqure${arrExamChosenAnswer[currentTestQuestion].slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-marked.svg");
             }
+            
         }
     }
-    if (currentTestQuestion > 0 && currentTestQuestion < 15) {
+    if (currentTestQuestion > 0 && currentTestQuestion < AMOUNT_OF_QUESTION_EXAM) {
+        // מראה חץ אחורה
         document.querySelector(`.testArrowRight`).classList.remove("hidden"); 
+    } else {
+        // מראה את השאלה
+        document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.remove("hidden");
+        // מעלים חץ אחורה
+        document.querySelector(`.testArrowRight`).classList.add("hidden"); 
     }
     
     strcurrentPage = "examPage";
@@ -1795,12 +1925,19 @@ const startExam = (event) => {
     document.querySelector('.testCurrentQuestionDisplay').innerHTML = `שאלה מספר ${currentTestQuestion + 1}`;
     document.querySelector(`.answerPill${currentTestQuestion + 1}`).style.backgroundColor = "#79BEE0";
     // מראה את השאלה הנוכחית ומכניס אליה את התוכן
-    document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.remove("hidden");
     document.querySelector('.examQuestionContainer .question').innerHTML = arrExamQuestions[currentTestQuestion].question;
-    for (let i = 1; i <= 4; i++) {
-        document.querySelector(`.examQuestionContainer .ans${i} div`).innerHTML = arrExamQuestions[currentTestQuestion][`ans${i}`];
-        document.querySelector(`.examQuestionContainer .ans${i}`).addEventListener("click", onClickAnswer);
+    if (arrExamQuestions[currentTestQuestion].type === "binary") {
+        document.querySelector(`.examQuestionContainer .binary .true`).addEventListener("click", onClickAnswer);
+        document.querySelector(`.examQuestionContainer .binary .false`).addEventListener("click", onClickAnswer);
+    } else {
+        for (let i = 1; i <= 4; i++) {
+            document.querySelector(`.examQuestionContainer .ans${i} div`).innerHTML = arrExamQuestions[currentTestQuestion][`ans${i}`];
+            document.querySelector(`.examQuestionContainer .ans${i}`).addEventListener("click", onClickAnswer);
+        }
     }
+    // שם מאזינים לחצים
+    document.querySelector(`.testArrowRight`).addEventListener("click", startExam);
+    document.querySelector(`.testArrowLeft`).addEventListener("click", startExam);
 }
 
 /*
