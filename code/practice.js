@@ -1692,8 +1692,10 @@ let strClickedPracticeQuestion;
 let arrExamQuestions = [];
 let arrExamChosenAnswer = [];
 let strUserName;
+let timeStartExam;
 const AMOUNT_OF_QUESTION_PRACTICE = 10;
 const AMOUNT_OF_QUESTION_EXAM = 15;
+const PASSING_GRADE = 50;
 
 /* onClickPractice
 --------------------------------------------------------------
@@ -1770,11 +1772,11 @@ const onClickAnswer = (event) => {
         strcurrentPage = "examQuestion";
         // בודק אם כול השאלות נענו
         let bTestComplete = true;
-        // for (let j = 0; j < AMOUNT_OF_QUESTION_EXAM; j++){
-        //     if (arrExamChosenAnswer[j] === undefined) {
-        //         bTestComplete = false;
-        //     }
-        // }
+        for (let j = 0; j < AMOUNT_OF_QUESTION_EXAM; j++){
+            if (arrExamChosenAnswer[j] === undefined) {
+                bTestComplete = false;
+            }
+        }
         // אם כול השאלות נענו מאפשר כפתור הגש
         if (bTestComplete) {
             // מוריד פילטר מכפתור הגש ושם עליו מאזין
@@ -1854,6 +1856,10 @@ const onClickExam = () => {
         if (strUserName.length > 1) {
             document.querySelector(`.stratTest`).classList.remove("gray");
             document.querySelector(`.stratTest`).addEventListener("click", startExam);
+            document.querySelector(`.stratTest`).addEventListener("click", () => {
+                let date = new Date();
+                timeStartExam = date.getHours() + ":" + date.getMinutes();
+            });
         }
     });
     // שומר שאלות למבחן
@@ -1922,16 +1928,16 @@ const startExam = (event) => {
     }
     if (currentTestQuestion > 0 && currentTestQuestion < AMOUNT_OF_QUESTION_EXAM - 1) {
         // מראה חץ אחורה וקדימה
-        document.querySelector(`.testArrowRight`).classList.remove("gray"); 
-        document.querySelector(`.testArrowLeft`).classList.remove("gray");
+        document.querySelector(`.testArrowRight`).classList.remove("hidden"); 
+        document.querySelector(`.testArrowLeft`).classList.remove("hidden");
     } else if (currentTestQuestion === AMOUNT_OF_QUESTION_EXAM - 1) {
         // מעלים חץ קדימה
-        document.querySelector(`.testArrowLeft`).classList.add("gray");
+        document.querySelector(`.testArrowLeft`).classList.add("hidden");
     } else {
         // מראה את השאלה
         document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.remove("hidden");
         // מעלים חץ אחורה
-        document.querySelector(`.testArrowRight`).classList.add("gray"); 
+        document.querySelector(`.testArrowRight`).classList.add("hidden"); 
     }
     
     strcurrentPage = "examPage";
@@ -1961,6 +1967,7 @@ const startExam = (event) => {
 --------------------------------------------------------------
 Description:  */
 const submitionPopUp = () => {
+    // מראה פופ אפ ושם מאזינים לכפתורים בפופ אפ
     document.querySelector(`.examSubmitionPopUp`).classList.remove("hidden");
     document.querySelector(`.popUpSubmit`).addEventListener("click", endOfTest);
     document.querySelector(`.popUpBackToExam`).addEventListener("click", () => {
@@ -1972,9 +1979,41 @@ const submitionPopUp = () => {
 --------------------------------------------------------------
 Description:  */
 const endOfTest = () => {
+    // מעלים פופ אפ ואת המבחן ומראה את דף הסיום
     document.querySelector(`.examSubmitionPopUp`).classList.add("hidden");
     document.querySelector(`.examQuestionContainer`).classList.add("hidden");
     document.querySelector(`.afterExamPage`).classList.remove("hidden");
+    // משנה גל ומראה כפתור חזור
+    document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
+    document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
+    document.querySelector(`.topButton`).classList.remove("hidden");
+    // בודק כמה שאלות נענו נכון
+    for (let j = 0; j < AMOUNT_OF_QUESTION_EXAM; j++){
+        if (arrExamChosenAnswer[j] === arrExamQuestions[j]["correctAns"]) {
+            nExamCorrectAnswer++;
+        }
+    }
+    // מחשב ציון
+    let nGrade = Math.round((nExamCorrectAnswer/AMOUNT_OF_QUESTION_EXAM) * 100);
+    // מכניס שם משתמש
+    document.querySelector(`.userNameBig`).innerHTML = strUserName;
+    document.querySelector(`.userNameSmall`).innerHTML = strUserName;
+    // מכניס תשובות נכונות וציון
+    document.querySelector(`.ExamgradeBig`).innerHTML = nGrade;
+    document.querySelector(`.ExamgradeSmall`).innerHTML = nGrade;
+    document.querySelector(`.rightAnswers`).innerHTML = `${nExamCorrectAnswer}/15`;
+    // נותן משוב ויוזאלי לפי הציון
+    if (nGrade < PASSING_GRADE) {
+        document.querySelector(`.examVerbalGrade`).innerHTML = "לא נורא אולי פעם הבאה";
+        document.querySelector('.ExamgradeConteiner').style.backgroundImage = `url("../assets/images/grapics/test/sad-smiley-face.svg")`;
+    }
+    // שומר תאריך ושעה
+    let date = new Date();
+    let todayDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+    let currTime = date.getHours() + ":" + date.getMinutes();
+    // מכניס תאריך ושעה
+    document.querySelector(`.date`).innerHTML = todayDate;
+    document.querySelector(`.time`).innerHTML = currTime;
 }
 
 /*
