@@ -1962,6 +1962,19 @@ const startExam = (event) => {
 Description:  */
 const submitionPopUp = () => {
     document.querySelector(`.examSubmitionPopUp`).classList.remove("hidden");
+    document.querySelector(`.popUpSubmit`).addEventListener("click", endOfTest);
+    document.querySelector(`.popUpBackToExam`).addEventListener("click", () => {
+        document.querySelector(`.examSubmitionPopUp`).classList.add("hidden");
+    });
+}
+
+/* endOfTest
+--------------------------------------------------------------
+Description:  */
+const endOfTest = () => {
+    document.querySelector(`.examSubmitionPopUp`).classList.add("hidden");
+    document.querySelector(`.examQuestionContainer`).classList.add("hidden");
+    document.querySelector(`.afterExamPage`).classList.remove("hidden");
 }
 
 /*
