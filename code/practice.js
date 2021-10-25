@@ -1687,6 +1687,7 @@ const DATA = {
 // varubals
 let currentQuestion = 0;
 let currentTestQuestion = 0;
+let nExamCorrectAnswer = 0;
 let strClickedPracticeQuestion;
 let arrExamQuestions = [];
 let arrExamChosenAnswer = [];
@@ -1767,6 +1768,19 @@ const onClickAnswer = (event) => {
         }
         arrExamChosenAnswer[currentTestQuestion] = strClickedPracticeQuestion;
         strcurrentPage = "examQuestion";
+        // בודק אם כול השאלות נענו
+        let bTestComplete = true;
+        // for (let j = 0; j < AMOUNT_OF_QUESTION_EXAM; j++){
+        //     if (arrExamChosenAnswer[j] === undefined) {
+        //         bTestComplete = false;
+        //     }
+        // }
+        // אם כול השאלות נענו מאפשר כפתור הגש
+        if (bTestComplete) {
+            // מוריד פילטר מכפתור הגש ושם עליו מאזין
+            document.querySelector(`.examSubmit`).classList.remove("gray");
+            document.querySelector(`.examSubmit`).addEventListener("click", submitionPopUp);
+        }
     }
 }
 
@@ -1878,22 +1892,19 @@ const startExam = (event) => {
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/test/test-wave.svg");
         document.querySelector('.topButton').classList.add("hidden");
     } else {
+        // מעלים שאלה קודמת
+        document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.add("hidden");
         if (event.currentTarget.classList[1] === "testArrowRight") {
-            document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.add("hidden");
             currentTestQuestion--;
         } else if (event.currentTarget.classList[1] === "testArrowLeft") {
-            document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.add("hidden");
             currentTestQuestion++;
         }
-        // מראה את סימוני השאלה הנוכחית ואת הקונטיינר של השאלה הנוכחית
+        // מראה את הקונטיינר של השאלה הנוכחית
         document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.remove("hidden");
         if (arrExamQuestions[currentTestQuestion].type === "binary") {
             // מוריד סימנים קודמים
-            if (arrExamChosenAnswer[currentTestQuestion]) {
-                document.querySelector(`.false`).style.backgroundColor = "white";
-            } else {
-                document.querySelector(`.true`).style.backgroundColor = "white";
-            }
+            document.querySelector(`.false`).style.backgroundColor = "white";
+            document.querySelector(`.true`).style.backgroundColor = "white";
             if (arrExamChosenAnswer[currentTestQuestion] !== undefined) {
                 // משנה תמונה של תשובה למסומנת
                 document.querySelector(`.${arrExamChosenAnswer[currentTestQuestion]}`).style.backgroundColor = "#79bee0bb";
@@ -1907,17 +1918,20 @@ const startExam = (event) => {
                 // משנה תמונה של תשובה למסומנת
                 document.querySelector(`.examQuestionSqure${arrExamChosenAnswer[currentTestQuestion].slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-marked.svg");
             }
-            
         }
     }
-    if (currentTestQuestion > 0 && currentTestQuestion < AMOUNT_OF_QUESTION_EXAM) {
-        // מראה חץ אחורה
-        document.querySelector(`.testArrowRight`).classList.remove("hidden"); 
+    if (currentTestQuestion > 0 && currentTestQuestion < AMOUNT_OF_QUESTION_EXAM - 1) {
+        // מראה חץ אחורה וקדימה
+        document.querySelector(`.testArrowRight`).classList.remove("gray"); 
+        document.querySelector(`.testArrowLeft`).classList.remove("gray");
+    } else if (currentTestQuestion === AMOUNT_OF_QUESTION_EXAM - 1) {
+        // מעלים חץ קדימה
+        document.querySelector(`.testArrowLeft`).classList.add("gray");
     } else {
         // מראה את השאלה
         document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.remove("hidden");
         // מעלים חץ אחורה
-        document.querySelector(`.testArrowRight`).classList.add("hidden"); 
+        document.querySelector(`.testArrowRight`).classList.add("gray"); 
     }
     
     strcurrentPage = "examPage";
@@ -1927,10 +1941,12 @@ const startExam = (event) => {
     // מראה את השאלה הנוכחית ומכניס אליה את התוכן
     document.querySelector('.examQuestionContainer .question').innerHTML = arrExamQuestions[currentTestQuestion].question;
     if (arrExamQuestions[currentTestQuestion].type === "binary") {
+        // שם מאזינים לתשובות
         document.querySelector(`.examQuestionContainer .binary .true`).addEventListener("click", onClickAnswer);
         document.querySelector(`.examQuestionContainer .binary .false`).addEventListener("click", onClickAnswer);
     } else {
         for (let i = 1; i <= 4; i++) {
+            // מכניס תוכן לתשובות ושם עליהן מאזין
             document.querySelector(`.examQuestionContainer .ans${i} div`).innerHTML = arrExamQuestions[currentTestQuestion][`ans${i}`];
             document.querySelector(`.examQuestionContainer .ans${i}`).addEventListener("click", onClickAnswer);
         }
@@ -1938,6 +1954,14 @@ const startExam = (event) => {
     // שם מאזינים לחצים
     document.querySelector(`.testArrowRight`).addEventListener("click", startExam);
     document.querySelector(`.testArrowLeft`).addEventListener("click", startExam);
+}
+
+
+/* submitionPopUp
+--------------------------------------------------------------
+Description:  */
+const submitionPopUp = () => {
+    document.querySelector(`.examSubmitionPopUp`).classList.remove("hidden");
 }
 
 /*

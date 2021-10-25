@@ -191,7 +191,7 @@
 .testCurrentQuestionDisplay {
     background-color: #79BEE0;
     width: 39vw;
-    height: 5.5vh;
+    height: 5vh;
     position: absolute;
     top: 10vh;
     border-radius: 2em;
@@ -209,11 +209,40 @@
 
 .testArrows {
     position: absolute;
-    top: 82.6vh;
+    top: 82.7vh;
     left: 73vw;
     width: 25vw;
-    height: 8vh;
+    height: 7.5vh;
     display: flex;
+}
+
+.popUpContainer {
+    background-image: url(../assets/images/grapics/test/end-popup.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 54vh;
+    height: 24vh;
+    position: absolute;
+    bottom: -24vh;
+    left: 2vw;
+    font-size: 1.1em;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    animation: popUpEnter 2s forwards;
+}
+
+.popUpButtons {
+    height: 6vh;
+    padding: 0.3em;
+}
+
+@keyframes popUpEnter {
+    100% {
+        bottom: 0;
+    }
 }
 
 .hidden {
