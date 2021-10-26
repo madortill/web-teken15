@@ -132,13 +132,14 @@
 }
 
 .binary .ans {
-    width: 32vw;
+    width: 35vw;
     padding: 0.5em;
     justify-content: space-evenly;
     font-weight: 500;
     font-size: 1.4em;
     background-color: white;
     border-radius: 0.5em;
+    height: 6vh;
 }
 
 .binary {
@@ -150,7 +151,7 @@
 }
 
 .examQuestionContainer .question{
-    top: 21vh;
+    top: 17vh;
 }  
 
 .answerTracker {
@@ -285,7 +286,8 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 54vh;
-    height: 10vh;
+    height: 8vh;
+    padding-top: 1em;
 }
 
 .afterExamData {
