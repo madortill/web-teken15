@@ -279,6 +279,7 @@ html, body {
 .homePageButtons {
     overflow-y: scroll;
     height: 75vh;
+    margin-top: 0.5em;
 }
 
 /* תעודת זהות של תרופות */

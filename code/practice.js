@@ -1692,6 +1692,7 @@ let strClickedPracticeQuestion;
 let arrExamQuestions = [];
 let arrExamChosenAnswer = [];
 let strUserName;
+let formerTestQuestion;
 // timer
 let examTimer;
 let timerMinutes;
@@ -1863,6 +1864,13 @@ const onClickExam = () => {
             document.querySelector(`.stratTest`).addEventListener("click", startExam);
             document.querySelector(`.stratTest`).addEventListener("click", () => {
                 examTimer = setInterval(startTimerExam, 1000);
+                let arrAnswerPill = document.querySelectorAll('.answerPill');
+                for (let i = 0; i < arrAnswerPill.length; i++) {
+                    arrAnswerPill[i].addEventListener('click', () => {
+                        currentTestQuestion = i;
+                        startExam();
+                    });
+                };
             });
         }
     });
@@ -1886,13 +1894,6 @@ const onClickExam = () => {
 --------------------------------------------------------------
 Description: */
 const startExam = (event) => {
-    if (arrExamChosenAnswer[currentTestQuestion] === undefined) {
-        // מסמן שלא ענו על השאלה
-        document.querySelector(`.answerPill${currentTestQuestion + 1}`).style.backgroundColor = "#f4f4f4b8";
-    } else {
-        // מסמן שענו כבר על השאלה
-        document.querySelector(`.answerPill${currentTestQuestion + 1}`).style.backgroundColor = "white";
-    }
     if (strcurrentPage === "examPrePage") {
         // מעלים דף של לפני מבחן
         document.querySelector(`.beforeExamPage`).classList.add("hidden"); 
@@ -1902,33 +1903,38 @@ const startExam = (event) => {
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/test/test-wave.svg");
         document.querySelector('.topButton').classList.add("hidden");
         strcurrentPage = "examQuestion";
-    } else if (strcurrentPage === "reviewTest") {
+        formerTestQuestion = currentTestQuestion;
+    } else {
+        if (arrExamChosenAnswer[formerTestQuestion] === undefined) {
+            // מסמן שלא ענו על השאלה
+            document.querySelector(`.answerPill${formerTestQuestion + 1}`).style.backgroundColor = "#f4f4f4b8";
+        } else {
+            // מסמן שענו כבר על השאלה
+            document.querySelector(`.answerPill${formerTestQuestion + 1}`).style.backgroundColor = "white";
+        }
         // מעלים שאלה קודמת
-        document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.add("hidden");
         if (event !== undefined) {
-            // בודק אם נלחצה תשובה לא נכונה ואם כן מוריד סימון תשובה לא נכונה
-            if (arrExamChosenAnswer[currentTestQuestion] !== String(arrExamQuestions[currentTestQuestion]["correctAns"])) {
-                document.querySelector(`.answersContainers .${arrExamChosenAnswer[currentTestQuestion]} div`).classList.remove("wrongAnswer");
+            document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.add("hidden");
+            if (strcurrentPage === "reviewTest") {
+                // בודק אם נלחצה תשובה לא נכונה ואם כן מוריד סימון תשובה לא נכונה
+                if (arrExamChosenAnswer[currentTestQuestion] !== String(arrExamQuestions[currentTestQuestion]["correctAns"])) {
+                    document.querySelector(`.answersContainers .${arrExamChosenAnswer[currentTestQuestion]} div`).classList.remove("wrongAnswer");
+                }
+                // מוריד סימון תשובה נכונה
+                document.querySelector(`.answersContainers .${arrExamQuestions[currentTestQuestion]["correctAns"]} div`).classList.remove("correctAnswer");
             }
-            // מוריד סימון תשובה נכונה
-            document.querySelector(`.answersContainers .${arrExamQuestions[currentTestQuestion]["correctAns"]} div`).classList.remove("correctAnswer");
             if (event.currentTarget.classList[1] === "testArrowRight") {
                 currentTestQuestion--;
             } else if (event.currentTarget.classList[1] === "testArrowLeft") {
                 currentTestQuestion++;
             }
+            formerTestQuestion = currentTestQuestion;
+            document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.remove("hidden");
+        } else { // תזוזה בין השאלות על ידי כפתורים
+            document.querySelector(`.${arrExamQuestions[formerTestQuestion].type}`).classList.add("hidden");
+            formerTestQuestion = currentTestQuestion;
             document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.remove("hidden");
         }
-    } else {
-        // מעלים שאלה קודמת
-        document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.add("hidden");
-        if (event.currentTarget.classList[1] === "testArrowRight") {
-            currentTestQuestion--;
-        } else if (event.currentTarget.classList[1] === "testArrowLeft") {
-            currentTestQuestion++;
-        }
-        // מראה את הקונטיינר של השאלה הנוכחית
-        document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.remove("hidden");
         if (arrExamQuestions[currentTestQuestion].type === "binary") {
             // מוריד סימנים קודמים
             document.querySelector(`.false`).style.backgroundColor = "white";
