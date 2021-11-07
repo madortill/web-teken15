@@ -151,7 +151,11 @@
 }
 
 .examQuestionContainer .question{
-    top: 17vh;
+    position: static;
+} 
+
+.answersContainers {
+    position: static;
 }  
 
 .answerTracker {
@@ -304,6 +308,13 @@
 .afterExamButtons {
     height: 5.5vh;
     padding: 0.3em;
+}
+
+.questionContainer {
+    height: 46vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .hidden {

@@ -1932,6 +1932,13 @@ const startExam = (event) => {
             document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.remove("hidden");
         } else { // תזוזה בין השאלות על ידי כפתורים
             document.querySelector(`.${arrExamQuestions[formerTestQuestion].type}`).classList.add("hidden");
+            // בודק אם נלחצה תשובה לא נכונה ואם כן מוריד סימון תשובה לא נכונה
+            if (arrExamChosenAnswer[formerTestQuestion] !== String(arrExamQuestions[formerTestQuestion]["correctAns"])) {
+               document.querySelector(`.answersContainers .${arrExamChosenAnswer[formerTestQuestion]} div`).classList.remove("wrongAnswer");
+           }
+           // מוריד סימון תשובה נכונה
+           document.querySelector(`.answersContainers .${arrExamQuestions[formerTestQuestion]["correctAns"]} div`).classList.remove("correctAnswer");
+           //מעדכן מספר שאלה 
             formerTestQuestion = currentTestQuestion;
             document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.remove("hidden");
         }
