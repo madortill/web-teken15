@@ -593,7 +593,7 @@ const DATA = {
             {
                 type: `multiple`,
                 question: `מה מהבאות היא תופעת לוואי עיקרית בנטילת disothiazide?`,
-                ans1: `א. פגיעה בכבד שדורשת איזון תרופתי`,
+                ans1: `פגיעה בכבד שדורשת איזון תרופתי`,
                 ans2: `כאביי ראש מגרנתיים וסחרחורות`,
                 ans3: `עצירות ושינויים בצבע הצואה`,
                 ans4: `אי ספיקת כליות והפרעה במאזן המלחים`,
@@ -2152,6 +2152,7 @@ const pad = (val) => {
 --------------------------------------------------------------
 Description:  */
 const startTimerExam = () => {
+    // document.querySelector(`.testCurrentQuestionDisplay`).innerHTML = `${timerSecondes} : ${timerMinutes}`;
     sec++;
     timerSecondes = pad(sec%60);
     timerMinutes = pad(parseInt(sec/60));
