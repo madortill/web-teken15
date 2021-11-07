@@ -713,7 +713,7 @@ const onClickSearch = () => {
             document.querySelector(`.practiceBottomButton`).setAttribute("src", "../assets/images/grapics/practice/check_button.svg");
         currentQuestion = 0;
         creatMedShelfs();
-    }else if (strcurrentPage === "examPrePage") {
+    } else if (strcurrentPage === "examPrePage" || strcurrentPage === "endOfTest") {
         creatMedShelfs();
     } else if (strcurrentPage !== "medId") {
         // מראה את תיבת החיפוש
@@ -874,9 +874,14 @@ const creatMedShelfs = (event) => {
     } else if (strcurrentPage === "examPrePage") {
         // כפתור עליון
         document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
-        // מראה דף לפני מבחן
+        // מעלים דף לפני מבחן
         document.querySelector(`.examPage`).classList.add("hidden");
         document.querySelector(`.beforeExamPage`).classList.add("hidden");
+    } else if (strcurrentPage === "endOfTest") {
+        // כפתור עליון
+        document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
+        // מעלים דף סיום מבחן
+        document.querySelector(`.afterExamPage`).classList.add("hidden");
     }
    
     // שומר את העמוד הנוכחי
@@ -951,6 +956,15 @@ const sendToHomePage = () => {
         document.querySelector(`.topButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
         document.querySelector(`.searchBoxHolder`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
         document.querySelector(`.shelfsButtons .homeButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+    } else if (strcurrentPage === "examPrePage") {
+        // מעלים דף התחלת מבחן, ומשנה כפתור עליו לחיפוש 
+        document.querySelector(`.examPage`).classList.add("hidden");
+        document.querySelector(`.beforeExamPage`).classList.add("hidden"); 
+        document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
+    }  else if (strcurrentPage === "endOfTest") {
+        // מעלים דף סיום מבחן, ומשנה כפתור עליו לחיפוש 
+        document.querySelector(`.afterExamPage`).classList.add("hidden");
+        document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
     } else {
         // מעלים דף אודות, ומשנה כפתור עליו לחיפוש 
         document.querySelector('.aboutPage').classList.add("hidden");
