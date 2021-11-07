@@ -248,7 +248,7 @@ let objMedInfo = {
     },
     "Ipratropium-Bromide": {
         type : "withoutMechanism",
-        pic : "breathing/Aerovent", 
+        pic : "breathing/aerovent", 
         genericName : "Ipratropium Bromide ",
         commercialName : "aerovent (נוזל לאינהלציה או משאף)",
         indication : "התקפי אסטמה (ביחד עם Ventolin)<br>COPD (מחלת ריאות כרונית)<br>נזלת",
