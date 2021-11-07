@@ -27,7 +27,7 @@ let objMedInfo = {
     // סטרואידים – מדכאי תגובה חיסונית 
     "Predisone": {
         type : "withoutMechanism",
-        pic : "antiallergic/Predninsone", 
+        pic : "antiallergic/predninsone", 
         genericName : "Predisone",
         commercialName : "Predisone",
         indication : "דלקת חמורה (עקב זיהום/גידול/אחר)<br>הפרעות הורמונליות",
