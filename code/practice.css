@@ -38,6 +38,7 @@
     position: absolute;
     top: 49vh;
     padding: 0.5em;
+    padding-top: 0;
 }
 
 .ans {

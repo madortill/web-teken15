@@ -53,8 +53,7 @@ html, body {
 }
 
 .loader.fade {
-    animation: fadeOut 1s forwards;
-    /* animation: fadeOut 1s 2s forwards; */
+    animation: fadeOut 1s 2s forwards;
 }
 
 @keyframes fadeOut {

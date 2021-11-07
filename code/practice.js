@@ -1788,6 +1788,10 @@ const onClickAnswer = (event) => {
             // מוריד פילטר מכפתור הגש ושם עליו מאזין
             document.querySelector(`.examSubmit`).classList.remove("gray");
             document.querySelector(`.examSubmit`).addEventListener("click", submitionPopUp);
+        } else {
+            // שם פילטר מכפתור הגש ומוריד מאזין
+            document.querySelector(`.examSubmit`).classList.add("gray");
+            document.querySelector(`.examSubmit`).removeEventListener("click", submitionPopUp);
         }
     }
 }
@@ -1866,6 +1870,10 @@ const onClickExam = () => {
     // שם מאזין על כפתור חזור
     document.querySelector(`.beforeExamBackToLomda`).addEventListener("click", sendToHomePage);
     // שומר של משתמש ומוודא שהוא יותר מתו אחד 
+    strUserName = document.querySelector('.examNameInput').value;
+    if (strUserName.length > 1) {
+        document.querySelector(`.stratTest`).classList.remove("gray");
+    }
     document.querySelector('.examNameInput').addEventListener("input", () => {
         strUserName = document.querySelector('.examNameInput').value;
         if (strUserName.length > 1) {
@@ -2032,15 +2040,12 @@ const submitionPopUp = () => {
     if (strcurrentPage === "reviewTest") {
         endOfTest();
     } else {
-        // עוצר טיימר
-        clearInterval(examTimer)
        // מראה פופ אפ ושם מאזינים לכפתורים בפופ אפ
        document.querySelector(`.examSubmitionPopUp`).classList.remove("hidden");
        document.querySelector(`.popUpSubmit`).addEventListener("click", endOfTest);
        document.querySelector(`.popUpBackToExam`).addEventListener("click", () => {
-           // מעלים פופ אפ ומחזיר טיימר
+           // מעלים פופ אפ
            document.querySelector(`.examSubmitionPopUp`).classList.add("hidden");
-           examTimer = setInterval(startTimerExam, 1000);
        });
     }
 }
@@ -2049,11 +2054,56 @@ const submitionPopUp = () => {
 --------------------------------------------------------------
 Description:  */
 const endOfTest = () => {
+    if (strcurrentPage === "reviewTest") {
+        // בודק אם נלחצה תשובה לא נכונה ואם כן מוריד סימון תשובה לא נכונה
+        if (arrExamChosenAnswer[formerTestQuestion] !== String(arrExamQuestions[formerTestQuestion]["correctAns"])) {
+            document.querySelector(`.answersContainers .${arrExamChosenAnswer[formerTestQuestion]} div`).classList.remove("wrongAnswer");
+        }
+        // מוריד סימון תשובה נכונה
+        document.querySelector(`.answersContainers .${arrExamQuestions[formerTestQuestion]["correctAns"]} div`).classList.remove("correctAnswer");
+        document.querySelector(`.${arrExamQuestions[currentTestQuestion].type}`).classList.add("hidden");
+        // משנה כפתור סיום להגש
+        document.querySelector('.examSubmit').setAttribute("src", "../assets/images/grapics/test/submit-button.svg");
+    } else {
+        // עוצר טיימר
+        clearInterval(examTimer)
+        // שם מאזינים לכפתורים
+        document.querySelector(`.reviewTest`).addEventListener("click", reviewTest);
+        // בודק כמה שאלות נענו נכון
+        nExamCorrectAnswer = 0;
+        for (let j = 0; j < AMOUNT_OF_QUESTION_EXAM; j++){
+            if (arrExamChosenAnswer[j] === arrExamQuestions[j]["correctAns"]) {
+                nExamCorrectAnswer++;
+            }
+        }
+        // מחשב ציון
+        let nGrade = Math.round((nExamCorrectAnswer/AMOUNT_OF_QUESTION_EXAM) * 100);
+        // מכניס שם משתמש
+        document.querySelector(`.userNameBig`).innerHTML = strUserName;
+        document.querySelector(`.userNameSmall`).innerHTML = strUserName;
+        // מכניס תשובות נכונות וציון
+        document.querySelector(`.ExamgradeBig`).innerHTML = nGrade;
+        document.querySelector(`.ExamgradeSmall`).innerHTML = nGrade;
+        document.querySelector(`.rightAnswers`).innerHTML = `${nExamCorrectAnswer}/15`;
+        // נותן משוב ויוזאלי לפי הציון
+        if (nGrade < PASSING_GRADE) {
+            document.querySelector(`.examVerbalGrade`).innerHTML = "לא נורא אולי פעם הבאה";
+            document.querySelector('.ExamgradeConteiner').style.backgroundImage = `url("../assets/images/grapics/test/sad-smiley-face.svg")`;
+        } else {
+            document.querySelector(`.examVerbalGrade`).innerHTML = "כל הכבוד";
+            document.querySelector('.ExamgradeConteiner').style.backgroundImage = `url("../assets/images/grapics/test/happy-smiley-face.svg")`;
+        }
+        // שומר תאריך ושעה
+        let date = new Date();
+        let todayDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+        let currTime = date.getHours() + ":" + date.getMinutes();
+        // מכניס תאריך ושעה
+        document.querySelector(`.date`).innerHTML = todayDate;
+        document.querySelector(`.time`).innerHTML = currTime;
+        // מכניס אורך מבחן
+        document.querySelector(`.timerConteiner`).innerHTML = `${timerSecondes} : ${timerMinutes}`;
+    }
     strcurrentPage = "endOfTest";
-    // עוצר טיימר
-    clearInterval(examTimer)
-    // שם מאזינים לכפתורים
-    document.querySelector(`.reviewTest`).addEventListener("click", reviewTest);
     // מעלים פופ אפ ואת המבחן ומראה את דף הסיום
     document.querySelector(`.examSubmitionPopUp`).classList.add("hidden");
     document.querySelector(`.examQuestionContainer`).classList.add("hidden");
@@ -2062,39 +2112,6 @@ const endOfTest = () => {
     document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
     document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
     document.querySelector(`.topButton`).classList.remove("hidden");
-    // בודק כמה שאלות נענו נכון
-    nExamCorrectAnswer = 0;
-    for (let j = 0; j < AMOUNT_OF_QUESTION_EXAM; j++){
-        if (arrExamChosenAnswer[j] === arrExamQuestions[j]["correctAns"]) {
-            nExamCorrectAnswer++;
-        }
-    }
-    // מחשב ציון
-    let nGrade = Math.round((nExamCorrectAnswer/AMOUNT_OF_QUESTION_EXAM) * 100);
-    // מכניס שם משתמש
-    document.querySelector(`.userNameBig`).innerHTML = strUserName;
-    document.querySelector(`.userNameSmall`).innerHTML = strUserName;
-    // מכניס תשובות נכונות וציון
-    document.querySelector(`.ExamgradeBig`).innerHTML = nGrade;
-    document.querySelector(`.ExamgradeSmall`).innerHTML = nGrade;
-    document.querySelector(`.rightAnswers`).innerHTML = `${nExamCorrectAnswer}/15`;
-    // נותן משוב ויוזאלי לפי הציון
-    if (nGrade < PASSING_GRADE) {
-        document.querySelector(`.examVerbalGrade`).innerHTML = "לא נורא אולי פעם הבאה";
-        document.querySelector('.ExamgradeConteiner').style.backgroundImage = `url("../assets/images/grapics/test/sad-smiley-face.svg")`;
-    } else {
-        document.querySelector(`.examVerbalGrade`).innerHTML = "כל הכבוד";
-        document.querySelector('.ExamgradeConteiner').style.backgroundImage = `url("../assets/images/grapics/test/happy-smiley-face.svg")`;
-    }
-    // שומר תאריך ושעה
-    let date = new Date();
-    let todayDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-    let currTime = date.getHours() + ":" + date.getMinutes();
-    // מכניס תאריך ושעה
-    document.querySelector(`.date`).innerHTML = todayDate;
-    document.querySelector(`.time`).innerHTML = currTime;
-    // מכניס אורך מבחן
-    document.querySelector(`.timerConteiner`).innerHTML = `${timerSecondes} : ${timerMinutes}`;
     // שם מאזין על כפתור חזרה ללומדה
     document.querySelector(`.afterExamBackToLomda`).addEventListener("click", sendToHomePage);
 }
@@ -2109,7 +2126,7 @@ const reviewTest = (event) => {
     // משנה גל ומעלים כפתור חזור
     document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/test/test-wave.svg");
     document.querySelector(`.topButton`).classList.add("hidden");
-    // משנה כפתור הגש לסיום מוריד ממנו מאזין קודם ושם עליו מאזין חדש
+    // משנה כפתור הגש לסיום
     document.querySelector('.examSubmit').setAttribute("src", "../assets/images/grapics/test/test-review-end-button.svg");
     strcurrentPage = "reviewTest";
     currentTestQuestion = 0;
@@ -2120,15 +2137,24 @@ const reviewTest = (event) => {
 --------------------------------------------------------------
 Description:  */
 const pad = (val) => {
-    return val > 9 ? val : "0" + val;
+    let valString = val + "";
+    if(valString.length < 2)
+    {
+        return "0" + valString;
+    }
+    else
+    {
+        return valString;
+    }
 }
 
 /* startTimerExam
 --------------------------------------------------------------
 Description:  */
 const startTimerExam = () => {
-    timerSecondes = pad(++sec%60);
-    timerMinutes = pad(parseInt(sec/60,10));
+    sec++;
+    timerSecondes = pad(sec%60);
+    timerMinutes = pad(parseInt(sec/60));
 }
 
 /*
