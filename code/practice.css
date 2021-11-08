@@ -229,15 +229,16 @@
 
 .testArrow {
     padding: 0.2em;
+    width: 11vw;
 } 
 
 .testArrows {
     position: absolute;
     bottom: 2vh;
-    left: 73vw;
-    width: 25vw;
-    height: 7.5vh;
+    right: 2vw;
+    width: 27vw;
     display: flex;
+    justify-content: flex-start;
 }
 
 /* פופ אף מבחן */
