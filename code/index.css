@@ -286,7 +286,7 @@ html, body {
 
 .testButton {
   position: absolute;
-  top: 87vh;
+  bottom: 2vh;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -397,7 +397,7 @@ html, body {
     display: flex;
     justify-content: space-evenly;
     position: absolute;
-    top: 87vh;
+    bottom: 2vh;
     left: 50%;
     transform: translateX(-50%);
 }
