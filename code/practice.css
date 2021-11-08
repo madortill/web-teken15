@@ -57,14 +57,15 @@
 }
 
 .wrongAnswer {
-    background-color: rgba(212, 98, 98, 0.671);
+    background-color: rgba(241, 76, 76, 0.671);
 }
 
 .practiceBottomButton {
     width: 25vw;
     position: absolute;
     top: 86vh;
-    left: 70vw;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* מבחן */
@@ -161,7 +162,7 @@
 }  
 
 .answerTracker {
-    background-color: silver;
+    background-color: #79BEE0;
     width: 90vw;
     height: 13vh;
     position: absolute;
@@ -317,6 +318,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.list {
+    padding-inline-start: 1em;
+    margin-top: 0.2em;
 }
 
 .hidden {

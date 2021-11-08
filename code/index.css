@@ -252,7 +252,7 @@ html, body {
     display: flex;
 }
 
-.homePageButtons::-webkit-scrollbar {
+.homePageButtonsScroll::-webkit-scrollbar {
     display: none;
 }
 
@@ -275,9 +275,15 @@ html, body {
     left: -5vw;
 }
 
-.homePageButtons {
+.homePageButtonsScroll {
     overflow-y: scroll;
-    height: 73vh;
+    height: 65vh;
+    margin-top: 0.5em;
+}
+
+.testButton {
+    margin: auto;
+    display: block;
     margin-top: 0.5em;
 }
 
