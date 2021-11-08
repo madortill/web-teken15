@@ -238,6 +238,10 @@ html, body {
     left: 35vw;
 }
 
+.logos > img {
+    width: 21vw;
+}
+
 /* כתורים של תרופות ששולחים ללומדות */
 .mainPageButton {
     background-color: white;
@@ -282,9 +286,10 @@ html, body {
 }
 
 .testButton {
-    margin: auto;
-    display: block;
-    margin-top: 0.5em;
+  position: absolute;
+  top: 87vh;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* תעודת זהות של תרופות */
@@ -393,7 +398,7 @@ html, body {
     display: flex;
     justify-content: space-evenly;
     position: absolute;
-    bottom: 1.6vh;
+    top: 87vh;
     left: 50%;
     transform: translateX(-50%);
 }
