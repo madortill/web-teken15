@@ -63,7 +63,7 @@
 .practiceBottomButton {
     width: 25vw;
     position: absolute;
-    top: 86vh;
+    bottom: 2vh;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -135,15 +135,15 @@
 }
 
 .beforeTestButtons {
-    height: 6vh;
+    height: 5.5vh;
 }
 
 .beforeTestButtonsContainer {
     display: flex;
     width: 100vw;
     position: absolute;
-    justify-content: space-evenly;
-    top: 83vh;
+    justify-content: center;
+    bottom: 2vh;
 }
 
 .binaryMarks {
@@ -203,7 +203,7 @@
 
 .examSubmit{
     position: absolute;
-    top: 83vh;
+    bottom: 2vh;
     width: 28vw;
     left: 5vh;
 }
@@ -233,7 +233,7 @@
 
 .testArrows {
     position: absolute;
-    top: 82.7vh;
+    bottom: 2vh;
     left: 73vw;
     width: 25vw;
     height: 7.5vh;
