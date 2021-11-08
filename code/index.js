@@ -731,6 +731,7 @@ window.addEventListener("load", () => {
     for (let i = 0; i < arrMedsButtons.length; i++) {
         arrMedsButtons[i].addEventListener('click', creatMedShelfs);
     };
+    document.querySelector(`.testButton`).addEventListener("click", onClickExam);
 });
 
 /* onClickAbout
@@ -771,7 +772,7 @@ const onClickSearch = () => {
         currentQuestion = 0;
         creatMedShelfs();
     } else if (strcurrentPage === "examPrePage" || strcurrentPage === "endOfTest") {
-        creatMedShelfs();
+        sendToHomePage();
     } else if (strcurrentPage !== "medId") {
         // מראה את תיבת החיפוש
         document.querySelector('.searchBoxHolder').classList.remove("hidden");
@@ -943,17 +944,14 @@ const creatMedShelfs = (event) => {
         document.querySelector('.topButton').classList.remove("topButtonPractice");
         // מעלים דמות ושאלה
         document.querySelector('.practicePage').classList.add("hidden");
-    } else if (strcurrentPage === "examPrePage") {
-        // כפתור עליון
-        document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
-        // מעלים דף לפני מבחן
-        document.querySelector(`.examPage`).classList.add("hidden");
-        document.querySelector(`.beforeExamPage`).classList.add("hidden");
-    } else if (strcurrentPage === "endOfTest") {
-        // כפתור עליון
-        document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/search-button.svg");
-        // מעלים דף סיום מבחן
-        document.querySelector(`.afterExamPage`).classList.add("hidden");
+        // משנה צבע של חלונית תשובות ושל כפתור סיום
+        document.querySelector(`.practiceBottomButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+        document.querySelector(`.practiceRightAnswersConteiner`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+        // מחליף תמונה של כפתור סיום לכפתור בדיקה
+        document.querySelector(`.practiceBottomButton`).setAttribute("src", "../assets/images/grapics/practice/check_button.svg");
+        // מעלים שאלות ומראה תשובות נכונות
+        document.querySelector(`.practiceRightAnswersConteiner`).classList.add("hidden");
+        document.querySelector(`.answersContainer`).classList.remove("hidden");
     }
    
     // שומר את העמוד הנוכחי
@@ -974,7 +972,6 @@ const creatMedShelfs = (event) => {
     // שומר שאלות ושולח לתרגול
     QUESTIONS = shuffle(DATA[strCurrentMedType]["questionsPractice"]);
     document.querySelector(`.practiceButton`).addEventListener("click", onClickPractice);
-    document.querySelector(`.testButton`).addEventListener("click", onClickExam);
     // משנה צבע מדפים ושם מאזין לפתיחה שלהם
     for (let i = 1; i <= objMedsShelfsColors[strCurrentMedType][1]; i++) {
         document.querySelector(`.${strCurrentMedType}Shelf > .shelf${i}`).addEventListener("click", controlShelfsDropDown)

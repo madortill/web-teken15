@@ -1686,6 +1686,7 @@ const DATA = {
 
 // varubals
 let currentQuestion = 0;
+let nPracticeCorrectAnswer = 0;
 let currentTestQuestion = 0;
 let nExamCorrectAnswer = 0;
 let strClickedPracticeQuestion;
@@ -1708,8 +1709,7 @@ const PASSING_GRADE = 50;
 Description: */
 const onClickPractice  = () => {
     if (currentQuestion === AMOUNT_OF_QUESTION_PRACTICE) {
-        currentQuestion = 0;
-        creatMedShelfs();
+        endofPractice();
     } else {
         strcurrentPage = "practicePage";
         // מעלים מדפים, סמלים בכותרת וכפתורים למטה
@@ -1818,7 +1818,7 @@ const onClickPracticeCheck = () => {
         // משנה שאלה נוכחית ושולח לפונקציה שיוצרת שאלה
         currentQuestion++;
         onClickPractice();
-    } else { //בלחיצה על בדיקה
+    } else if (document.querySelector(`.practiceBottomButton`).getAttribute("src") === "../assets/images/grapics/practice/check_button.svg") { //בלחיצה על בדיקה
         // מוריד מאזינים מהתשובות
         // משנה צבע של הריבועי תשובות, מכניס תשובות ושם עליהם מאזין
         for (let i = 1; i <= 4; i++) {
@@ -1827,12 +1827,35 @@ const onClickPracticeCheck = () => {
         // בודק אם נלחצה תשובה לא נכונה ואם כן מסמן שהיא לא נכונה
         if (QUESTIONS[currentQuestion][`correctAns`] !== strClickedPracticeQuestion) {
             document.querySelector(`.${strClickedPracticeQuestion} div`).classList.add("wrongAnswer");
+        } else {
+            nPracticeCorrectAnswer++;
         }
         // מסמן תשובה נכונה בירוק
         document.querySelector(`.${QUESTIONS[currentQuestion][`correctAns`]} div`).classList.add("correctAnswer");
         // משנה כפתור בדיקה להמשך 
         document.querySelector(`.practiceBottomButton`).setAttribute("src", "../assets/images/grapics/practice/practice_continue_button.svg");
+    } else {
+        nPracticeCorrectAnswer = 0;
+        currentQuestion = 0;
+        creatMedShelfs();
     }
+}
+
+/* endofPractice
+--------------------------------------------------------------
+Description: change hyphen to space */
+const endofPractice = () => {
+    // מעלים שאלות ומראה תשובות נכונות
+    document.querySelector(`.practiceRightAnswersConteiner`).classList.remove("hidden");
+    document.querySelector(`.answersContainer`).classList.add("hidden");
+    // מכניס טקסט סיום
+    document.querySelector('.question').innerHTML ="כול הכבוד השלמתם את התרגול בנושא זה. מוזמנים להמשיך לתרגל עם שאלות נוספות או להמשיך למבחן. בהצלחה!";
+    document.querySelector(`.practiceRightAnswers`).innerHTML = `${nPracticeCorrectAnswer}/${AMOUNT_OF_QUESTION_PRACTICE}`;
+    // משנה צבע של חלונית תשובות ושל כפתור סיום
+    document.querySelector(`.practiceBottomButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
+    document.querySelector(`.practiceRightAnswersConteiner`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
+    // מחליף תמונה של כפתור בדיקה לכפתור סיום
+    document.querySelector(`.practiceBottomButton`).setAttribute("src", "../assets/images/grapics/practice/endPracticeButton.svg");
 }
 
 /* onClickExam
@@ -1848,27 +1871,18 @@ const onClickExam = () => {
     // שומר עמוד נוכחי
     strcurrentPage = "examPrePage";
     document.querySelector(`.examQuestionContainer`).classList.add("hidden"); 
-    // מעלים מדפים, סמלים בכותרת וכפתורים למטה
-    document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
-    document.querySelector(`.medTypeSymbol`).classList.add("hidden");
-    document.querySelector(`.shelfsButtons`).classList.add("hidden");
+    // מעלים דף פתיחה וכפתור אודות
+    document.querySelector(`.homePageButtons`).classList.add("hidden");
+    document.querySelector(`.aboutButton`).classList.add("hidden");
     // משנה מאפיינים של כותרת
-    document.querySelector(`.title`).classList.remove("titleMedShelfs");
     document.querySelector(`.title`).innerHTML = "מבחן";
     // כפתור עליון
     document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
-    // משנה חזרה צבעים לכחול
-    document.querySelector(`.wave`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
-    document.querySelector(`.topButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
-    document.querySelector(`.searchBoxHolder`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
-    document.querySelector(`.shelfsButtons .homeButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
     // מראה דף לפני מבחן
     document.querySelector(`.examPage`).classList.remove("hidden");
     document.querySelector(`.beforeExamPage`).classList.remove("hidden");  
     // הופך כפתור התחלה לאפור 
     document.querySelector(`.stratTest`).classList.add("gray");
-    // שם מאזין על כפתור חזור
-    document.querySelector(`.beforeExamBackToLomda`).addEventListener("click", sendToHomePage);
     // שומר של משתמש ומוודא שהוא יותר מתו אחד 
     strUserName = document.querySelector('.examNameInput').value;
     if (strUserName.length > 1) {
@@ -2112,8 +2126,6 @@ const endOfTest = () => {
     document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/home-page/opening-wave.svg");
     document.querySelector('.topButton').setAttribute("src", "../assets/images/grapics/home-page/right-arrow.svg");
     document.querySelector(`.topButton`).classList.remove("hidden");
-    // שם מאזין על כפתור חזרה ללומדה
-    document.querySelector(`.afterExamBackToLomda`).addEventListener("click", sendToHomePage);
 }
 
 /* reviewTest

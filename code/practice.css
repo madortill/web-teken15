@@ -68,6 +68,22 @@
     transform: translateX(-50%);
 }
 
+.practiceRightAnswersConteiner {
+    background-color: rgb(216, 183, 78);
+    height: 9vh;
+    width: 46vh;
+    border-radius: 1em;
+    padding-top: 1em;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.5em;
+    color: white;
+    position: absolute;
+    top: 52vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 /* מבחן */
 .beforeExamInstractions {
     width: 95.7vw;
