@@ -230,12 +230,11 @@ html, body {
 }
 
 .logos {
-    width: 24vw;
+    width: 100vw;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     position: absolute;
     top: 55vh;
-    left: 35vw;
 }
 
 .logos > img {
