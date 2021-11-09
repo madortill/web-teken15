@@ -1851,7 +1851,7 @@ const endofPractice = () => {
     document.querySelector(`.practiceRightAnswersConteiner`).classList.remove("hidden");
     document.querySelector(`.answersContainer`).classList.add("hidden");
     // מכניס טקסט סיום
-    document.querySelector('.question').innerHTML ="כול הכבוד השלמתם את התרגול בנושא זה. מוזמנים להמשיך לתרגל עם שאלות נוספות או להמשיך למבחן. בהצלחה!";
+    document.querySelector('.question').innerHTML ="השלמתם את התרגול בנושא זה. מוזמנים להמשיך לתרגל עם שאלות נוספות או להמשיך למבחן. בהצלחה";
     document.querySelector(`.practiceRightAnswers`).innerHTML = `${nPracticeCorrectAnswer}/${AMOUNT_OF_QUESTION_PRACTICE}`;
     // משנה צבע של חלונית תשובות ושל כפתור סיום
     document.querySelector(`.practiceBottomButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);

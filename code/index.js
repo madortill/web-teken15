@@ -961,6 +961,7 @@ const creatMedShelfs = (event) => {
     document.querySelector(`.topButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.searchBoxHolder`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     document.querySelector(`.shelfsButtons .homeButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
+    document.querySelector(`.practiceButton`).classList.add(objMedsShelfsColors[strCurrentMedType][0]);
     // משנה כותרת
     document.querySelector(`.title`).innerHTML = objMedsShelfsColors[strCurrentMedType][2];
     document.querySelector(`.title`).classList.add("titleMedShelfs");
@@ -1028,6 +1029,7 @@ const sendToHomePage = () => {
         document.querySelector(`.topButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
         document.querySelector(`.searchBoxHolder`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
         document.querySelector(`.shelfsButtons .homeButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
+        document.querySelector(`.practiceButton`).classList.remove(objMedsShelfsColors[strCurrentMedType][0]);
     } else if (strcurrentPage === "examPrePage") {
         // מעלים דף התחלת מבחן, ומשנה כפתור עליו לחיפוש 
         document.querySelector(`.examPage`).classList.add("hidden");
