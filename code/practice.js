@@ -1937,9 +1937,6 @@ const startExam = (event) => {
         document.querySelector('.wave').setAttribute("src", "../assets/images/grapics/test/test-wave.svg");
         document.querySelector('.topButton').classList.add("hidden");
         strcurrentPage = "examQuestion";
-        if (formerTestQuestion !== undefined) {
-            document.querySelector(`.${arrExamQuestions[formerTestQuestion].type}`).classList.add("hidden");
-        }
         formerTestQuestion = currentTestQuestion;
         // מוריד סימונים קודמים
         for (let i = 1; i <= 4; i++) {
@@ -2120,6 +2117,7 @@ const endOfTest = () => {
         document.querySelector(`.time`).innerHTML = currTime;
         // מכניס אורך מבחן
         document.querySelector(`.timerConteiner`).innerHTML = `${timerSecondes} : ${timerMinutes}`;
+        document.querySelector(`.${arrExamQuestions[formerTestQuestion].type}`).classList.add("hidden");
     }
     strcurrentPage = "endOfTest";
     // מעלים פופ אפ ואת המבחן ומראה את דף הסיום
