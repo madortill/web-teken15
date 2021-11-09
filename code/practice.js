@@ -2168,10 +2168,10 @@ const pad = (val) => {
 --------------------------------------------------------------
 Description:  */
 const startTimerExam = () => {
-    document.querySelector(`.testCurrentQuestionDisplay`).innerHTML = `${timerSecondes} : ${timerMinutes}`;
     sec++;
     timerSecondes = pad(sec%60);
     timerMinutes = pad(parseInt(sec/60));
+    document.querySelector(`.testCurrentQuestionDisplay`).innerHTML = `${timerSecondes} : ${timerMinutes}`;
 }
 
 /*
