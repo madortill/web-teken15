@@ -1712,6 +1712,7 @@ const onClickPractice  = () => {
     if (currentQuestion === AMOUNT_OF_QUESTION_PRACTICE) {
         endofPractice();
     } else {
+        document.querySelector(`.practiceBottomButton`).removeEventListener("click", onClickPracticeCheck);
         strcurrentPage = "practicePage";
         // מעלים מדפים, סמלים בכותרת וכפתורים למטה
         document.querySelector(`.${strCurrentMedType}Shelf`).classList.add("hidden");
