@@ -18,7 +18,7 @@ const DATA = {
                 ans1: `חסימת קולטני היסטמין`,
                 ans2: `הרס היסטמין בגוף `,
                 ans3: `אותו מנגנון פעולה של היסטמין בגוף רק שמופק בצורה מלאכותית `,
-                ans4: `שפעלול של ההסטמין בגוף`,
+                ans4: `שכפול של ההסטמין בגוף`,
                 correctAns: `ans1`
             },
             {
@@ -32,7 +32,7 @@ const DATA = {
             },
             {
                 type: `multiple`,
-                question: `מה הינה התוויה למתן אלרג'יקס - אריוס?`,
+                question: `מה ההתוויה למתן אלרג'יקס - אריוס?`,
                 ans1: `קוצר נשימה`,
                 ans2: `כאבי ראש`,
                 ans3: `דלקת עיניים`,
@@ -90,12 +90,12 @@ const DATA = {
                 ans1: `עלייה ברמות סוכר`,
                 ans2: `עליית לחץ דם`,
                 ans3: `הפרעות במאזן מלחים `,
-                ans4: `ירידת ברמות החלבון בגוף `,
+                ans4: `ירידה ברמות החלבון בגוף `,
                 correctAns: `ans4`
             },
             {
                 type: `multiple`,
-                question: `מה ההדרכות לטיפול במתן פרדניזון?`,
+                question: `מהן ההדרכות לטיפול במתן פרדניזון?`,
                 ans1: `לא להפסיק את הטיפול בפתאומיות`,
                 ans2: `לא לקחת את התרופה ביחד עם אלכוהול `,
                 ans3: `לקחת על בטן ריקה `,
@@ -152,7 +152,7 @@ const DATA = {
             },
             {
                 type: `multiple`,
-                question: `חולה שסובל מכאבי בטן, הקאות ושלשולים קיבל מרשם לPapavernine. מה מטרת התרופה?`,
+                question: `חולה שסובל מכאבי בטן, הקאות ושלשולים קיבל מרשם ל Papavernine. מה מטרת התרופה?`,
                 ans1: `נגד הקאות`,
                 ans2: `מניעת כאב ראש `,
                 ans3: `שיכוך כאבים שמקורם בדרכי השתן באמצעות כיווץ שרירים`,
@@ -387,14 +387,14 @@ const DATA = {
                 type: `multiple`,
                 question: `איזה סוג תרופה מורידה את תפוקת הלב?`,
                 ans1: `תרופה משתנת`,
-                ans2: `תרופה שמאטה את קצב הלה`,
+                ans2: `תרופה שמאטה את קצב הלב`,
                 ans3: `תרופה שמרחיבה את כלי הדם`,
                 ans4: `תרופה שמרפה שרירים`,
                 correctAns: `ans2`
             },
             {
                 type: `multiple`,
-                question: `מהן ההתוויות לamlodipine?`,
+                question: `מהן ההתוויות ל amlodipine?`,
                 ans1: `ייתר לחץ דם, תעוקת חזה`,
                 ans2: `ירידת לחץ דם, בצקת ריאות`,
                 ans3: `קושי בנשימה, אסטמה`,
@@ -407,7 +407,7 @@ const DATA = {
                 ans1: `ירידה בלחץ דם המתבטאת בסחרחורת, טכיקרדיה ועוד`,
                 ans2: `קוצר נשימה הנובע מהתכווצות סמפונות`,
                 ans3: `תחושת פלפיטציות (הרגשה של דפיקות לב חזקות במנוחה)`,
-                ans4: `ידירה בספידת הסידן במערכת העיכול`,
+                ans4: `ידירה בספיגת הסידן במערכת העיכול`,
                 correctAns: `ans1`
             },
             {
@@ -2017,7 +2017,7 @@ const startExam = (event) => {
     }
     
     // מראה את סימוני השאלה הנוכחית
-    document.querySelector('.testCurrentQuestionDisplay').innerHTML = `שאלה מספר ${currentTestQuestion + 1}`;
+    // document.querySelector('.testCurrentQuestionDisplay').innerHTML = `שאלה מספר ${currentTestQuestion + 1}`;
     document.querySelector(`.answerPill${currentTestQuestion + 1}`).style.backgroundColor = "#a3a2a2";
     // מראה את השאלה הנוכחית ומכניס אליה את התוכן
     document.querySelector('.examQuestionContainer .question').innerHTML = arrExamQuestions[currentTestQuestion].question;
@@ -2164,7 +2164,7 @@ const pad = (val) => {
 --------------------------------------------------------------
 Description:  */
 const startTimerExam = () => {
-    // document.querySelector(`.testCurrentQuestionDisplay`).innerHTML = `${timerSecondes} : ${timerMinutes}`;
+    document.querySelector(`.testCurrentQuestionDisplay`).innerHTML = `${timerSecondes} : ${timerMinutes}`;
     sec++;
     timerSecondes = pad(sec%60);
     timerMinutes = pad(parseInt(sec/60));
