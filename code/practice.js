@@ -2021,7 +2021,7 @@ const startExam = (event) => {
     }
     
     // מראה את סימוני השאלה הנוכחית
-    document.querySelector('.testCurrentQuestionDisplay').innerHTML = `שאלה מספר ${currentTestQuestion + 1}`;
+    // document.querySelector('.testCurrentQuestionDisplay').innerHTML = `שאלה מספר ${currentTestQuestion + 1}`;
     document.querySelector(`.answerPill${currentTestQuestion + 1}`).style.backgroundColor = "#a3a2a2";
     // מראה את השאלה הנוכחית ומכניס אליה את התוכן
     document.querySelector('.examQuestionContainer .question').innerHTML = arrExamQuestions[currentTestQuestion].question;
@@ -2168,7 +2168,7 @@ const pad = (val) => {
 --------------------------------------------------------------
 Description:  */
 const startTimerExam = () => {
-    // document.querySelector(`.testCurrentQuestionDisplay`).innerHTML = `${timerSecondes} : ${timerMinutes}`;
+    document.querySelector(`.testCurrentQuestionDisplay`).innerHTML = `${timerSecondes} : ${timerMinutes}`;
     sec++;
     timerSecondes = pad(sec%60);
     timerMinutes = pad(parseInt(sec/60));
