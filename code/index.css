@@ -280,7 +280,7 @@ html, body {
 
 .homePageButtonsScroll {
     overflow-y: scroll;
-    height: 65vh;
+    height: 62vh;
     margin-top: 0.5em;
 }
 
@@ -376,7 +376,7 @@ html, body {
 }
 
 .medShelf {
-    height: 65vh;
+    height: 62vh;
     overflow-y: scroll;
     margin-top: 0.5em;
 }
