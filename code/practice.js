@@ -1694,6 +1694,7 @@ let arrExamQuestions = [];
 let arrExamChosenAnswer = [];
 let strUserName;
 let formerTestQuestion;
+let bTimerListener = true;
 // timer
 let examTimer;
 let timerMinutes;
@@ -1893,19 +1894,22 @@ const onClickExam = () => {
         if (strUserName.length > 1) {
             document.querySelector(`.stratTest`).classList.remove("gray");
             document.querySelector(`.stratTest`).addEventListener("click", startExam);
-            document.querySelector(`.stratTest`).addEventListener("click", () => {
-                // מתחיל טיימר
-                examTimer = setInterval(startTimerExam, 1000);
-                let arrAnswerPill = document.querySelectorAll('.answerPill');
-                for (let i = 0; i < arrAnswerPill.length; i++) {
-                    // מסמן שלא ענו על השאלה
-                    document.querySelector(`.answerPill${i + 1}`).style.backgroundColor = "#f4f4f4b8";
-                    arrAnswerPill[i].addEventListener('click', () => {
-                        currentTestQuestion = i;
-                        startExam();
-                    });
-                };
-            });
+            if (bTimerListener) {// קורה רק פעם אחת
+                bTimerListener = false;
+                document.querySelector(`.stratTest`).addEventListener("click", () => {
+                        // מתחיל טיימר
+                        examTimer = setInterval(startTimerExam, 1000);
+                        let arrAnswerPill = document.querySelectorAll('.answerPill');
+                        for (let i = 0; i < arrAnswerPill.length; i++) {
+                            // מסמן שלא ענו על השאלה
+                            document.querySelector(`.answerPill${i + 1}`).style.backgroundColor = "#f4f4f4b8";
+                            arrAnswerPill[i].addEventListener('click', () => {
+                                currentTestQuestion = i;
+                                startExam();
+                        });
+                    };
+                });
+            }
         }
     });
     // שומר שאלות למבחן
