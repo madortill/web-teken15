@@ -2117,8 +2117,8 @@ const endOfTest = () => {
         document.querySelector(`.time`).innerHTML = currTime;
         // מכניס אורך מבחן
         document.querySelector(`.timerConteiner`).innerHTML = `${timerSecondes} : ${timerMinutes}`;
-        document.querySelector(`.${arrExamQuestions[formerTestQuestion].type}`).classList.add("hidden");
     }
+    document.querySelector(`.${arrExamQuestions[formerTestQuestion].type}`).classList.add("hidden");
     strcurrentPage = "endOfTest";
     // מעלים פופ אפ ואת המבחן ומראה את דף הסיום
     document.querySelector(`.examSubmitionPopUp`).classList.add("hidden");
