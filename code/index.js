@@ -134,7 +134,7 @@ let objMedInfo = {
         patientGuidelines : "<ol class=list><li>לא להפסיק את הטיפול באמצע, אלא לסיים את כולו, גם אם מרגישים טוב יותר.</li><li>מומלץ לקחת אחרי אוכל, על בטן מלאה (כדי להפחית תופעות לוואי במערכת העיכול).</li><li>לפנות לבדיקה רפואית אם מופיעה תגובה אלרגית, גם תגובה אלרגית קלה כמו פריחה.</li><li>יש לשים לב להתפתחות תופעת לוואי של סחרחורת ולא לנהוג תחת השפעת התרופה עד וידוא כי אין סחרחורת משמעותית.</li></ol>",
         mechanismOfAction : "פגיעה בבניית דופן התא של החיידקים ועל כן הריגה של החיידקים.",
     },
-    "Clarithromycin-(TAB)": {
+    "Clarithromycin-TAB": {
         medType: "antibiotics",
         type : "withMechanism",
         pic : "antibiotics/klaridex", 
@@ -146,7 +146,7 @@ let objMedInfo = {
         patientGuidelines : "<ol class=list><li>לא להפסיק את הטיפול באמצע, אלא לסיים את כולו, גם אם מרגישים טוב יותר.</li><li>תמיסה Acnetrim/Acnemycin מיועדת לשימוש חיצוני בלבד, וטרם המריחה יש לשטוף פנים עם מים וסבון ולהמתין לייבוש.</li><li>אין צורך להצמיד את הטיפול לאוכל.</li><li>להגביל אלכוהול</li><li>יש לשתף את הרופא/ה בכל טיפול רפואי שניתן במקביל</li></ol>",
         mechanismOfAction : "עיכוב בניית חלבונים בחיידקים. כתלות במינון נוצרת השפעה של הריגת החיידקים או עצירת התרבותם.",
     },
-    "Roxythromycin-(TAB)": {
+    "Roxythromycin-TAB": {
         medType: "antibiotics",
         type : "withMechanism",
         pic : "antibiotics/rulid", 
