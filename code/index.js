@@ -27,7 +27,7 @@ let objInfo = {
     // נושא2-----------------------------------------------------------------------------------------------------------------------
     "נושא2" : {
         pic : `../assets/images/grapics/home-page/chronic-diseases-button.svg`,
-        color : `teal`,
+        color : `mediumaquamarine`,
         
         "תת-נושא1" : {
             discription : ``,
@@ -135,18 +135,24 @@ const onClickSearch = () => {
         sendToHomePage();
     } else if (strcurrentPage === "practicePage") {
         if(strClickedPracticeQuestion !== undefined) {
+            if(QUESTIONS[currentQuestion].type === "binary") {
+                // מוריד סימנים קודמים
+                document.querySelector(`.prcticeQuestionContainer .false`).style.backgroundColor = "white";
+                document.querySelector(`.prcticeQuestionContainer .true`).style.backgroundColor = "white";
+            } else {
+                for (let i = 1; i <= 4; i++) {
+                    document.querySelector(`.ans${i} img`).classList.remove(objInfo[strCurrentSubject].color);
+                    document.querySelector(`.practiceQuestionSqure${i}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-unmarked.svg");
+                }
+            }
             // מוריד סימונים מהשאלות
             if (QUESTIONS[currentQuestion][`correctAns`] !== strClickedPracticeQuestion) {
                 document.querySelector(`.practicePage .${strClickedPracticeQuestion} div`).classList.remove("wrongAnswer");
             }
             document.querySelector(`.${QUESTIONS[currentQuestion][`correctAns`]} div`).classList.remove("correctAnswer");
-            document.querySelector(`.practiceQuestionSqure${strClickedPracticeQuestion.slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-unmarked.svg");
         }
             // משנה צבע של כפתור בדיקה ושל ריבועי התשובות
             document.querySelector(`.practiceBottomButton`).classList.remove(objInfo[strCurrentSubject].color);
-            for (let i = 1; i <= 4; i++) {
-                document.querySelector(`.ans${i} img`).classList.remove(objInfo[strCurrentSubject].color);
-            }
             // משנה חזרה כפתור בדיקה
             document.querySelector(`.practiceBottomButton`).setAttribute("src", "../assets/images/grapics/practice/check_button.svg");
         currentQuestion = 0;

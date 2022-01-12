@@ -69,27 +69,27 @@ html, body {
     filter: hue-rotate(140deg);
 }
 
-.lightGreen {
+.yellowgreen {
     filter: hue-rotate(30deg);
 }
 
-.teal {
+.mediumaquamarine {
     filter: hue-rotate(110deg);
 }
 
-.purple {
+.mediumpurple {
     filter: hue-rotate(205deg);
 }
 
-.yellow {
+.khaki {
     filter: hue-rotate(0deg);
 }
 
-.orange {
+.lightsalmon {
     filter: hue-rotate(320deg);
 }
 
-.darkGreen {
+.lightgreen {
     filter: hue-rotate(80deg);
 }
 

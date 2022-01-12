@@ -53,7 +53,7 @@
 }
 
 .correctAnswer {
-    background-color: rgba(98, 212, 159, 0.671);
+    background-color: rgba(70, 155, 115, 0.671);
 }
 
 .wrongAnswer {
@@ -167,6 +167,11 @@
     width: 100vw;
     position: absolute;
     top: 45vh;
+}
+
+.prcticeQuestionContainer > .binary {
+    position: absolute;
+    top: 55vh;
 }
 
 .examQuestionContainer .question{
