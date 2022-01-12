@@ -103,7 +103,8 @@ html, body {
 
 .sub-titles {
     font-weight: bold;
-    padding-top: 1em;
+    padding: 0.3em 1rem;
+    font-size: 1.3em;
 }
 
 /* חלק עליון */
@@ -117,7 +118,7 @@ html, body {
 .titleConeiner {
     color: #f4f4f4;
     font-weight: 800;
-    font-size: 2.5em;
+    font-size: 2em;
     position: absolute;
     top: 0vh;
     right: 1vw;
@@ -135,7 +136,7 @@ html, body {
 }
 
 .titleMedShelfs {
-    font-size: 0.64em;
+    font-size: 0.9em;
     right: 16vw;
 }
 
@@ -307,15 +308,40 @@ html, body {
     display: none;
 }
 
-.pic {
-    /* width: 42vw; */
-    height: 23vh;
-    position: absolute;
-    left: 5vw;
+.idPic {
+    width: 42vw;
+    margin: auto;
+    display: block;
+    padding: 2em 0;
 }
 
-.idNextToPic {
+.picId {
     width: 42vw;
+}
+
+.idPicContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.youtubeVideo {
+    width: 76vw;
+    height: 25vh;
+    margin: auto;
+    display: block;
+    padding: 1em 0;
+}
+
+.IdParah {
+    padding: 0.2em 1em 1.5em;
+}
+
+.listItem {
+    padding-bottom: 1.5em;
 }
 
 /* מדפים של תרופות */
@@ -350,6 +376,10 @@ html, body {
     font-size: 1.1em;
 }
 
+.shelfDiscriptionSection {
+    padding: 1em;
+}
+
 .shelfMedPic {
     height: 7vh;
     padding: 0.5em;
@@ -363,9 +393,10 @@ html, body {
     border-radius: 1em;
     display: flex;
     align-items: center;
-    font-size: 0.8em;
+    justify-content: center;
+    font-size: 0.9em;
     margin-bottom: 1em;
-    direction: ltr;
+    text-align: center;
 }
 
 .shelfPicSection {
