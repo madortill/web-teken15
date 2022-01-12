@@ -103,6 +103,11 @@ html, body {
 
 .sub-titles {
     font-weight: bold;
+    padding-top: 1em;
+}
+
+template > .sub-titles {
+    font-weight: bold;
     padding: 0.3em 1rem;
     font-size: 1.3em;
 }
@@ -316,7 +321,8 @@ html, body {
 }
 
 .picId {
-    width: 42vw;
+    width: 40vw;
+    padding: 0.6em;
 }
 
 .idPicContainer {

@@ -165,7 +165,6 @@ const onClickPractice  = () => {
         document.querySelector(`.practiceBottomButton`).removeEventListener("click", onClickPracticeCheck);
         strcurrentPage = "practicePage";
         // מעלים מדפים, סמלים בכותרת וכפתורים למטה
-        document.querySelector(`.${strCurrentSubject}Shelf`).classList.add("hidden");
         let shelf = document.querySelector(`.${strCurrentSubject}Shelf`);
         document.querySelector(`.shelfsPage`).removeChild(shelf);
         document.querySelector(`.shelfsButtons`).classList.add("hidden");
