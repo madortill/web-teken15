@@ -104,6 +104,7 @@ html, body {
 .sub-titles {
     font-weight: bold;
     padding-top: 1em;
+    display: none;
 }
 
 template > .sub-titles {
@@ -130,6 +131,7 @@ template > .sub-titles {
     width: 53vw;
     text-align: center;
     height: 15vh;
+    display: none;
 }
 
 .title {
