@@ -322,6 +322,7 @@ template > .sub-titles {
 
 .picId {
     width: 40vw;
+    height: 20vh;
     padding: 0.6em;
 }
 
