@@ -3,7 +3,7 @@ let objInfo = {
     // נושא1-----------------------------------------------------------------------------------------------------------------------
     "נושא-1" : {
         pic : `../assets/images/grapics/home-page/antiallergic-button.svg`,
-        color : `yellowgreen`,
+        color : `khaki`,
 
         "תת-נושא1" : {
             discription : `כאן יכנס תיאור של תת נושא 1 שמתאר את כול תתי הנושאים שלו`,
@@ -27,7 +27,7 @@ let objInfo = {
     // נושא2-----------------------------------------------------------------------------------------------------------------------
     "נושא-2" : {
         pic : `../assets/images/grapics/home-page/chronic-diseases-button.svg`,
-        color : `mediumpurple`,
+        color : `lightsalmon`,
         
         "תת-נושא-1" : {
             discription : ``,
@@ -39,7 +39,7 @@ let objInfo = {
             discription : ``,
             "תת-תת-נושא-תמונות" : {
                 type : "textAndPics",
-                pic : [`../assets/images/grapics/home-page/example1.jfif`, `../assets/images/grapics/home-page/example2.jfif`,],
+                pic : [`../assets/images/grapics/home-page/example1.jfif`, `../assets/images/grapics/home-page/example2.jfif`,`../assets/images/grapics/home-page/example1.jfif`, `../assets/images/grapics/home-page/example2.jfif`],
                 content: ["טקסט מלווה לתמונות, יכול להתחלק לפסקאות"], // מערך של תוכן לפי פסקאות
             },
             "תת-תת-נושא-סרטון" : {
