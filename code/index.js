@@ -3,7 +3,7 @@ let objInfo = {
     // נושא1-----------------------------------------------------------------------------------------------------------------------
     "נושא-1" : {
         pic : `../assets/images/grapics/home-page/antiallergic-button.svg`,
-        color : `khaki`,
+        color : `pink`,
 
         "תת-נושא1" : {
             discription : `כאן יכנס תיאור של תת נושא 1 שמתאר את כול תתי הנושאים שלו`,
@@ -27,20 +27,20 @@ let objInfo = {
     // נושא2-----------------------------------------------------------------------------------------------------------------------
     "נושא-2" : {
         pic : `../assets/images/grapics/home-page/chronic-diseases-button.svg`,
-        color : `lightsalmon`,
+        color : `mediumaquamarine`,
         
         "תת-נושא-1" : {
             discription : ``,
             "תת-תת-נושא-תמונה" : {
                 type : "textAndPic",
                 pic : `../assets/images/grapics/home-page/example1.jfif`,
-                content: ["טקסט מלווה לתמונה, יכול להתחלק לפסקאות"], // מערך של תוכן לפי פסקאות
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
             },
             discription : ``,
             "תת-תת-נושא-תמונות" : {
                 type : "textAndPics",
-                pic : [`../assets/images/grapics/home-page/example1.jfif`, `../assets/images/grapics/home-page/example2.jfif`,`../assets/images/grapics/home-page/example1.jfif`, `../assets/images/grapics/home-page/example2.jfif`],
-                content: ["טקסט מלווה לתמונות, יכול להתחלק לפסקאות"], // מערך של תוכן לפי פסקאות
+                pic : [`../assets/images/grapics/home-page/example1.jfif`, `../assets/images/grapics/home-page/example2.jfif`,],
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
             },
             "תת-תת-נושא-סרטון" : {
                 type : "textAndVideo",
