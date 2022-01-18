@@ -1,7 +1,7 @@
 // כששמים שמות של נושאים לשים בין מילים מקף! שלא יהיה רווחים בכלל, זה יצור לבד רווחים במקום המתאים
 let objInfo = {
     // נושא1-----------------------------------------------------------------------------------------------------------------------
-    "נושא1" : {
+    "נושא-1" : {
         pic : `../assets/images/grapics/home-page/antiallergic-button.svg`,
         color : `pink`,
 
@@ -25,9 +25,61 @@ let objInfo = {
         },
     },
     // נושא2-----------------------------------------------------------------------------------------------------------------------
-    "נושא2" : {
+    "נושא-2" : {
         pic : `../assets/images/grapics/home-page/chronic-diseases-button.svg`,
         color : `mediumaquamarine`,
+        
+        "תת-נושא1" : {
+            discription : ``,
+            "תת-תת-נושא-תמונה" : {
+                type : "textAndPic",
+                pic : `../assets/images/grapics/home-page/chronic-diseases-button.svg`,
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+            },
+            discription : ``,
+            "תת-תת-נושא-תמונות" : {
+                type : "textAndPics",
+                pic : [`../assets/images/grapics/home-page/chronic-diseases-button.svg`, `../assets/images/grapics/home-page/chronic-diseases-button.svg`,`../assets/images/grapics/home-page/chronic-diseases-button.svg`],
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+            },
+            "תת-תת-נושא-סרטון" : {
+                type : "textAndVideo",
+                video : `https://www.youtube.com/embed/mqSp2XCo7DE`,
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+                content: "",
+            },
+        },
+    },
+    // נושא2-----------------------------------------------------------------------------------------------------------------------
+    "נושא-3" : {
+        pic : `../assets/images/grapics/home-page/painkillers-button.svg`,
+        color : `mediumpurple`,
+        
+        "תת-נושא1" : {
+            discription : ``,
+            "תת-תת-נושא-תמונה" : {
+                type : "textAndPic",
+                pic : `../assets/images/grapics/home-page/chronic-diseases-button.svg`,
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+            },
+            discription : ``,
+            "תת-תת-נושא-תמונות" : {
+                type : "textAndPics",
+                pic : [`../assets/images/grapics/home-page/chronic-diseases-button.svg`, `../assets/images/grapics/home-page/chronic-diseases-button.svg`,`../assets/images/grapics/home-page/chronic-diseases-button.svg`],
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+            },
+            "תת-תת-נושא-סרטון" : {
+                type : "textAndVideo",
+                video : `https://www.youtube.com/embed/mqSp2XCo7DE`,
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+                content: "",
+            },
+        },
+    },
+    // נושא2-----------------------------------------------------------------------------------------------------------------------
+    "נושא-4" : {
+        pic : `../assets/images/grapics/home-page/antibiotics-button.svg`,
+        color : `lightgreen`,
         
         "תת-נושא1" : {
             discription : ``,
@@ -92,12 +144,12 @@ const createHomePageButtons = () => {
                 El("img",
                 {attributes: {class: `mainPagePic`, 
                 src : objInfo[subjects].pic},}),
-                El("div", {cls: "medHeadline"}, subjects)
+                El("div", {cls: "medHeadline"}, addSpace(subjects))
             );
         }
         else {
             subjectButton = El("div", {classes: ["mainPageButton", subjects]},
-                El("div", {cls: "medHeadline"}, subjects),
+                El("div", {cls: "medHeadline"}, addSpace(subjects)),
                 El("img",
                 {attributes: {class: `mainPagePic picLeft`, 
                 src : objInfo[subjects].pic},}),
