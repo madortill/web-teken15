@@ -29,7 +29,38 @@ let objInfo = {
         pic : `../assets/images/grapics/home-page/chronic-diseases-button.svg`,
         color : `mediumaquamarine`,
         
-        "תת-נושא1" : {
+        "תת-נושא-1" : {
+            discription : ``,
+            "תת-תת-נושא-רשימה-נקודות" : {
+                type : "listDots",
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+            },
+            "תת-תת-נושא-רשימה-מספרים" : {
+                type : "listNumbers",
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+            },
+        },
+        "תת-נושא-2" : {
+            discription : ``,
+            "תת-תת-נושא-תמונה" : {
+                type : "textAndPic",
+                pic : `../assets/images/grapics/home-page/chronic-diseases-button.svg`,
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+            },
+            discription : ``,
+            "תת-תת-נושא-תמונות" : {
+                type : "textAndPics",
+                pic : [`../assets/images/grapics/home-page/chronic-diseases-button.svg`, `../assets/images/grapics/home-page/chronic-diseases-button.svg`,`../assets/images/grapics/home-page/chronic-diseases-button.svg`],
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+            },
+            "תת-תת-נושא-סרטון" : {
+                type : "textAndVideo",
+                video : `https://www.youtube.com/embed/mqSp2XCo7DE`,
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+                content: "",
+            },
+        },
+        "תת-נושא-3" : {
             discription : ``,
             "תת-תת-נושא-תמונה" : {
                 type : "textAndPic",
