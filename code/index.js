@@ -50,6 +50,31 @@ let objInfo = {
             },
         },
     },
+    "נושא-3" : {
+        pic : `../assets/images/grapics/home-page/painkillers-button.svg`,
+        color : `mediumaquamarine`,
+        
+        "תת-נושא-1" : {
+            discription : ``,
+            "תת-תת-נושא-תמונה" : {
+                type : "textAndPic",
+                pic : `../assets/images/grapics/home-page/example1.jfif`,
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+            },
+            discription : ``,
+            "תת-תת-נושא-תמונות" : {
+                type : "textAndPics",
+                pic : [`../assets/images/grapics/home-page/example1.jfif`, `../assets/images/grapics/home-page/example2.jfif`,],
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+            },
+            "תת-תת-נושא-סרטון" : {
+                type : "textAndVideo",
+                video : `https://www.youtube.com/embed/mqSp2XCo7DE`,
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+                content: "",
+            },
+        },
+    },
 }
 
 // varubal

@@ -272,6 +272,7 @@ template > .sub-titles {
     padding-top: 1em;
     position: relative;
     left: 4vw;
+    color: white;
 }
 
 .mainPagePic {
