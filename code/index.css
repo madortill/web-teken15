@@ -138,7 +138,6 @@ template > .sub-titles {
     top: 50%;
     transform: translateY(-50%);
     right: 1vw;
-    display: none;
 }
 
 .titleMedShelfs {
@@ -377,7 +376,6 @@ template > .sub-titles {
     font-weight: 500;
     font-size: 1.2em;
     padding-right: 1em;
-    color: white;
 }
 
 .shelfsdropDown {
