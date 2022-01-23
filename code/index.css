@@ -138,6 +138,7 @@ template > .sub-titles {
     top: 50%;
     transform: translateY(-50%);
     right: 1vw;
+    display: none;
 }
 
 .titleMedShelfs {
