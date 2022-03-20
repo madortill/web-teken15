@@ -1113,7 +1113,7 @@ const DATA = {
                 ans2: `לפני אוכל`,
                 ans3: `אחרי אוכל`,
                 ans4: `לפני פעילות הדורשת ערנות`,
-                correctAns: `ans2`
+                correctAns: `ans4`
             },
             {
                 type: `multiple`,
