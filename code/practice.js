@@ -1641,7 +1641,7 @@ const DATA = {
             {
                 type: `binary`,
                 question: `אין לשלב נטילת Etopan יחד אלכוהול`,
-                correctAns: false
+                correctAns: true
             },
             {
                 type: `binary`,
@@ -1778,7 +1778,7 @@ const onClickAnswer = (event) => {
             document.querySelector(`.examQuestionSqure${strClickedPracticeQuestion.slice(3)}`).setAttribute("src", "../assets/images/grapics/practice/answer-squre-marked.svg");
         }
         arrExamChosenAnswer[currentTestQuestion] = strClickedPracticeQuestion;
-       
+       console.log(arrExamChosenAnswer);
         // בודק אם כול השאלות נענו
         let bTestComplete = true;
         for (let j = 0; j < AMOUNT_OF_QUESTION_EXAM; j++){
@@ -2095,7 +2095,7 @@ const endOfTest = () => {
         // בודק כמה שאלות נענו נכון
         nExamCorrectAnswer = 0;
         for (let j = 0; j < AMOUNT_OF_QUESTION_EXAM; j++){
-            if (arrExamChosenAnswer[j] === arrExamQuestions[j]["correctAns"]) {
+            if (arrExamChosenAnswer[j] === String(arrExamQuestions[j]["correctAns"])) {
                 nExamCorrectAnswer++;
             }
         }
