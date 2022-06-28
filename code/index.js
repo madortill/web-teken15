@@ -22,6 +22,10 @@ let objInfo = {
                 type : "listNumbers",
                 content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
             },
+            "תת-תת-נושא-רשימה-" : {
+                type : "listNumbers",
+                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+            },
         },
     },
     // נושא2-----------------------------------------------------------------------------------------------------------------------
@@ -395,36 +399,37 @@ const creatMedShelfs = (event) => {
     document.querySelector(`.title`).classList.add("titleMedShelfs");
     // יוצר קונטיינר למדפים
     let shelfContent = El("div", {classes : [`${strCurrentSubject}Shelf`, "medShelf"]},
-    El("img", {attributes: {src: objInfo[strCurrentSubject].pic , class: "medTypeSymbol"}})
-    );
+    El("img", {attributes: {src: objInfo[strCurrentSubject].pic , class: "medTypeSymbol"}}),
+    El("div", {classes : [`${strCurrentSubject}ShelfContainer`, "medShelfContainer"]})
+        );
     document.querySelector(`.shelfsPage`).append(shelfContent);
     // שומר אינדקס למדפים ויוצר מדפים לפי מספר תתי הנושאים
     let index = 1;
     for(let key of Object.keys(objInfo[strCurrentSubject])) {
         if(key !== "pic" && key !== "color"){
-            let shelf = El("div", {classes : [`shelfs`, `shelf${index}`], listeners : {click : controlShelfsDropDown}},
-                El("div", {cls : `shelfHedline`},
-                    addSpace(key),
-                    El("img", {attributes : {src: `../assets/images/grapics/med-shelfs/down-button.svg`}, classes : ["downButton", objInfo[strCurrentSubject].color]})
-                ),
-                El("img", {attributes : {src: `../assets/images/grapics/med-shelfs/shelf.svg`}, classes : ["shelf", objInfo[strCurrentSubject].color]})
-            );
-            document.querySelector(`.${strCurrentSubject}Shelf`).append(shelf);
+            // let shelf = El("div", {classes : [`shelfs`, `shelf${index}`], listeners : {click : controlShelfsDropDown}},
+            //     El("div", {cls : `shelfHedline`},
+            //         addSpace(key),
+            //         El("img", {attributes : {src: `../assets/images/grapics/med-shelfs/down-button.svg`}, classes : ["downButton", objInfo[strCurrentSubject].color]})
+            //     ),
+            //     El("img", {attributes : {src: `../assets/images/grapics/med-shelfs/shelf.svg`}, classes : ["shelf", objInfo[strCurrentSubject].color]})
+            // );
+            // document.querySelector(`.${strCurrentSubject}Shelf`).append(shelf);
             
-            let shelfDropDown = El("div", {classes : [`shelf${index}dropDown`, `shelfsdropDown`, `hidden`]},
-            El("div", {cls : `shelfDiscriptionSection`}),
-            El("div", {cls : `shelfPicSection`}),
-            );
-            document.querySelector(`.${strCurrentSubject}Shelf`).append(shelfDropDown);
+            // let shelfDropDown = El("div", {classes : [`shelf${index}dropDown`, `shelfsdropDown`, `hidden`]},
+            // El("div", {cls : `shelfDiscriptionSection`}),
+            // El("div", {cls : `shelfPicSection`}),
+            // );
+            // document.querySelector(`.${strCurrentSubject}Shelf`).append(shelfDropDown);
             for(let subSubject of Object.keys(objInfo[strCurrentSubject][key])) {
                 if(subSubject !== "discription"){
-                    let dropDownPic = El("div", {classes : [`shelfMedPicContainer`, subSubject, key, strCurrentSubject]},
+                    let dropDownPic = El("div", {classes : [`shelfMedPicContainer`, subSubject, key, strCurrentSubject], listeners : {click : creatMedID}},
                     // El("img", {attributes : {src: `../assets/images/grapics/med-shelfs/down-button.svg`}, classes : ["shelfMedPic"]}),
                     addSpace(subSubject),
                     );
-                    document.querySelector(`.shelf${index}dropDown > .shelfPicSection`).append(dropDownPic);
+                    document.querySelector(`.${strCurrentSubject}ShelfContainer`).append(dropDownPic);
                 } else {
-                    document.querySelector(`.shelf${index}dropDown > .shelfDiscriptionSection`).append(objInfo[strCurrentSubject][key].discription);                    
+                    document.querySelector(`.${strCurrentSubject}ShelfContainer`).append(objInfo[strCurrentSubject][key].discription);                    
                 }
             }
             index++;
@@ -450,7 +455,7 @@ const controlShelfsDropDown = (event) => {
         document.querySelector(`.${strCurrentSubject}Shelf >  .${strChosenShelf} .downButton`).setAttribute("src", "../assets/images/grapics/med-shelfs/down-button.svg");
         document.querySelector(`.${strCurrentSubject}Shelf >  .${strChosenShelf}dropDown`).classList.add("hidden");
     }else { // פותח מדף
-        let arrMedIdButtons = document.querySelectorAll(`.${strCurrentSubject}Shelf >  .${strChosenShelf}dropDown .shelfMedPicContainer`);
+        let arrMedIdButtons = document.querySelectorAll(`.shelfMedPicContainer`);
         for (let i = 0; i < arrMedIdButtons.length; i++) {
             arrMedIdButtons[i].addEventListener('click', creatMedID);
         }
