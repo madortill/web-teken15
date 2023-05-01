@@ -1,33 +1,42 @@
 // כששמים שמות של נושאים לשים בין מילים מקף! שלא יהיה רווחים בכלל, זה יצור לבד רווחים במקום המתאים
 let objInfo = {
     // נושא1-----------------------------------------------------------------------------------------------------------------------
-    "נושא-1" : {
-        pic : `../assets/images/grapics/home-page/antiallergic-button.svg`,
-        color : `pink`,
+    // "נושא-1" : {
+    //     pic : `../assets/images/grapics/home-page/antiallergic-button.svg`,
+    //     color : `pink`,
+    //     "נושא רמה 2": {
+    //         // תוכן לפי כותרת ופסקה
+    //         content: {
+    //             "title": "par1",
+    //             "title2": "par2"
+    //         },
+    //         subSubjects: {
+    //             "תת-נושא1" : {
+    //                 discription : `כאן יכנס תיאור של תת נושא 1 שמתאר את כול תתי הנושאים שלו`,
+    //                 "תת-תת-נושא-פסקאות" : {
+    //                     type : "text",
+    //                     content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+    //                 },
+    //             },
+    //             "תת-נושא2" : {
+    //                 discription : ``,
+    //                 "תת-תת-נושא-רשימה-נקודות" : {
+    //                     type : "listDots",
+    //                     content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+    //                 },
+    //                 "תת-תת-נושא-רשימה-מספרים" : {
+    //                     type : "listNumbers",
+    //                     content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+    //                 },
+    //                 "תת-תת-נושא-רשימה-" : {
+    //                     type : "listNumbers",
+    //                     content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
+    //                 },
+    //             },
+    //         }
+    //     }
 
-        "תת-נושא1" : {
-            discription : `כאן יכנס תיאור של תת נושא 1 שמתאר את כול תתי הנושאים שלו`,
-            "תת-תת-נושא-פסקאות" : {
-                type : "text",
-                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
-            },
-        },
-        "תת-נושא2" : {
-            discription : ``,
-            "תת-תת-נושא-רשימה-נקודות" : {
-                type : "listDots",
-                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
-            },
-            "תת-תת-נושא-רשימה-מספרים" : {
-                type : "listNumbers",
-                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
-            },
-            "תת-תת-נושא-רשימה-" : {
-                type : "listNumbers",
-                content: ["פסקה ראשונה", "פסקה שניה", "פסקה שלישית"], // מערך של תוכן לפי פסקאות
-            },
-        },
-    },
+    // },
     // נושא2-----------------------------------------------------------------------------------------------------------------------
     "נושא-2" : {
         pic : `../assets/images/grapics/home-page/chronic-diseases-button.svg`,
@@ -407,27 +416,28 @@ const creatMedShelfs = (event) => {
     let index = 1;
     for(let key of Object.keys(objInfo[strCurrentSubject])) {
         if(key !== "pic" && key !== "color"){
-            // let shelf = El("div", {classes : [`shelfs`, `shelf${index}`], listeners : {click : controlShelfsDropDown}},
-            //     El("div", {cls : `shelfHedline`},
-            //         addSpace(key),
-            //         El("img", {attributes : {src: `../assets/images/grapics/med-shelfs/down-button.svg`}, classes : ["downButton", objInfo[strCurrentSubject].color]})
-            //     ),
-            //     El("img", {attributes : {src: `../assets/images/grapics/med-shelfs/shelf.svg`}, classes : ["shelf", objInfo[strCurrentSubject].color]})
-            // );
-            // document.querySelector(`.${strCurrentSubject}Shelf`).append(shelf);
+            let shelf = El("div", {classes : [`shelfs`, `shelf${index}`], listeners : {click : controlShelfsDropDown}},
+                El("div", {cls : `shelfHedline`},
+                    addSpace(key),
+                    El("img", {attributes : {src: `../assets/images/grapics/med-shelfs/down-button.svg`}, classes : ["downButton", objInfo[strCurrentSubject].color]})
+                ),
+                El("img", {attributes : {src: `../assets/images/grapics/med-shelfs/shelf.svg`}, classes : ["shelf", objInfo[strCurrentSubject].color]})
+            );
+            document.querySelector(`.${strCurrentSubject}Shelf`).append(shelf);
             
-            // let shelfDropDown = El("div", {classes : [`shelf${index}dropDown`, `shelfsdropDown`, `hidden`]},
-            // El("div", {cls : `shelfDiscriptionSection`}),
-            // El("div", {cls : `shelfPicSection`}),
-            // );
-            // document.querySelector(`.${strCurrentSubject}Shelf`).append(shelfDropDown);
+            let shelfDropDown = El("div", {classes : [`shelf${index}dropDown`, `shelfsdropDown`, `hidden`]},
+            El("div", {cls : `shelfDiscriptionSection`}),
+            El("div", {cls : `${strCurrentSubject}shelfPicSection`}),
+            );
+            document.querySelector(`.${strCurrentSubject}Shelf`).append(shelfDropDown);
             for(let subSubject of Object.keys(objInfo[strCurrentSubject][key])) {
                 if(subSubject !== "discription"){
                     let dropDownPic = El("div", {classes : [`shelfMedPicContainer`, subSubject, key, strCurrentSubject], listeners : {click : creatMedID}},
-                    // El("img", {attributes : {src: `../assets/images/grapics/med-shelfs/down-button.svg`}, classes : ["shelfMedPic"]}),
+                    El("img", {attributes : {src: `../assets/images/grapics/med-shelfs/down-button.svg`}, classes : ["shelfMedPic"]}),
                     addSpace(subSubject),
                     );
-                    document.querySelector(`.${strCurrentSubject}ShelfContainer`).append(dropDownPic);
+                    document.querySelector(`.${strCurrentSubject}shelfPicSection`).append(dropDownPic);
+                    // shelfPicSection
                 } else {
                     document.querySelector(`.${strCurrentSubject}ShelfContainer`).append(objInfo[strCurrentSubject][key].discription);                    
                 }
